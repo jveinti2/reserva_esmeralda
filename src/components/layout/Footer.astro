@@ -2,67 +2,129 @@
 // Footer component
 ---
 
-<footer class="p-4 mt-20">
-  <div class="md:flex md:justify-between">
-    <div class="mb-6 md:mb-0 grid place-items-center">
-      <a href="/" class="flex items-center">
-        <img
-          loading="lazy"
-          class="w-auto h-20 lg:w-auto lg:h-20 xl:h-24 2xl:h-28"
-          src="/logo-sin-bg.png"
-          alt="La Esmeralda Reserva Natural"
-        />
-      </a>
+<footer class="relative bg-cover bg-center bg-no-repeat" style="background-image: url('/fondos/fondo5-2.avif');">
+  <!-- Overlay oscuro para legibilidad -->
+  <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+
+  <div class="relative container mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <!-- Columna 1: Logo y descripcion -->
+      <div class="text-center md:text-left">
+        <a href="/" class="inline-block mb-6">
+          <img
+            src="/logo-sin-bg-blanco.png"
+            alt="La Esmeralda Reserva Natural"
+            class="h-24 md:h-28"
+          />
+        </a>
+        <p class="text-lime-300 text-lg font-bold mb-2">🌿 UNA JOYA VERDE</p>
+        <p class="text-white text-sm leading-relaxed">
+          Conservando el bosque seco tropical del Tolima para las futuras generaciones
+        </p>
+      </div>
+
+      <!-- Columna 2: Enlaces rapidos -->
+      <div class="text-center md:text-left">
+        <h3 class="text-white text-xl font-bold mb-6">📌 Enlaces Rapidos</h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="/reserva/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              La Reserva
+            </a>
+          </li>
+          <li>
+            <a href="/servicios/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              Vivencias
+            </a>
+          </li>
+          <li>
+            <a href="/emprendimientos/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              Emprendimientos
+            </a>
+          </li>
+          <li>
+            <a href="/vinculate/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              Vinculate
+            </a>
+          </li>
+          <li>
+            <a href="/galeria/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              Galeria
+            </a>
+          </li>
+          <li>
+            <a href="/contactanos/" class="text-gray-300 hover:text-lime-300 transition-colors">
+              Contactanos
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto y redes -->
+      <div class="text-center md:text-left">
+        <h3 class="text-white text-xl font-bold mb-6">📞 Contacto</h3>
+        <div class="space-y-4 mb-8">
+          <div class="text-gray-300">
+            <p class="font-semibold text-white mb-1">📍 Ubicacion</p>
+            <p class="text-sm">Corregimiento de Doima<br/>Piedras, Tolima, Colombia</p>
+          </div>
+          <div class="text-gray-300">
+            <p class="font-semibold text-white mb-1">📧 Email</p>
+            <a href="mailto:info@esmeraldareservanatural.com" class="text-sm hover:text-lime-300 transition-colors">
+              info@esmeraldareservanatural.com
+            </a>
+          </div>
+          <div class="text-gray-300">
+            <p class="font-semibold text-white mb-1">📱 Telefono</p>
+            <a href="tel:+573208096472" class="text-sm hover:text-lime-300 transition-colors">
+              (+57) 320 809 6472
+            </a>
+          </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="flex gap-4 justify-center md:justify-start">
+          <a
+            href="https://www.facebook.com/ReservalaesmeraldaenDoima"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:scale-110 transition-transform"
+            title="Facebook"
+          >
+            📘
+          </a>
+          <a
+            href="https://www.instagram.com/laesmeraldareservanatural/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:scale-110 transition-transform"
+            title="Instagram"
+          >
+            📷
+          </a>
+          <a
+            href="https://www.youtube.com/@reservalaesmeralda"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:scale-110 transition-transform"
+            title="YouTube"
+          >
+            ▶️
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="mb-6 md:mb-0 md:text-center text-center">
-      <p class="text-lime-500 text-sm font-bold">UNA JOYA VERDE</p>
-      <p class="font-light text-sm text-gray-500">
-        CORREGIMIENTO DE DOIMA - PIEDRAS TOLIMA - COLOMBIA
-      </p>
-      <p class="font-light text-sm text-gray-500">
-        info@esmeraldareservanatural.com | (+57) 320 809 6472
-      </p>
-    </div>
-    <div class="flex gap-2 items-center justify-center">
-      <a
-        target="_blank"
-        href="https://www.facebook.com/ReservalaesmeraldaenDoima"
-        rel="noopener noreferrer"
-      >
-        <img
-          loading="lazy"
-          class="w-7 lg:w-10 hover:opacity-50 transition-opacity"
-          src="/social_icons/facebook.svg"
-          alt="Facebook"
-        />
-        <span class="sr-only">Facebook page</span>
-      </a>
-      <a
-        target="_blank"
-        href="https://www.instagram.com/laesmeraldareservanatural/"
-        rel="noopener noreferrer"
-      >
-        <img
-          loading="lazy"
-          class="w-7 lg:w-10 hover:opacity-50 transition-opacity"
-          src="/social_icons/instagram.svg"
-          alt="Instagram"
-        />
-        <span class="sr-only">Instagram page</span>
-      </a>
-      <a
-        target="_blank"
-        href="https://www.youtube.com/watch?v=tFlwLgyEN9M"
-        rel="noopener noreferrer"
-      >
-        <img
-          loading="lazy"
-          class="w-7 lg:w-10 hover:opacity-50 transition-opacity"
-          src="/social_icons/youtube.svg"
-          alt="Youtube"
-        />
-        <span class="sr-only">Youtube</span>
-      </a>
+
+    <!-- Linea divisoria -->
+    <div class="border-t border-gray-600 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-400 text-sm text-center md:text-left">
+          © 2024 La Esmeralda Reserva Natural. Todos los derechos reservados.
+        </p>
+        <p class="text-gray-400 text-sm text-center md:text-right">
+          RNSC 151-20 La Esmeralda | Resolucion No. 227
+        </p>
+      </div>
     </div>
   </div>
 </footer>
