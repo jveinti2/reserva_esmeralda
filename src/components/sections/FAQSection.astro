@@ -1,0 +1,50 @@
+---
+import AccordionItem from '../ui/AccordionItem.astro';
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-esmeralda mb-4">
+        ❓ Conocenos mas! Resolviendo tus dudas
+      </h2>
+      <p class="text-xl text-gray-600">
+        Respuestas a las preguntas mas frecuentes
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto" data-accordion="collapse">
+      <AccordionItem
+        id="1"
+        question="Como podemos formar parte de la reserva La Esmeralda?"
+        answer='<p class="mb-4">La reserva dispone de medios tecnologicos llamados: recorrido virtual y dos programas especificos para vincularse. Estos son:</p><ul class="list-disc ml-6 space-y-2"><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a voluntariado</a></li><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a recorrido virtual</a></li></ul>'
+        isFirst={true}
+      />
+
+      <AccordionItem
+        id="2"
+        question="Que es una reserva natural de la sociedad civil? (RNSC)?"
+        answer="<p>Son areas de terreno protegidas, que se establecieron a voluntad de los propietarios de predios privados, se dedican a la conservacion y preservacion de muestras de ecosistemas naturales, permitiendose tambien tener sistemas de produccion sostenibles, pero ambientalmente responsables.</p>"
+      />
+
+      <AccordionItem
+        id="3"
+        question="Cual es el costo de ingreso a la Reserva?"
+        answer='<p class="mb-4">El ingreso a la reserva no tiene costo, lo que debes hacer es acceder a alguno de los programas para vincularte:</p><ul class="list-disc ml-6 space-y-2"><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a voluntariado</a></li><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a recorrido virtual</a></li></ul>'
+      />
+
+      <AccordionItem
+        id="4"
+        question="Que es un area protegida?"
+        answer='<p class="mb-4">Es un territorio con fines de conservacion ambiental, en aspectos formales y especificos engloba todas las categorias de proteccion definidas en el decreto 2372 de 2010, las cuales a su vez conforman el Sistema Nacional de Areas Protegidas (SINAP). Adicionalmente, las areas protegidas se clasifican en dos subtipos principales, las publicas y las privadas.</p><p class="mt-4"><strong>Fuente de informacion:</strong><br/><a href="https://www.metropol.gov.co/planeacion/areas-protegidas/Paginas/contexto/las-areas-protegidas.aspx" target="_blank" rel="noopener noreferrer" class="text-esmeralda hover:underline">Las Areas Protegidas (metropol.gov.co)</a></p>'
+      />
+
+      <AccordionItem
+        id="5"
+        question="Como se beneficia la poblacion de la existencia de reservas?"
+        answer="<p>A medida que se preserven y protejan mas ecosistemas, en cantidad y calidad habra mayor beneficio para las personas, en disfrute de recursos naturales. Las reservas brindan aportes hidricos a las cuencas, el agua es menos contaminada por actividad humana, captura de carbono, emision de oxigeno, microclimas, recuperacion de la diversidad de fauna y flora promoviendo equilibrio en el entorno natural.</p>"
+        isLast={true}
+      />
+    </div>
+  </div>
+</section>

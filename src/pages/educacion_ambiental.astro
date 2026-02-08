@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Educación Ambiental"
+  description="Formando defensores de la naturaleza. Programas de educación ambiental en la Reserva Natural La Esmeralda."
+>
+  <Header />
+
+  <main>
+    <!-- Hero con carousel de fondo -->
+    <section class="relative">
+      <div
+        id="hero-carousel"
+        class="absolute inset-0 w-full h-full z-0"
+        data-carousel="slide"
+      >
+        <div class="relative h-full overflow-hidden">
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="/images/educacion/fondo_educacion_1.avif"
+              class="absolute block w-full h-full object-cover"
+              alt="Educación Ambiental 1"
+            />
+          </div>
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="/images/educacion/fondo_educacion_2.avif"
+              class="absolute block w-full h-full object-cover"
+              alt="Educación Ambiental 2"
+            />
+          </div>
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img
+              src="/images/educacion/fondo_educacion_3.avif"
+              class="absolute block w-full h-full object-cover"
+              alt="Educación Ambiental 3"
+            />
+          </div>
+        </div>
+
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+          <button
+            type="button"
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100"
+            aria-current="true"
+            aria-label="Slide 1"
+            data-carousel-slide-to="0"
+          ></button>
+          <button
+            type="button"
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100"
+            aria-current="false"
+            aria-label="Slide 2"
+            data-carousel-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100"
+            aria-current="false"
+            aria-label="Slide 3"
+            data-carousel-slide-to="2"
+          ></button>
+        </div>
+
+        <!-- Slider controls -->
+        <button
+          type="button"
+          class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-prev
+        >
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-next
+        >
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Hero content -->
+      <div class="relative z-10 flex items-center justify-center h-96 max-w-screen-xl px-4 py-16 mx-auto">
+        <div class="text-center">
+          <h1 class="text-6xl font-bold text-white relative z-10 text-shadow-custom">
+            EDUCACIÓN AMBIENTAL
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semilleros -->
+    <section class="py-16 bg-gray-100">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">Nuestros Semilleros</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Semillero Bio Arte -->
+          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
+            <img
+              src="/images/educacion/fondo_arte_ambiental.avif"
+              alt="Semillero Bio Arte"
+              class="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div class="relative flex flex-col justify-between h-full p-6">
+              <h3 class="text-2xl font-semibold text-white relative z-10">
+                SEMILLERO BIO ARTE
+              </h3>
+              <a
+                href="/educacion_ambiental/semillero_arte_ambiental/"
+                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+              >
+                Conocer Más
+              </a>
+            </div>
+          </div>
+
+          <!-- Semillero Avistadores -->
+          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
+            <img
+              src="/images/educacion/fondo_aves.avif"
+              alt="Semillero Avistadores"
+              class="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div class="relative flex flex-col justify-between h-full p-6">
+              <h3 class="text-2xl font-semibold text-white relative z-10">
+                SEMILLERO AVISTADORES
+              </h3>
+              <a
+                href="/educacion_ambiental/semillero_aves/"
+                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+              >
+                Conocer Más
+              </a>
+            </div>
+          </div>
+
+          <!-- Semillero Sembradores -->
+          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
+            <img
+              src="/images/educacion/fondo_sembradores.avif"
+              alt="Semillero Sembradores"
+              class="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div class="relative flex flex-col justify-between h-full p-6">
+              <h3 class="text-2xl font-semibold text-white relative z-10">
+                SEMILLERO SEMBRADORES
+              </h3>
+              <a
+                href="/educacion_ambiental/semillero_sembradores/"
+                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+              >
+                Conocer Más
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de detalle -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-6">
+          Formando Defensores de la Naturaleza
+        </h2>
+        <h3 class="text-xl font-semibold text-center text-gray-700 mb-10">
+          Nuestra misión es cultivar una nueva generación de líderes ambientales comprometidos con la protección y conservación de los ecosistemas, promoviendo valores de respeto, conocimiento y amor por la naturaleza.
+        </h3>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="bg-green-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Aprendizaje Vivencial
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Conectamos a niños y jóvenes directamente con la naturaleza a través de experiencias prácticas que despiertan su curiosidad y amor por el medio ambiente.
+            </p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Ciencia Ciudadana
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Empoderamos a los participantes para que se conviertan en investigadores activos de su entorno, contribuyendo al conocimiento científico local.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Expresión Creativa
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Fomentamos la creatividad como herramienta de sensibilización, permitiendo que los participantes expresen su conexión con la naturaleza a través del arte.
+            </p>
+          </div>
+
+          <div class="bg-red-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Conservación Activa
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Promovemos acciones concretas de conservación, desde la reforestación hasta la protección de especies, involucrando a las comunidades en el cuidado activo del territorio.
+            </p>
+          </div>
+
+          <div class="bg-teal-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Comunidad y Cooperación
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Construimos redes de colaboración entre participantes, familias y organizaciones, fortaleciendo el tejido social en torno a la conservación ambiental.
+            </p>
+          </div>
+
+          <div class="bg-indigo-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
+            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
+              Transformación Cultural
+            </h4>
+            <p class="text-gray-600 text-center flex-grow">
+              Aspiramos a generar un cambio cultural profundo que valore y respete la biodiversidad, garantizando un futuro sostenible para todos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

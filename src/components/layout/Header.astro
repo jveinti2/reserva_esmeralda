@@ -1,0 +1,422 @@
+---
+// Header component with navigation
+---
+
+<header>
+  <nav class="bg-white border-gray-200 px-4 lg:px-6">
+    <div class="py-1 flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+      <a href="/" class="flex items-center">
+        <img
+          loading="lazy"
+          src="/logo-sin-bg.png"
+          class="mr-3 h-9 sm:h-12"
+          alt="La Esmeralda Reserva Natural Logo"
+        />
+      </a>
+      <div class="flex items-center">
+        <button
+          data-collapse-toggle="mobile-menu-2"
+          type="button"
+          class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          aria-controls="mobile-menu-2"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abrir menú</span>
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+        id="mobile-menu-2"
+      >
+        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:gap-1 lg:mt-0">
+          <li>
+            <a href="/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Inicio</span
+                >
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/reserva/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >La reserva</span
+                >
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/servicios/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Vivencias</span
+                >
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/sendero/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Sendero</span
+                >
+              </button>
+            </a>
+          </li>
+
+          <!-- Programas Dropdown - Desktop -->
+          <li class="relative group hidden md:inline-flex">
+            <button
+              id="dropdownDefaultButton"
+              data-dropdown-toggle="dropdown"
+              data-dropdown-trigger="hover"
+              class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              type="button"
+            >
+              <span
+                class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                >Programas</span
+              >
+              <svg
+                class="w-2.5 h-2.5 ms-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-60 group-hover:block"
+            >
+              <ul
+                class="py-2 text-sm text-gray-700"
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li class="relative group">
+                  <a
+                    href="/conservacion_investigacion/"
+                    id="dropdownDefaultButton3"
+                    data-dropdown-toggle="dropdown3"
+                    data-dropdown-trigger="hover"
+                    data-dropdown-placement="right"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center gap-2 w-full justify-start"
+                      >Conservación e Investigación
+                      <svg
+                        class="w-2.5 h-2.5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+
+                  <!-- Submenu -->
+                  <div
+                    id="dropdown3"
+                    class="z-10 hidden absolute left-full top-0 bg-white divide-gray-100 rounded-lg shadow w-44"
+                  >
+                    <ul class="py-2 text-sm text-gray-700">
+                      <li>
+                        <a
+                          href="/conservacion_investigacion/herpetos/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Herpetos</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/conservacion_investigacion/aracnidos/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Arácnidos</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/conservacion_investigacion/nutria/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Nutria y ostras</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="relative group">
+                  <a
+                    href="/educacion_ambiental/"
+                    id="dropdownDefaultButton4"
+                    data-dropdown-toggle="dropdown4"
+                    data-dropdown-trigger="hover"
+                    data-dropdown-placement="right"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center gap-2 w-full justify-start"
+                      >Educación Ambiental
+                      <svg
+                        class="w-2.5 h-2.5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+
+                  <!-- Submenu -->
+                  <div
+                    id="dropdown4"
+                    class="z-10 hidden absolute left-full top-0 bg-white divide-gray-100 rounded-lg shadow w-44"
+                  >
+                    <ul class="py-2 text-sm text-gray-700">
+                      <li>
+                        <a
+                          href="/educacion_ambiental/semillero_arte_ambiental/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Semillero Bio Arte</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/educacion_ambiental/semillero_aves/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Semillero Avistadores</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/educacion_ambiental/semillero_sembradores/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Semillero Sembradores</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="relative group">
+                  <a
+                    href="/emprendimientos/"
+                    id="dropdownDefaultButton5"
+                    data-dropdown-toggle="dropdown5"
+                    data-dropdown-trigger="hover"
+                    data-dropdown-placement="right"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    <span class="flex items-center gap-2 w-full justify-start"
+                      >Emprendimientos verdes
+                      <svg
+                        class="w-2.5 h-2.5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+
+                  <!-- Submenu -->
+                  <div
+                    id="dropdown5"
+                    class="z-10 hidden absolute left-full top-0 bg-white divide-gray-100 rounded-lg shadow w-44"
+                  >
+                    <ul class="py-2 text-sm text-gray-700">
+                      <li>
+                        <a
+                          href="/emprendimientos/cerveza/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Cerveza</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/emprendimientos/yogurt/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Yogurt</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/emprendimientos/mermelada/"
+                          class="block px-4 py-2 hover:bg-gray-100"
+                          >Mermelada</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Programas Dropdown - Mobile -->
+          <li class="relative md:hidden">
+            <button
+              id="mobile-programs-button"
+              class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+            >
+              <span
+                class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                >Programas</span
+              >
+            </button>
+            <div
+              id="mobile-programs-menu"
+              class="hidden bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-60 absolute z-10 mt-2"
+            >
+              <ul class="py-2 text-sm text-gray-700">
+                <li>
+                  <a
+                    href="/conservacion_investigacion/"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                    >Conservación e Investigación</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/educacion_ambiental/"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                    >Educación Ambiental</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/emprendimientos/"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                    >Emprendimientos verdes</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="/galeria/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Galería</span
+                >
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/vinculate/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Vincúlate</span
+                >
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/contactanos/">
+              <button
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-white to-lime-300 group-hover:from-slate-50 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200"
+              >
+                <span
+                  class="relative px-5 py-1.5 transition-all ease-in duration-75 bg-white text-gray-900 rounded-full group-hover:bg-opacity-0"
+                  >Contáctanos</span
+                >
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const button = document.getElementById("mobile-programs-button");
+    const menu = document.getElementById("mobile-programs-menu");
+
+    if (button && menu) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menu.classList.toggle("hidden");
+      });
+
+      window.addEventListener("click", (event) => {
+        if (!button.contains(event.target as Node) && !menu.contains(event.target as Node)) {
+          menu.classList.add("hidden");
+        }
+      });
+    }
+  }
+
+  // Run on page load
+  setupMobileMenu();
+
+  // Re-run after navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

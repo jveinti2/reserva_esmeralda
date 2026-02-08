@@ -1,0 +1,54 @@
+---
+interface Props {
+  text: string;
+  href: string;
+  show?: boolean;
+}
+
+const { text, href, show = true } = Astro.props;
+---
+
+{show && (
+  <div id="floating-notification" class="fixed bottom-4 right-4 z-50 max-w-sm">
+    <a
+      href={href}
+      class="flex items-center px-4 py-3 bg-lime-600 rounded-full shadow-lg hover:bg-lime-700 transition-all duration-300 hover:scale-105"
+    >
+      <span class="text-white font-semibold text-sm flex-grow">{text}</span>
+      <button
+        type="button"
+        class="ml-3 text-white hover:text-gray-200 text-xl leading-none flex-shrink-0"
+        onclick="dismissNotification(event)"
+        aria-label="Cerrar notificacion"
+      >
+        ✕
+      </button>
+    </a>
+  </div>
+)}
+
+<script>
+  function dismissNotification(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const notification = document.getElementById('floating-notification');
+    if (notification) {
+      localStorage.setItem('emprendimientos-notification-dismissed', 'true');
+      notification.classList.add('hidden');
+    }
+  }
+
+  // Check if notification was previously dismissed
+  document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('floating-notification');
+    const dismissed = localStorage.getItem('emprendimientos-notification-dismissed');
+
+    if (dismissed === 'true' && notification) {
+      notification.classList.add('hidden');
+    }
+  });
+
+  // Make function available globally for onclick
+  (window as any).dismissNotification = dismissNotification;
+</script>

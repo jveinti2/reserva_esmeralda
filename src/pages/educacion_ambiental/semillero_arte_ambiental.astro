@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Carousel from '../../components/ui/Carousel.astro';
+
+const carouselImages = [
+  '/images/educacion/arte_ambiental/bio_arte_1.avif',
+  '/images/educacion/arte_ambiental/bio_arte_2.avif',
+  '/images/educacion/arte_ambiental/bio_arte_3.avif',
+  '/images/educacion/arte_ambiental/bio_arte_4.avif',
+  '/images/educacion/arte_ambiental/bio_arte_5.avif',
+  '/images/educacion/arte_ambiental/bio_arte_6.avif',
+  '/images/educacion/arte_ambiental/bio_arte_8.avif',
+  '/images/educacion/arte_ambiental/bio_arte_9.avif',
+  '/images/educacion/arte_ambiental/bio_arte_10.avif',
+];
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Semillero Bio Arte Ambiental"
+  description="Expresando la conexión con la naturaleza a través del arte. Semillero de educación ambiental artística."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-96"
+      style="background-image: url('/images/educacion/fondo_arte_ambiental.avif')"
+    >
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Semillero Bio Arte Ambiental
+          </h1>
+          <p class="text-xl md:text-2xl">
+            El arte como herramienta de sensibilización ambiental
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="container mx-auto px-6 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-esmeralda mb-6">
+          ¿Qué es el Semillero Bio Arte?
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8">
+          El Semillero Bio Arte Ambiental es un espacio creativo donde niños y jóvenes exploran su conexión con la naturaleza a través de diversas expresiones artísticas. Combinamos el aprendizaje sobre ecosistemas, biodiversidad y conservación con actividades de arte, fotografía, pintura y creación manual usando materiales naturales y reciclados.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Nuestro objetivo es despertar la sensibilidad ambiental mediante la creatividad, permitiendo que los participantes expresen su amor por la naturaleza y se conviertan en embajadores del cuidado ambiental en sus comunidades.
+        </p>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Galería de Proyectos
+        </h2>
+        <div class="max-w-5xl mx-auto">
+          <Carousel images={carouselImages} alt="Proyectos de Bio Arte" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Actividades -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Nuestras Actividades
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🎨</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Pintura Natural
+            </h3>
+            <p class="text-gray-600 text-center">
+              Creación de pinturas y pigmentos a partir de elementos naturales como flores, hojas y tierra.
+            </p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">📸</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Fotografía de Naturaleza
+            </h3>
+            <p class="text-gray-600 text-center">
+              Captura de la belleza natural y aprendizaje sobre composición fotográfica y observación detallada.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">♻️</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Arte con Reciclaje
+            </h3>
+            <p class="text-gray-600 text-center">
+              Transformación de materiales reciclados en obras de arte que transmiten mensajes ambientales.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🌿</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Manualidades Naturales
+            </h3>
+            <p class="text-gray-600 text-center">
+              Elaboración de objetos artísticos usando semillas, ramas, hojas y otros materiales del bosque.
+            </p>
+          </div>
+
+          <div class="bg-pink-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🖌️</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Murales Ecológicos
+            </h3>
+            <p class="text-gray-600 text-center">
+              Creación colectiva de murales que cuentan historias sobre la biodiversidad local y la conservación.
+            </p>
+          </div>
+
+          <div class="bg-teal-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">📖</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Cuentos Ambientales
+            </h3>
+            <p class="text-gray-600 text-center">
+              Escritura e ilustración de historias inspiradas en la naturaleza y sus habitantes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section class="py-16 bg-gradient-to-r from-green-100 to-lime-100">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Objetivos del Semillero
+        </h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌱 Sensibilización Ambiental
+            </h3>
+            <p class="text-gray-600">
+              Despertar la conciencia ambiental mediante experiencias artísticas que conecten emocionalmente a los participantes con la naturaleza.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🎭 Desarrollo Creativo
+            </h3>
+            <p class="text-gray-600">
+              Fomentar la creatividad y la expresión personal como herramientas para comunicar la importancia de la conservación.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🤝 Trabajo en Comunidad
+            </h3>
+            <p class="text-gray-600">
+              Promover la colaboración y el trabajo en equipo a través de proyectos artísticos colectivos con mensaje ambiental.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              💚 Amor por la Naturaleza
+            </h3>
+            <p class="text-gray-600">
+              Cultivar un vínculo afectivo profundo con el entorno natural que motive acciones de cuidado y protección.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-esmeralda text-white text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          ¿Quieres ser parte del Semillero Bio Arte?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Únete a nuestro semillero y descubre cómo el arte puede transformar tu relación con la naturaleza.
+        </p>
+        <a
+          href="/vinculate/"
+          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
+        >
+          Vincúlate aquí
+          <svg
+            class="ml-2 w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

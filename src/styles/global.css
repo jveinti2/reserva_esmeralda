@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* Theme definition for Tailwind v4 */
+@theme {
+  --color-esmeralda-50: #f0fdf4;
+  --color-esmeralda-100: #dcfce7;
+  --color-esmeralda-200: #bbf7d0;
+  --color-esmeralda-300: #86efac;
+  --color-esmeralda-400: #4ade80;
+  --color-esmeralda-500: #2c8936;
+  --color-esmeralda-600: #257a2e;
+  --color-esmeralda-700: #1e6426;
+  --color-esmeralda-800: #15461a;
+  --color-esmeralda-900: #0f3814;
+  --color-esmeralda: #2c8936;
+}
+
+/* Custom utilities */
+.text-shadow-custom {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+/* Esmeralda brand buttons */
+.btn-esmeralda {
+  @apply bg-esmeralda text-white px-5 py-2 rounded-full shadow-md hover:bg-esmeralda-600 transition-all duration-300;
+}
+
+.btn-esmeralda-outline {
+  @apply border-2 border-esmeralda text-esmeralda px-5 py-2 rounded-full hover:bg-esmeralda hover:text-white transition-all duration-300;
+}
+
+/* Wave divider compatibility */
+.wave-divider {
+  @apply w-full overflow-hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-esmeralda rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-esmeralda-700;
+}

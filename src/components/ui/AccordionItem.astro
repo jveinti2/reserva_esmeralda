@@ -1,0 +1,52 @@
+---
+interface Props {
+  id: string;
+  question: string;
+  answer: string;
+  isFirst?: boolean;
+  isLast?: boolean;
+}
+
+const { id, question, answer, isFirst = false, isLast = false } = Astro.props;
+
+const roundedClass = isFirst ? 'rounded-t-lg' : isLast ? 'rounded-b-lg' : '';
+---
+
+<div class={`border border-esmeralda ${roundedClass}`}>
+  <h2 id={`accordion-heading-${id}`}>
+    <button
+      type="button"
+      class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 hover:bg-esmeralda hover:text-white transition-colors duration-200"
+      data-accordion-target={`#accordion-body-${id}`}
+      aria-expanded="false"
+      aria-controls={`accordion-body-${id}`}
+    >
+      <span>{question}</span>
+      <svg
+        data-accordion-icon
+        class="w-3 h-3 rotate-180 shrink-0"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 10 6"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5 5 1 1 5"
+        />
+      </svg>
+    </button>
+  </h2>
+  <div
+    id={`accordion-body-${id}`}
+    class="hidden"
+    aria-labelledby={`accordion-heading-${id}`}
+  >
+    <div class="p-5 border-t border-esmeralda">
+      <div class="text-gray-700" set:html={answer} />
+    </div>
+  </div>
+</div>

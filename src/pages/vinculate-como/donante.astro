@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Donante / Padrino"
+  description="Conviértete en padrino de la reserva y apoya la conservación del bosque seco tropical con aportes recurrentes."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-96"
+      style="background-image: url('/images/padrinos.avif')"
+    >
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Sé<br />
+            <span class="text-lime-500 text-5xl md:text-9xl">Padrino</span>
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="container mx-auto px-6 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-esmeralda mb-6">
+          Programa de Padrinos
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Conviértete en padrino o madrina de La Esmeralda y sé parte fundamental de la conservación del bosque seco tropical. Tu aporte mensual o anual permite que continuemos con nuestros programas de protección, investigación y educación ambiental.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Como padrino, no solo contribuyes económicamente, sino que te conviertes en embajador de la conservación y parte de nuestra familia verde.
+        </p>
+      </div>
+    </section>
+
+    <!-- Niveles de Padrinazgo -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Niveles de Padrinazgo
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Nivel Semilla -->
+          <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-4">🌱</div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Nivel Semilla
+              </h3>
+              <p class="text-3xl font-bold text-esmeralda mb-4">$10 USD/mes</p>
+              <p class="text-sm text-gray-500">o $100 USD/año</p>
+            </div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-600">Boletín mensual exclusivo</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-600">Certificado digital de padrino</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-600">Acceso a tour virtual premium</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-600">Reporte anual de impacto</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Nivel Árbol -->
+          <div class="bg-gradient-to-br from-green-50 to-lime-50 p-8 rounded-lg shadow-xl border-2 border-esmeralda">
+            <div class="inline-block bg-esmeralda text-white text-sm font-bold px-3 py-1 rounded-full mb-3">
+              MÁS POPULAR
+            </div>
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-4">🌳</div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Nivel Árbol
+              </h3>
+              <p class="text-3xl font-bold text-esmeralda mb-4">$25 USD/mes</p>
+              <p class="text-sm text-gray-500">o $250 USD/año</p>
+            </div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700 font-medium">Todo del Nivel Semilla +</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">1 visita guiada gratis al año</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Placa conmemorativa en sendero</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Invitación a eventos exclusivos</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Kit de productos artesanales</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Nivel Bosque -->
+          <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-4">🌲</div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Nivel Bosque
+              </h3>
+              <p class="text-3xl font-bold text-esmeralda mb-4">$50+ USD/mes</p>
+              <p class="text-sm text-gray-500">o $500+ USD/año</p>
+            </div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700 font-medium">Todo del Nivel Árbol +</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">2 visitas guiadas gratis al año</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Adopción simbólica de una especie</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Reconocimiento en web y redes</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">Asesoría personalizada en sostenibilidad</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impacto -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          El Impacto de tu Padrinazgo
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div class="text-center p-6 bg-green-50 rounded-lg shadow-md">
+            <div class="text-5xl mb-4">🔬</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Investigación
+            </h3>
+            <p class="text-gray-600">
+              40% se destina a proyectos de investigación científica
+            </p>
+          </div>
+
+          <div class="text-center p-6 bg-blue-50 rounded-lg shadow-md">
+            <div class="text-5xl mb-4">🌳</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Reforestación
+            </h3>
+            <p class="text-gray-600">
+              25% financia programas de reforestación con especies nativas
+            </p>
+          </div>
+
+          <div class="text-center p-6 bg-yellow-50 rounded-lg shadow-md">
+            <div class="text-5xl mb-4">👨‍🎓</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Educación
+            </h3>
+            <p class="text-gray-600">
+              20% apoya semilleros ambientales y educación comunitaria
+            </p>
+          </div>
+
+          <div class="text-center p-6 bg-purple-50 rounded-lg shadow-md">
+            <div class="text-5xl mb-4">🏠</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Infraestructura
+            </h3>
+            <p class="text-gray-600">
+              15% mantiene instalaciones y equipos de conservación
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-lime-500 text-white text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          ¿Listo para ser parte de la familia verde?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Conviértete en padrino hoy y ayuda a proteger el bosque seco tropical para las futuras generaciones
+        </p>
+        <a
+          href="/contactanos/"
+          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
+        >
+          Quiero ser padrino
+          <svg
+            class="ml-2 w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

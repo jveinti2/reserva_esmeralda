@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Card from '../components/ui/Card.astro';
+import TeamMember from '../components/ui/TeamMember.astro';
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Reserva"
+  description="Conoce nuestra reserva natural, nuestro equipo, misión, visión y objetivos de conservación."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <div class="mb-7 bg-[url('/images/reserva.png')] bg-cover bg-center bg-no-repeat">
+      <div class="container m-auto">
+        <h1
+          class="px-4 font-bold text-4xl md:text-6xl leading-tight mb-3 pt-10 text-white drop-shadow-xl shadow-black text-shadow-custom"
+        >
+          Nuestra reserva<br />
+          <span class="text-lime-500 text-5xl md:text-9xl">La Esmeralda</span>
+        </h1>
+      </div>
+    </div>
+
+    <!-- Mission, Vision, Objective Cards -->
+    <div class="container m-auto space-y-28">
+      <div class="pb-20 lg:mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-5 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
+        <Card icon="/images/reserva/target.svg" title="Objetivo" centered>
+          <p class="mb-3 font-normal">
+            En nuestra Reserva Natural, nos dedicamos a la conservación de la
+            diversidad biológica y a promover un uso sostenible de los
+            recursos naturales. Este refugio alberga una rica variedad de
+            recursos naturales que son esenciales para la fauna silvestre,
+            proporcionando alimento y un suministro constante de agua. Gracias
+            a estos esfuerzos, tanto las especies nativas como aquellas que
+            han encontrado un hogar aquí tras el deterioro de su hábitat
+            pueden vivir en un entorno protegido, lejos de la amenaza de la
+            caza. Trabajamos por un futuro donde la naturaleza y la humanidad
+            coexistan en armonía.
+          </p>
+        </Card>
+
+        <Card icon="/images/reserva/mision.svg" title="Misión" centered>
+          <p class="mb-3 font-normal">
+            Ser un referente vivo de conservación y educación ambiental que
+            demuestra que un pequeño territorio puede generar un gran impacto.
+            Proyectamos a la Reserva Natural La Esmeralda como un modelo
+            inspirador de protección de la biodiversidad, restauración
+            ecológica y aprendizaje comunitario.
+          </p>
+          <p class="mb-3 font-normal">
+            A través de la educación ambiental, la participación ciudadana y
+            alianzas estratégicas, buscamos cerrar la brecha entre las
+            personas y la naturaleza, fortaleciendo una cultura ambiental que
+            trascienda fronteras y contribuya a un futuro más armónico y
+            sostenible
+          </p>
+        </Card>
+
+        <Card icon="/images/reserva/vision.svg" title="Visión" centered>
+          <p class="mb-3 font-normal">
+            Para el año 2030, la Reserva proyecta estar consolidada como
+            <strong>la alternativa ambiental líder en la región</strong>, con un
+            <strong>modelo de gestión privada</strong> que articula instituciones
+            ambientales y comunidades locales. Seremos un
+            <strong>referente vivo de conservación, educación ambiental y
+            restauración ecológica</strong>, demostrando que un pequeño territorio puede generar grandes
+            transformaciones.
+          </p>
+          <p class="mb-3 font-normal">
+            Aspiramos a que cada persona se sienta
+            <strong>conectada, inspirada y comprometida</strong> con la protección y
+            regeneración de la biodiversidad, construyendo un territorio en el
+            que
+            <strong>la naturaleza y la comunidad coexistan en equilibrio y
+            armonía</strong>.
+          </p>
+        </Card>
+      </div>
+
+      <!-- Team Section -->
+      <div class="lg:mx-auto lg:max-w-5xl pb-20">
+        <h2 class="text-center font-bold text-3xl md:text-5xl leading-tight m-3">
+          Nuestro
+          <span class="text-lime-500">equipo</span>
+        </h2>
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+            <TeamMember
+              name="Rafael Mauricio Bahamon"
+              role="Nuestro director"
+              quote="Respeto y amor por la naturaleza"
+              image="/images/reserva/Rafael.jpg"
+            />
+
+            <TeamMember
+              name="Esmeralda Becerra Vega"
+              role="Gerente de la reserva"
+              quote="Dejar una huella verde en cada corazón que se vincula"
+              image="/images/reserva/Esmeralda.jpg"
+            />
+
+            <TeamMember
+              name="Natalia Bahamon Becerra"
+              role="Fuente de inspiración de la Reserva"
+              quote="Espíritu natural libre por el mundo"
+              image="/images/reserva/Natalia.jpg"
+            />
+
+            <TeamMember
+              name="Luis Tafur"
+              role="Cuidador de la reserva"
+              quote="La experiencia y sabiduría al servicio de la madre tierra"
+              image="/images/reserva/Luis.jpg"
+            />
+
+            <TeamMember
+              name="Veronica Forero"
+              role="Coordinadora de Mantenimiento"
+              quote="Querer es poder"
+              image="/images/reserva/Monica.jpg"
+            />
+
+            <TeamMember
+              name="Alejandro Perez"
+              role="Nuestro Jardinero"
+              quote="La naturaleza no hace nada incompleto ni nada en vano"
+              image="/images/reserva/alejandro.jpg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

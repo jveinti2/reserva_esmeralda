@@ -1,0 +1,288 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Carousel from '../../components/ui/Carousel.astro';
+
+const carouselImages = [
+  '/images/educacion/sembradores/sembradores_1.avif',
+  '/images/educacion/sembradores/sembradores_2.avif',
+  '/images/educacion/sembradores/sembradores_3.avif',
+  '/images/educacion/sembradores/sembradores_4.avif',
+  '/images/educacion/sembradores/sembradores_5.avif',
+  '/images/educacion/sembradores/sembradores_6.avif',
+  '/images/educacion/sembradores/sembradores_7.avif',
+];
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Semillero Sembradores"
+  description="Sembrando semillas de esperanza y restauración ecológica. Semillero de reforestación y conservación activa."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center h-96"
+      style="background-image: url('/images/educacion/fondo_sembradores.avif')"
+    >
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Semillero Sembradores
+          </h1>
+          <p class="text-xl md:text-2xl">
+            Restaurando el bosque seco tropical, una semilla a la vez
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="container mx-auto px-6 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-esmeralda mb-6">
+          ¿Qué es el Semillero Sembradores?
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8">
+          El Semillero Sembradores es un programa de restauración ecológica participativa donde niños, jóvenes y familias aprenden sobre la importancia de los árboles nativos y contribuyen activamente a la regeneración del bosque seco tropical. Desde la recolección de semillas hasta el seguimiento de los árboles plantados, cada participante se convierte en guardián del futuro del bosque.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          El bosque seco tropical es uno de los ecosistemas más amenazados de Colombia, con menos del 8% de su cobertura original. Nuestro semillero es una respuesta concreta a esta crisis, combinando educación ambiental con acciones de conservación que dejan un legado tangible para las generaciones futuras.
+        </p>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Nuestros Proyectos de Reforestación
+        </h2>
+        <div class="max-w-5xl mx-auto">
+          <Carousel images={carouselImages} alt="Proyectos de reforestación" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Actividades -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Actividades del Semillero
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🌰</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Recolección de Semillas
+            </h3>
+            <p class="text-gray-600 text-center">
+              Salidas de campo para recolectar semillas de especies nativas del bosque seco tropical, aprendiendo sobre fenología y propagación.
+            </p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🌱</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Germinación y Vivero
+            </h3>
+            <p class="text-gray-600 text-center">
+              Preparación de sustratos, siembra de semillas y cuidado de plántulas en el vivero de la reserva.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🌳</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Jornadas de Plantación
+            </h3>
+            <p class="text-gray-600 text-center">
+              Eventos comunitarios de siembra de árboles en zonas degradadas, conectando familias con la restauración ecológica.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">📏</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Monitoreo de Crecimiento
+            </h3>
+            <p class="text-gray-600 text-center">
+              Seguimiento del desarrollo de los árboles plantados mediante mediciones periódicas y registros fotográficos.
+            </p>
+          </div>
+
+          <div class="bg-pink-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🍂</div>
+            <h3 class="text-xl font-bold text-gray-808 mb-3 text-center">
+              Compostaje
+            </h3>
+            <p class="text-gray-600 text-center">
+              Elaboración de abono orgánico a partir de residuos vegetales para nutrir las plantas del vivero de manera sostenible.
+            </p>
+          </div>
+
+          <div class="bg-teal-50 p-6 rounded-lg shadow-lg">
+            <div class="text-4xl mb-4 text-center">🌿</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
+              Identificación Botánica
+            </h3>
+            <p class="text-gray-600 text-center">
+              Aprendizaje sobre las características de las especies nativas: hojas, flores, frutos y su importancia ecológica.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Especies nativas -->
+    <section class="py-16 bg-gradient-to-r from-green-100 to-lime-100">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Especies Nativas que Sembramos
+        </h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌳 Guadua (Guadua angustifolia)
+            </h3>
+            <p class="text-gray-600">
+              Bambú nativo emblemático de Colombia, esencial para la protección de cuencas y refugio de fauna.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌺 Ceiba (Ceiba pentandra)
+            </h3>
+            <p class="text-gray-600">
+              Árbol majestuoso del bosque seco tropical, símbolo de vida y espiritualidad para comunidades ancestrales.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🍃 Ocobo (Tabebuia rosea)
+            </h3>
+            <p class="text-gray-600">
+              Árbol ornamental de flores rosadas que embellece el paisaje y proporciona alimento a polinizadores.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌱 Otras Especies Nativas
+            </h3>
+            <p class="text-gray-600">
+              Caracolí, Samán, Guásimo, Guayacán y muchas más especies que conforman la riqueza del bosque seco tropical.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impacto -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Nuestro Impacto
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-esmeralda mb-2">500+</div>
+            <p class="text-xl text-gray-700">Árboles Plantados</p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold text-esmeralda mb-2">30+</div>
+            <p class="text-xl text-gray-700">Especies Nativas</p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl font-bold text-esmeralda mb-2">100+</div>
+            <p class="text-xl text-gray-700">Participantes Activos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section class="py-16 bg-gradient-to-r from-blue-100 to-green-100">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
+          Objetivos del Semillero
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌲 Restauración Ecológica
+            </h3>
+            <p class="text-gray-600">
+              Recuperar áreas degradadas del bosque seco tropical mediante la plantación de especies nativas y el manejo sostenible.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              📚 Educación Ambiental
+            </h3>
+            <p class="text-gray-600">
+              Enseñar sobre la importancia ecológica de los bosques nativos y las técnicas de propagación y cuidado de plantas.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              👨‍👩‍👧‍👦 Participación Comunitaria
+            </h3>
+            <p class="text-gray-600">
+              Involucrar a familias y comunidades en acciones concretas de conservación que fortalezcan el sentido de pertenencia territorial.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              🌍 Legado Ambiental
+            </h3>
+            <p class="text-gray-600">
+              Crear un patrimonio natural duradero que beneficie a las futuras generaciones y conecte a las personas con la tierra.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-esmeralda text-white text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          ¿Quieres sembrar esperanza?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Únete al Semillero Sembradores y sé parte de la restauración del bosque seco tropical.
+        </p>
+        <a
+          href="/vinculate/"
+          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
+        >
+          Vincúlate aquí
+          <svg
+            class="ml-2 w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

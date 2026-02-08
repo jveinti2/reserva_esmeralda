@@ -1,0 +1,47 @@
+---
+import TestimonialCard from '../ui/TestimonialCard.astro';
+---
+
+<section class="py-20 bg-esmeralda">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        💬 Algunas experiencias compartidas
+      </h2>
+      <p class="text-xl text-white opacity-90">
+        Voces de quienes han vivido la magia de la reserva
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <TestimonialCard
+        name="Salvador Zinatelli"
+        title="Consultor migratorio / Educativo - Yolochoice"
+        image="/testimonials/salvador.png"
+        quote="Vivo en Vancouver Canada fui a Colombia, conoci parte de sus territorios y fue muy agradable encontrar una reserva natural tan cerca de Ibague y que realmente tiene una belleza unica como son las ostras de agua dulce y un ecosistema privilegiado, Tuve la oportunidad de practicar de un pequeno retiro y clases de Yoga, un lugar excelente para descansar y renovarse. Recomiendo vivir la experiencia del voluntariado en la reserva natural la Esmeralda."
+      />
+
+      <TestimonialCard
+        name="Sybila Guerra"
+        title="Psicologa / Emprendedora - Seryoga"
+        image="/testimonials/Sybila.png"
+        quote="Yo fui y vivi la experiencia en la reserva, es un lugar magico. La interaccion fue maravillosa, lo que mas me conecto son sus espirales llenos de energia renovadora, desde mi experiencia profesional tambien puedo opinar que el sitio es espectacular para la conexion interior, recomiendo el choaching natural."
+      />
+
+      <TestimonialCard
+        name="Cecilia Leal"
+        title="Ing. Forestal / Fundacion Ambiental Oasis de Vida"
+        image="/testimonials/cecilia.png"
+        quote="Vincularse a la Reserva Natural es una gran experiencia, poder tener contacto directo con la naturaleza es enriquecedor y esta a solo 40 minutos de Ibague. Este pequeno paraiso enclavado en el bosque seco tropical es orgullo para la region y para sus propietarios, que son ejemplo de compromiso, proteccion y conservacion, de un importante, singular y fragil ecosistema, como lo es el bosque seco tropical. Prioridad de conservacion a nivel mundial."
+      />
+
+      <TestimonialCard
+        name="Milton Artunduaga"
+        title="Musico / Emprendedor - Cantares"
+        image="/testimonials/milton.png"
+        quote="La tierra tiene musica para que la escuchen, los arboles cantan con el viento mientras las aves bailan entre si, las flores sonrien al ser tocadas delicadamente, los caminos guardan las historias de los caminantes que los recorren, las quebradas entonan sus mejores melodias junto con las rocas que las protegen. En la Reserva Natural la Esmeralda puedes escuchar esta sinfonia una y otra vez, al cerrar los ojos o al mirar con detalle la mariposa que baila entre sus coloridos matices."
+        extraQuote="Mi invitacion es, que todos pongamos un granito de arena por nuestro planeta!"
+      />
+    </div>
+  </div>
+</section>

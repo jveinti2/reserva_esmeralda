@@ -1,0 +1,129 @@
+---
+import FeatureCard from '../ui/FeatureCard.astro';
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-esmeralda mb-6">
+        Nuestra Reserva
+      </h2>
+      <div class="w-24 h-1 bg-esmeralda mx-auto mb-8"></div>
+    </div>
+
+    <!-- Tarjeta Principal Nosotros -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+        <div class="text-6xl mb-6">👥</div>
+        <div class="space-y-4 text-lg text-gray-700">
+          <p>
+            Hace algun tiempo, dos personas apasionadas por la naturaleza
+            iniciamos el sueno de ser guardianes de una porcion de terreno
+            en Doima, Piedras - Tolima, que gradualmente convertimos en un
+            oasis para la fauna y la flora silvestre que transita por el
+            corredor biologico del rio Opia.
+          </p>
+          <p>
+            Hoy, despues de 7 anos, somos la Reserva Natural de la Sociedad
+            Civil (RNSC) 151-20 La Esmeralda, segun la resolucion No. 227
+            del 1 de diciembre de 2022, emitida por el Ministerio del Medio
+            Ambiente, a traves de Parques Nacionales.
+          </p>
+          <p class="font-semibold text-esmeralda">
+            Seguimos creyendo que todos podemos pasar de la intencion a los
+            hechos!
+          </p>
+        </div>
+        <a
+          href="./200/recorrido/recorridogratis/index.html"
+          class="inline-flex items-center mt-6 text-white bg-esmeralda hover:bg-green-700 font-medium rounded-lg px-8 py-3 transition-all hover:scale-105"
+        >
+          Entra a la reserva ahora! Recorrido virtual aqui
+          <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid de 4 Feature Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+      <FeatureCard
+        emoji="🎒"
+        title="Vinculate a la reserva"
+        description="Unete a la mision de proteger la biodiversidad desde cualquier parte del mundo! Envia tu solicitud y forma parte de nuestra comunidad de personas comprometidas con la conservacion. Estamos emocionados de contar contigo como un aliado valioso en esta importante causa."
+        linkText="Vinculate!"
+        linkHref="/vinculate"
+      />
+
+      <FeatureCard
+        emoji="🌳"
+        title="Nuestros ecosistemas"
+        description="Nuestra reserva cuenta con un ecosistema de bosque seco tropical, corredor biologico de la fauna por estar al margen del rio Opia. Sabias que el bosque seco tropical es uno de los ecosistemas mas amenazados del mundo? En Colombia solo queda el 8% de los 9 millones de hectareas que originalmente lo cubrian."
+        linkText="Conoce mas"
+        linkHref="/reserva/"
+      />
+
+      <FeatureCard
+        emoji="🤝"
+        title="Apoyo a la reserva"
+        description="Unete a la aventura de ser parte de la conservacion de nuestro planeta y forma parte de la comunidad de voluntarios o padrinos y madrinas en la reserva. Tu apoyo es fundamental para preservar la biodiversidad y garantizar un futuro sostenible para las proximas generaciones."
+        linkText="Hazte voluntario, padrino o madrina!"
+        linkHref="/vinculate/"
+      />
+
+      <FeatureCard
+        emoji="📸"
+        title="Galeria de momentos"
+        description="La reserva tiene fauna, flora unica y sorprendente. Conecta con la emocionante historia de un pueblo valiente, aguerrido y dejate maravillar por los impresionantes paisajes llenos de belleza natural."
+        linkText="Ver la galeria!"
+        linkHref="/galeria/"
+      />
+    </div>
+
+    <!-- Tarjeta Contacto con Google Maps -->
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="text-center mb-6">
+          <div class="text-5xl mb-4">📧</div>
+          <h3 class="text-2xl font-bold text-esmeralda mb-4">
+            Contactanos para vincularte
+          </h3>
+          <p class="text-lg text-gray-700">
+            La reserva se encuentra a 20 minutos de la ciudad de Ibague, en
+            el departamento del Tolima, Colombia
+          </p>
+        </div>
+        <div class="h-96 rounded-lg overflow-hidden mb-6">
+          <iframe
+            class="w-full h-full"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.919315965023!2d-74.98013618552636!3d4.4261321452102464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38cdb01f199d5b%3A0x9a7b95a195fa8778!2sReserva%20Natural%20La%20Esmeralda%20Doima!5e0!3m2!1ses-419!2sco!4v1675908202324!5m2!1ses-419!2sco"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="text-center">
+          <a
+            href="/contactanos/"
+            class="inline-flex items-center text-white bg-esmeralda hover:bg-green-700 font-medium rounded-lg px-8 py-3 transition-all hover:scale-105"
+          >
+            Completa el formulario para vincularte a la reserva
+            <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
