@@ -1,35 +1,41 @@
 ---
 interface Props {
   icon?: string;
+  emoji?: string;
   title: string;
   centered?: boolean;
   dark?: boolean;
 }
 
-const { icon, title, centered = false, dark = false } = Astro.props;
+const { icon, emoji, title, centered = false, dark = false } = Astro.props;
 ---
 
 <div
   class:list={[
-    "mx-auto max-w-sm p-4 border rounded-lg shadow-md",
+    "mx-auto max-w-sm p-6 border rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300",
     dark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
   ]}
 >
-  {icon && (
+  {emoji && (
+    <div class:list={["mb-4", centered && "text-center"]}>
+      <span class="text-6xl">{emoji}</span>
+    </div>
+  )}
+  {icon && !emoji && (
     <div class:list={["mb-3", centered && "text-center"]}>
       <img src={icon} class="w-28 m-auto" alt={`${title} icon`} loading="lazy" />
     </div>
   )}
   <h5
     class:list={[
-      "mb-2 text-2xl font-semibold tracking-tight",
+      "mb-3 text-2xl font-bold tracking-tight",
       centered && "text-center",
       dark ? "text-white" : "text-gray-900"
     ]}
   >
     {title}
   </h5>
-  <div class:list={[dark ? "text-gray-400" : "text-gray-700"]}>
+  <div class:list={[dark ? "text-gray-400" : "text-gray-600", "leading-relaxed"]}>
     <slot />
   </div>
 </div>

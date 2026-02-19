@@ -33,7 +33,7 @@ import FAQSection from "../components/sections/FAQSection.astro";
       <div class="relative z-10 h-full flex items-center justify-center">
         <div class="text-center text-white px-4 max-w-4xl mx-auto">
           <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow-custom">
-            La Esmeralda Reserva Natural
+            La Esmeralda <span class="text-lime-400">Reserva Natural</span>
           </h1>
           <p class="text-xl md:text-3xl mb-8 text-shadow-custom">
             Hogar legendario de las ostras de agua dulce
@@ -242,7 +242,7 @@ import FAQSection from "../components/sections/FAQSection.astro";
           <!-- Sendero Interpretativo -->
           <div class="relative overflow-hidden rounded-lg shadow-xl group h-96">
             <img
-              src="/images/sendero/fondo_sendero_1.avif"
+              src="/images/aventura-banner.jpg"
               alt="Sendero Interpretativo"
               class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
@@ -281,7 +281,7 @@ import FAQSection from "../components/sections/FAQSection.astro";
           <!-- Vivencias -->
           <div class="relative overflow-hidden rounded-lg shadow-xl group h-96">
             <img
-              src="/images/servicios/fondo_servicios_1.avif"
+              src="/images/servicios/exp_1.avif"
               alt="Vivencias en la Reserva"
               class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
@@ -329,20 +329,23 @@ import FAQSection from "../components/sections/FAQSection.astro";
 
     <!-- CTA Final -->
     <section
-      class="bg-[url('/fondos/fondo5-2.avif')] bg-cover bg-center text-white"
+      class="relative bg-[url('/fondos/fondo5-2.avif')] bg-cover bg-center text-white py-20 md:py-28"
     >
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Sé Parte del Cambio</h2>
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative container mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Se Parte del <span class="text-lime-400">Cambio</span>
+        </h2>
         <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-          La conservación del bosque seco tropical es tarea de todos. Únete a
-          nuestra misión y ayuda a proteger este ecosistema único.
+          La conservacion del bosque seco tropical es tarea de todos. Unite a
+          nuestra mision y ayuda a proteger este ecosistema unico.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/vinculate/"
-            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-esmeralda bg-white hover:bg-gray-100 rounded-lg transition-all"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-900 bg-lime-400 hover:bg-lime-300 rounded-lg transition-all shadow-lg"
           >
-            Vincúlate ahora
+            Vinculate ahora
             <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
@@ -352,9 +355,9 @@ import FAQSection from "../components/sections/FAQSection.astro";
           </a>
           <a
             href="/contactanos/"
-            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border-2 border-white hover:bg-white hover:text-esmeralda rounded-lg transition-all"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-esmeralda hover:bg-esmeralda-600 rounded-lg transition-all shadow-lg"
           >
-            Contáctanos
+            Contactanos
           </a>
         </div>
       </div>
