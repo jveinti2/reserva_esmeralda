@@ -1,19 +1,19 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import Carousel from '../../components/ui/Carousel.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Carousel from "../../components/ui/Carousel.astro";
 
 const carouselImages = [
-  '/images/educacion/arte_ambiental/bio_arte_1.avif',
-  '/images/educacion/arte_ambiental/bio_arte_2.avif',
-  '/images/educacion/arte_ambiental/bio_arte_3.avif',
-  '/images/educacion/arte_ambiental/bio_arte_4.avif',
-  '/images/educacion/arte_ambiental/bio_arte_5.avif',
-  '/images/educacion/arte_ambiental/bio_arte_6.avif',
-  '/images/educacion/arte_ambiental/bio_arte_8.avif',
-  '/images/educacion/arte_ambiental/bio_arte_9.avif',
-  '/images/educacion/arte_ambiental/bio_arte_10.avif',
+  "/images/educacion/arte_ambiental/bio_arte_1.avif",
+  "/images/educacion/arte_ambiental/bio_arte_2.avif",
+  "/images/educacion/arte_ambiental/bio_arte_3.avif",
+  "/images/educacion/arte_ambiental/bio_arte_4.avif",
+  "/images/educacion/arte_ambiental/bio_arte_5.avif",
+  "/images/educacion/arte_ambiental/bio_arte_6.avif",
+  "/images/educacion/arte_ambiental/bio_arte_8.avif",
+  "/images/educacion/arte_ambiental/bio_arte_9.avif",
+  "/images/educacion/arte_ambiental/bio_arte_10.avif",
 ];
 ---
 
@@ -29,7 +29,7 @@ const carouselImages = [
       class="relative bg-cover bg-center h-96"
       style="background-image: url('/images/educacion/fondo_arte_ambiental.avif')"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">
             Semillero Bio Arte Ambiental
@@ -48,10 +48,17 @@ const carouselImages = [
           ¿Qué es el Semillero Bio Arte?
         </h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          El Semillero Bio Arte Ambiental es un espacio creativo donde niños y jóvenes exploran su conexión con la naturaleza a través de diversas expresiones artísticas. Combinamos el aprendizaje sobre ecosistemas, biodiversidad y conservación con actividades de arte, fotografía, pintura y creación manual usando materiales naturales y reciclados.
+          El Semillero Bio Arte Ambiental es un espacio creativo donde niños y
+          jóvenes exploran su conexión con la naturaleza a través de diversas
+          expresiones artísticas. Combinamos el aprendizaje sobre ecosistemas,
+          biodiversidad y conservación con actividades de arte, fotografía,
+          pintura y creación manual usando materiales naturales y reciclados.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed">
-          Nuestro objetivo es despertar la sensibilidad ambiental mediante la creatividad, permitiendo que los participantes expresen su amor por la naturaleza y se conviertan en embajadores del cuidado ambiental en sus comunidades.
+          Nuestro objetivo es despertar la sensibilidad ambiental mediante la
+          creatividad, permitiendo que los participantes expresen su amor por la
+          naturaleza y se conviertan en embajadores del cuidado ambiental en sus
+          comunidades.
         </p>
       </div>
     </section>
@@ -74,14 +81,17 @@ const carouselImages = [
         <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
           Nuestras Actividades
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
           <div class="bg-green-50 p-6 rounded-lg shadow-lg">
             <div class="text-4xl mb-4 text-center">🎨</div>
             <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
               Pintura Natural
             </h3>
             <p class="text-gray-600 text-center">
-              Creación de pinturas y pigmentos a partir de elementos naturales como flores, hojas y tierra.
+              Creación de pinturas y pigmentos a partir de elementos naturales
+              como flores, hojas y tierra.
             </p>
           </div>
 
@@ -91,7 +101,8 @@ const carouselImages = [
               Fotografía de Naturaleza
             </h3>
             <p class="text-gray-600 text-center">
-              Captura de la belleza natural y aprendizaje sobre composición fotográfica y observación detallada.
+              Captura de la belleza natural y aprendizaje sobre composición
+              fotográfica y observación detallada.
             </p>
           </div>
 
@@ -101,7 +112,8 @@ const carouselImages = [
               Arte con Reciclaje
             </h3>
             <p class="text-gray-600 text-center">
-              Transformación de materiales reciclados en obras de arte que transmiten mensajes ambientales.
+              Transformación de materiales reciclados en obras de arte que
+              transmiten mensajes ambientales.
             </p>
           </div>
 
@@ -111,7 +123,8 @@ const carouselImages = [
               Manualidades Naturales
             </h3>
             <p class="text-gray-600 text-center">
-              Elaboración de objetos artísticos usando semillas, ramas, hojas y otros materiales del bosque.
+              Elaboración de objetos artísticos usando semillas, ramas, hojas y
+              otros materiales del bosque.
             </p>
           </div>
 
@@ -121,7 +134,8 @@ const carouselImages = [
               Murales Ecológicos
             </h3>
             <p class="text-gray-600 text-center">
-              Creación colectiva de murales que cuentan historias sobre la biodiversidad local y la conservación.
+              Creación colectiva de murales que cuentan historias sobre la
+              biodiversidad local y la conservación.
             </p>
           </div>
 
@@ -131,7 +145,8 @@ const carouselImages = [
               Cuentos Ambientales
             </h3>
             <p class="text-gray-600 text-center">
-              Escritura e ilustración de historias inspiradas en la naturaleza y sus habitantes.
+              Escritura e ilustración de historias inspiradas en la naturaleza y
+              sus habitantes.
             </p>
           </div>
         </div>
@@ -150,7 +165,8 @@ const carouselImages = [
               🌱 Sensibilización Ambiental
             </h3>
             <p class="text-gray-600">
-              Despertar la conciencia ambiental mediante experiencias artísticas que conecten emocionalmente a los participantes con la naturaleza.
+              Despertar la conciencia ambiental mediante experiencias artísticas
+              que conecten emocionalmente a los participantes con la naturaleza.
             </p>
           </div>
 
@@ -159,7 +175,8 @@ const carouselImages = [
               🎭 Desarrollo Creativo
             </h3>
             <p class="text-gray-600">
-              Fomentar la creatividad y la expresión personal como herramientas para comunicar la importancia de la conservación.
+              Fomentar la creatividad y la expresión personal como herramientas
+              para comunicar la importancia de la conservación.
             </p>
           </div>
 
@@ -168,7 +185,8 @@ const carouselImages = [
               🤝 Trabajo en Comunidad
             </h3>
             <p class="text-gray-600">
-              Promover la colaboración y el trabajo en equipo a través de proyectos artísticos colectivos con mensaje ambiental.
+              Promover la colaboración y el trabajo en equipo a través de
+              proyectos artísticos colectivos con mensaje ambiental.
             </p>
           </div>
 
@@ -177,7 +195,8 @@ const carouselImages = [
               💚 Amor por la Naturaleza
             </h3>
             <p class="text-gray-600">
-              Cultivar un vínculo afectivo profundo con el entorno natural que motive acciones de cuidado y protección.
+              Cultivar un vínculo afectivo profundo con el entorno natural que
+              motive acciones de cuidado y protección.
             </p>
           </div>
         </div>
@@ -191,7 +210,8 @@ const carouselImages = [
           ¿Quieres ser parte del Semillero Bio Arte?
         </h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Únete a nuestro semillero y descubre cómo el arte puede transformar tu relación con la naturaleza.
+          Únete a nuestro semillero y descubre cómo el arte puede transformar tu
+          relación con la naturaleza.
         </p>
         <a
           href="/vinculate/"
@@ -207,8 +227,7 @@ const carouselImages = [
             <path
               fill-rule="evenodd"
               d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
+              clip-rule="evenodd"></path>
           </svg>
         </a>
       </div>

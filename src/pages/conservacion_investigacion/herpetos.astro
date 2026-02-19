@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import Carousel from '../../components/ui/Carousel.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Carousel from "../../components/ui/Carousel.astro";
 
 const carouselImages = [
-  '/images/conservacion/herpetos/herpectos_4.avif',
-  '/images/conservacion/herpetos/herpectos_5.avif',
-  '/images/conservacion/herpetos/herpectos_3.avif',
+  "/images/conservacion/herpetos/herpectos_4.avif",
+  "/images/conservacion/herpetos/herpectos_5.avif",
+  "/images/conservacion/herpetos/herpectos_3.avif",
 ];
 ---
 
@@ -23,7 +23,7 @@ const carouselImages = [
       class="relative bg-cover bg-center h-screen"
       style="background-image: url('/images/conservacion/herpetos/rio_caiman.avif')"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
           <h1 class="text-5xl font-bold">
             Río Opia: Un Refugio para la Herpetofauna
@@ -42,8 +42,16 @@ const carouselImages = [
           Nuestro Objetivo
         </h2>
 
-        <p class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black">
-          Realizar un inventario exhaustivo y la caracterización taxonómica de la <strong>herpetofauna</strong> (anfibios y reptiles) en la <span class="underline decoration-esmeralda">Reserva Natural La Esmeralda</span>, situada en <strong>Piedras, Tolima</strong>. Nuestro equipo se dedica a preservar y entender la biodiversidad en este ecosistema vital.
+        <p
+          class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black"
+        >
+          Realizar un inventario exhaustivo y la caracterización taxonómica de
+          la <strong>herpetofauna</strong> (anfibios y reptiles) en la <span
+            class="underline decoration-esmeralda"
+            >Reserva Natural La Esmeralda</span
+          >, situada en <strong>Piedras, Tolima</strong>. Nuestro equipo se
+          dedica a preservar y entender la biodiversidad en este ecosistema
+          vital.
         </p>
 
         <div class="mt-12">
@@ -60,52 +68,72 @@ const carouselImages = [
         <div class="container mx-auto px-4 text-center text-white">
           <h2 class="text-3xl font-bold">Justificación del Proyecto</h2>
           <p class="mt-4 text-lg max-w-4xl mx-auto">
-            El departamento del Tolima presenta una rica diversidad de ecosistemas y hábitats que albergan una amplia variedad de herpetos. Sin embargo, estos grupos están amenazados por factores como la pérdida de hábitat, especies invasoras, contaminación, tráfico ilegal, cambio climático y enfermedades emergentes. La Reserva Natural La Esmeralda está ubicada en un ecosistema crítico (bosque seco tropical) que aún tiene un desconocido potencial, a falta de labores investigativas en el sector, para la conservación e identificación de su Biodiversidad de anfibios y reptiles.
+            El departamento del Tolima presenta una rica diversidad de
+            ecosistemas y hábitats que albergan una amplia variedad de herpetos.
+            Sin embargo, estos grupos están amenazados por factores como la
+            pérdida de hábitat, especies invasoras, contaminación, tráfico
+            ilegal, cambio climático y enfermedades emergentes. La Reserva
+            Natural La Esmeralda está ubicada en un ecosistema crítico (bosque
+            seco tropical) que aún tiene un desconocido potencial, a falta de
+            labores investigativas en el sector, para la conservación e
+            identificación de su Biodiversidad de anfibios y reptiles.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Sección: Metas del Proyecto -->
-    <section class="bg-gradient-to-r from-green-200 via-white to-green-200 py-16">
+    <section
+      class="bg-gradient-to-r from-green-200 via-white to-green-200 py-16"
+    >
       <div class="container mx-auto px-6 lg:px-8">
         <h2 class="text-4xl font-extrabold text-center text-esmeralda mb-12">
           Metas del Proyecto
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
           <!-- Meta 1 -->
-          <div class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
+          >
             <div class="flex justify-center mb-6">
               <div class="bg-esmeralda rounded-full p-4">
                 <span class="text-white text-4xl">🦎</span>
               </div>
             </div>
             <p class="text-lg text-gray-700">
-              Identificar en campo y catalogar las especies de anfibios y reptiles presentes en la Reserva Natural La Esmeralda.
+              Identificar en campo y catalogar las especies de anfibios y
+              reptiles presentes en la Reserva Natural La Esmeralda.
             </p>
           </div>
 
           <!-- Meta 2 -->
-          <div class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
+          >
             <div class="flex justify-center mb-6">
               <div class="bg-esmeralda rounded-full p-4">
                 <span class="text-white text-4xl">🌱</span>
               </div>
             </div>
             <p class="text-lg text-gray-700">
-              Evaluar el estado de conservación de estas especies en el contexto de las amenazas que enfrentan.
+              Evaluar el estado de conservación de estas especies en el contexto
+              de las amenazas que enfrentan.
             </p>
           </div>
 
           <!-- Meta 3 -->
-          <div class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
+          >
             <div class="flex justify-center mb-6">
               <div class="bg-esmeralda rounded-full p-4">
                 <span class="text-white text-4xl">📚</span>
               </div>
             </div>
             <p class="text-lg text-gray-700">
-              Contribuir al conocimiento científico sobre la herpetofauna del Tolima y promover acciones de conservación en la región, con la creación de un folleto informativo.
+              Contribuir al conocimiento científico sobre la herpetofauna del
+              Tolima y promover acciones de conservación en la región, con la
+              creación de un folleto informativo.
             </p>
           </div>
         </div>
@@ -126,38 +154,62 @@ const carouselImages = [
       <div class="relative container mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-4xl font-extrabold mb-12">Resultados Esperados</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">1. Inventario Completo de Especies:</span>
-              Identificación y catalogación de al menos 50 especies de anfibios y reptiles.
+              <span class="font-bold text-esmeralda"
+                >1. Inventario Completo de Especies:</span
+              >
+              Identificación y catalogación de al menos 50 especies de anfibios y
+              reptiles.
             </p>
           </div>
 
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">2. Evaluación del Estado de Conservación:</span>
+              <span class="font-bold text-esmeralda"
+                >2. Evaluación del Estado de Conservación:</span
+              >
               Evaluación del estado de conservación de las especies identificadas.
             </p>
           </div>
 
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">3. Base de Datos Digital:</span>
-              Creación de una base de datos digital para la gestión de la información obtenida.
+              <span class="font-bold text-esmeralda"
+                >3. Base de Datos Digital:</span
+              >
+              Creación de una base de datos digital para la gestión de la información
+              obtenida.
             </p>
           </div>
 
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">4. Publicación Científica:</span>
-              Elaboración y envío de un manuscrito para su publicación en una revista científica.
+              <span class="font-bold text-esmeralda"
+                >4. Publicación Científica:</span
+              >
+              Elaboración y envío de un manuscrito para su publicación en una revista
+              científica.
             </p>
           </div>
 
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">5. Sensibilización Ambiental:</span>
-              Programas de sensibilización y educación ambiental dirigidos a la comunidad local.
+              <span class="font-bold text-esmeralda"
+                >5. Sensibilización Ambiental:</span
+              >
+              Programas de sensibilización y educación ambiental dirigidos a la comunidad
+              local.
             </p>
           </div>
         </div>
@@ -167,29 +219,44 @@ const carouselImages = [
       <div class="relative container mx-auto px-6 lg:px-8 text-center mt-12">
         <h2 class="text-4xl font-extrabold mb-12">Tiempo Estimado</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 1:</span> Recolección de Datos (3 meses)
+              <span class="font-bold text-esmeralda">Fase 1:</span> Recolección de
+              Datos (3 meses)
             </p>
           </div>
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 2:</span> Análisis y Evaluación (2 meses)
+              <span class="font-bold text-esmeralda">Fase 2:</span> Análisis y Evaluación
+              (2 meses)
             </p>
           </div>
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 3:</span> Creación de Base de Datos (1 mes)
+              <span class="font-bold text-esmeralda">Fase 3:</span> Creación de Base
+              de Datos (1 mes)
             </p>
           </div>
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 4:</span> Redacción del Manuscrito (2 meses)
+              <span class="font-bold text-esmeralda">Fase 4:</span> Redacción del
+              Manuscrito (2 meses)
             </p>
           </div>
-          <div class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+          <div
+            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
+          >
             <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 5:</span> Sensibilización (1 mes)
+              <span class="font-bold text-esmeralda">Fase 5:</span> Sensibilización
+              (1 mes)
             </p>
           </div>
         </div>
@@ -210,7 +277,9 @@ const carouselImages = [
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Recurso Humano -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Recursos Humanos
             </h3>
@@ -222,7 +291,9 @@ const carouselImages = [
           </div>
 
           <!-- Equipos y Materiales -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Equipos y Materiales
             </h3>
@@ -237,7 +308,9 @@ const carouselImages = [
           </div>
 
           <!-- Financiamiento -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Financiamiento
             </h3>
@@ -249,7 +322,9 @@ const carouselImages = [
           </div>
 
           <!-- Infraestructura -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Infraestructura
             </h3>
@@ -260,18 +335,24 @@ const carouselImages = [
           </div>
 
           <!-- Colaboraciones -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Colaboraciones
             </h3>
             <ul class="list-disc list-inside">
-              <li>Alianzas con universidades o instituciones de investigación.</li>
+              <li>
+                Alianzas con universidades o instituciones de investigación.
+              </li>
               <li>Apoyo de organizaciones ambientales.</li>
             </ul>
           </div>
 
           <!-- Materiales Educativos -->
-          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
             <h3 class="text-2xl font-semibold text-center mb-4">
               Materiales Educativos
             </h3>

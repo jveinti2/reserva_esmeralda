@@ -1,0 +1,320 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Vinculate"
+  description="Descubre como puedes vincularte con nuestra reserva natural: recorrido virtual, plan de padrinos o voluntariado."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <div class="bg-[url('/images/banner_2.avif')] bg-cover bg-center bg-no-repeat">
+      <div class="container m-auto">
+        <h1 class="px-4 font-bold text-4xl md:text-6xl leading-tight mb-3 pt-10 text-white drop-shadow-xl shadow-black text-shadow-custom">
+          Te gustaria<br />
+          <span class="text-lime-500 text-5xl md:text-9xl">Vincularte?</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="lg:mx-auto lg:max-w-6xl container m-auto px-4 py-12 md:py-16">
+      <!-- Intro -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="text-lg text-gray-700">
+          Existen diferentes formas de apoyar nuestra labor de conservacion.
+          Elige la opcion que mejor se adapte a ti y se parte del cambio.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid gap-8 md:grid-cols-3 mb-16">
+
+        <!-- Card 1: Aventura Virtual -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+          <a href="/sendero/rv-gratis/" class="relative h-48 block overflow-hidden cursor-pointer">
+            <img
+              src="/images/vinculate/recorrido.png"
+              alt="Recorrido Virtual 360"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <!-- Indicador de click -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white/90 rounded-full p-4 shadow-lg group-hover:scale-110 transition-transform">
+                <svg class="w-10 h-10 text-lime-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            <span class="absolute bottom-4 left-4 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              VIRTUAL 360
+            </span>
+            <span class="absolute bottom-4 right-4 bg-white/90 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">
+              Click para explorar
+            </span>
+          </a>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Aventura Virtual</h3>
+            <p class="text-gray-600 mb-4">
+              Explora nuestra reserva desde cualquier lugar del mundo con un recorrido virtual 360.
+              Tu aporte nos ayuda a seguir conservando.
+            </p>
+
+            <div class="border-t border-gray-200 pt-4">
+              <p class="text-sm text-gray-500 mb-3">Apoya con tu donacion:</p>
+              <div class="flex gap-2">
+                <button
+                  id="epayco-btn-15"
+                  type="button"
+                  style="background-color: #84cc16; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
+                >
+                  $15 USD
+                </button>
+                <button
+                  id="epayco-btn-25"
+                  type="button"
+                  style="background-color: #65a30d; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
+                >
+                  $25 USD
+                </button>
+                <button
+                  id="epayco-btn-50"
+                  type="button"
+                  style="background-color: #4d7c0f; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
+                >
+                  $50 USD
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Plan Padrinos y Madrinas -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="/images/padrinos.avif"
+              alt="Plan Padrinos y Madrinas"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <span class="absolute bottom-4 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              PADRINOS
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Plan Padrinos y Madrinas</h3>
+            <p class="text-gray-600 mb-4">
+              Unete a nuestro programa de apadrinamiento y participa activamente
+              en las actividades de conservacion de la reserva.
+            </p>
+
+            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Certificado digital de padrino
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Reportes de impacto
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Visitas guiadas
+              </li>
+            </ul>
+
+            <a
+              href="/contactanos/"
+              class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Quiero ser padrino
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Voluntariado -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="/images/vinculate/voluntariado.avif"
+              alt="Programa de Voluntariado"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <span class="absolute bottom-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              VOLUNTARIADO
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Voluntariado</h3>
+            <p class="text-gray-600 mb-4">
+              Vive una experiencia inmersiva de 3 a 15 dias. Participa en
+              actividades de conservacion, reforestacion y educacion ambiental.
+            </p>
+
+            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Alojamiento y alimentacion
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Capacitacion y talleres
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Certificado de participacion
+              </li>
+            </ul>
+
+            <a
+              href="/contactanos/"
+              class="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Quiero ser voluntario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planes de Voluntariado -->
+      <div class="bg-gradient-to-br from-lime-50 to-green-50 rounded-2xl p-8 mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
+          Planes de <span class="text-lime-600">Voluntariado</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="text-center mb-4">
+              <span class="text-3xl">🌱</span>
+              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Semilla</h3>
+              <p class="text-lime-600 font-bold text-2xl">$80 USD</p>
+              <p class="text-gray-500 text-sm">3 dias / 2 noches</p>
+            </div>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li>Alojamiento compartido</li>
+              <li>3 comidas diarias</li>
+              <li>Induccion</li>
+              <li>Reforestacion</li>
+              <li>Certificado</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md ring-2 ring-lime-500 relative">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              RECOMENDADO
+            </span>
+            <div class="text-center mb-4">
+              <span class="text-3xl">🌿</span>
+              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Siembra</h3>
+              <p class="text-lime-600 font-bold text-2xl">$150 USD</p>
+              <p class="text-gray-500 text-sm">7 dias / 6 noches</p>
+            </div>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li>Todo del Plan Semilla +</li>
+              <li>Talleres educacion ambiental</li>
+              <li>Monitoreo de fauna</li>
+              <li>Mantenimiento senderos</li>
+              <li>Participacion investigacion</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="text-center mb-4">
+              <span class="text-3xl">🌳</span>
+              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Cosecha</h3>
+              <p class="text-lime-600 font-bold text-2xl">$250 USD</p>
+              <p class="text-gray-500 text-sm">15 dias / 14 noches</p>
+            </div>
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li>Todo del Plan Siembra +</li>
+              <li>Proyecto investigacion propio</li>
+              <li>Formacion cientifica</li>
+              <li>Carta de recomendacion</li>
+              <li>Emprendimientos verdes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seccion Descarga Documento -->
+      <div class="bg-gray-100 rounded-2xl p-8 text-center">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Interesado en mas informacion?</h3>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+          Descarga nuestro brochure y conoce mas sobre la reserva natural,
+          la fruta Kumquat y su potencial en la innovacion agroindustrial.
+        </p>
+        <a
+          href="/docs/KUMQUAT_UNA_OPORTUNIDAD_PARA_LA_INNOVACION_AGROINDUSTRIAL.pdf"
+          download
+          class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Descargar Documento
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<!-- ePayco Script -->
+<script src="https://checkout.epayco.co/checkout.js"></script>
+
+<script>
+  const EPAYCO_KEY = "d26b8a1a7a57889cd84d7fc4ca695ed0";
+
+  function openEpaycoCheckout(amount: string, description: string) {
+    // @ts-ignore - ePayco is loaded from external script
+    const handler = ePayco.checkout.configure({
+      key: EPAYCO_KEY,
+      test: false,
+    });
+
+    handler.open({
+      external: true,
+      amount: amount,
+      tax: "0.00",
+      tax_base: amount,
+      name: description,
+      description: description,
+      currency: "usd",
+      country: "CO",
+      response: "https://www.esmeraldareservanatural.com/200/recorrido/",
+      confirmation: "https://www.esmeraldareservanatural.com/200/recorrido/",
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("epayco-btn-15")?.addEventListener("click", () => {
+      openEpaycoCheckout("15", "Donacion 15 USD - Reserva La Esmeralda");
+    });
+
+    document.getElementById("epayco-btn-25")?.addEventListener("click", () => {
+      openEpaycoCheckout("25", "Donacion 25 USD - Reserva La Esmeralda");
+    });
+
+    document.getElementById("epayco-btn-50")?.addEventListener("click", () => {
+      openEpaycoCheckout("50", "Donacion 50 USD - Reserva La Esmeralda");
+    });
+  });
+</script>

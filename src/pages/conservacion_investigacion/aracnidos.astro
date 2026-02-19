@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import Carousel from '../../components/ui/Carousel.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Carousel from "../../components/ui/Carousel.astro";
 
 const carouselImages = [
-  '/images/conservacion/aracnidos/aracnidos_3.avif',
-  '/images/conservacion/aracnidos/aracnidos_5.avif',
-  '/images/conservacion/aracnidos/aracnidos_6.avif',
+  "/images/conservacion/aracnidos/aracnidos_3.avif",
+  "/images/conservacion/aracnidos/aracnidos_5.avif",
+  "/images/conservacion/aracnidos/aracnidos_6.avif",
 ];
 ---
 
@@ -23,11 +23,12 @@ const carouselImages = [
       class="relative bg-cover bg-center h-screen"
       style="background-image: url('/images/conservacion/aracnidos/aracnidos_1.avif')"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
           <h1 class="text-5xl font-bold">PROYECTO ARÁCNIDOS</h1>
           <h2 class="text-3xl mt-4">
-            Caracterización Taxonómica de la Aracnofauna (Arachnida) de la Reserva Natural La Esmeralda, Corregimiento de Doima - Tolima.
+            Caracterización Taxonómica de la Aracnofauna (Arachnida) de la
+            Reserva Natural La Esmeralda, Corregimiento de Doima - Tolima.
           </h2>
         </div>
       </div>
@@ -40,11 +41,39 @@ const carouselImages = [
           Nuestro Objetivo
         </h2>
 
-        <p class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black">
-          El departamento del Tolima alberga una rica diversidad de seres vivos pertenecientes al Phylum Arthropoda, que incluye un amplio espectro de arácnidos, tales como arañas (Araneae con 51,163 spp.), escorpiones (Scorpiones con 2,766 spp.), opiliones (Opiliones con 6,726 spp.), entre otros (World Spider Catalog, 2023; Catalogue of Life, 2023). Estos organismos se caracterizan por sus diversas morfologías, fisiologías y comportamientos, lo que les permite habitar una variedad de ecosistemas terrestres y microhábitats (Bar, 2010; Martínez et al., 2015; Ruggiero et al., 2015; Armas et al., 2017).
+        <p
+          class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black"
+        >
+          El departamento del Tolima alberga una rica diversidad de seres vivos
+          pertenecientes al Phylum Arthropoda, que incluye un amplio espectro de
+          arácnidos, tales como arañas (Araneae con 51,163 spp.), escorpiones
+          (Scorpiones con 2,766 spp.), opiliones (Opiliones con 6,726 spp.),
+          entre otros (World Spider Catalog, 2023; Catalogue of Life, 2023).
+          Estos organismos se caracterizan por sus diversas morfologías,
+          fisiologías y comportamientos, lo que les permite habitar una variedad
+          de ecosistemas terrestres y microhábitats (Bar, 2010; Martínez et al.,
+          2015; Ruggiero et al., 2015; Armas et al., 2017).
         </p>
-        <p class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black">
-          El grupo Arachnida es notable por su diversidad, abarcando 134 familias. Las familias más representativas incluyen Salticidae (6,741 spp.), Lycosidae (2,475 spp.) y Araneidae (3,130 spp.) (World Spider Catalog, 2024). Sin embargo, la Reserva Natural "La Esmeralda", situada en Piedras, Tolima —un área de bosque seco tropical con una extensión de 8.658 m² a 592 msnm— es uno de los ecosistemas más amenazados a nivel global. A pesar de su importancia para la conservación y la investigación, la diversidad arácnida del departamento sigue siendo poco explorada. Por lo tanto, este estudio tiene como objetivo principal realizar la caracterización taxonómica de la aracnofauna en la Reserva Natural La Esmeralda. Este esfuerzo busca iniciar el levantamiento de información sobre este grupo frecuentemente olvidado por los investigadores y que desempeña un papel crucial en el equilibrio ecológico. En el contexto del Tolima, donde el sector agropecuario es predominante, comprender la diversidad arácnida puede contribuir a prácticas más sostenibles en la región (Delgado & Ulloa, 2015).
+        <p
+          class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black"
+        >
+          El grupo Arachnida es notable por su diversidad, abarcando 134
+          familias. Las familias más representativas incluyen Salticidae (6,741
+          spp.), Lycosidae (2,475 spp.) y Araneidae (3,130 spp.) (World Spider
+          Catalog, 2024). Sin embargo, la Reserva Natural "La Esmeralda",
+          situada en Piedras, Tolima —un área de bosque seco tropical con una
+          extensión de 8.658 m² a 592 msnm— es uno de los ecosistemas más
+          amenazados a nivel global. A pesar de su importancia para la
+          conservación y la investigación, la diversidad arácnida del
+          departamento sigue siendo poco explorada. Por lo tanto, este estudio
+          tiene como objetivo principal realizar la caracterización taxonómica
+          de la aracnofauna en la Reserva Natural La Esmeralda. Este esfuerzo
+          busca iniciar el levantamiento de información sobre este grupo
+          frecuentemente olvidado por los investigadores y que desempeña un
+          papel crucial en el equilibrio ecológico. En el contexto del Tolima,
+          donde el sector agropecuario es predominante, comprender la diversidad
+          arácnida puede contribuir a prácticas más sostenibles en la región
+          (Delgado & Ulloa, 2015).
         </p>
 
         <div class="mt-12">
@@ -61,20 +90,35 @@ const carouselImages = [
         <div class="container mx-auto px-4 text-center text-white">
           <h2 class="text-3xl font-bold">Resultados</h2>
           <p class="mt-4 text-lg max-w-4xl mx-auto">
-            Durante el estudio en la Reserva Natural La Esmeralda se registraron un total de 74 especies de arañas distribuidas en 9 familias. Entre estas especies destaca la tarántula púrpura (Xenesthis immanis), catalogada como En Peligro (EN) en el Libro Rojo de Invertebrados Terrestres. Este hallazgo subraya el potencial significativo para la conservación de la aracnofauna en esta área crítica para la salud del ecosistema más fragmentado del país.
+            Durante el estudio en la Reserva Natural La Esmeralda se registraron
+            un total de 74 especies de arañas distribuidas en 9 familias. Entre
+            estas especies destaca la tarántula púrpura (Xenesthis immanis),
+            catalogada como En Peligro (EN) en el Libro Rojo de Invertebrados
+            Terrestres. Este hallazgo subraya el potencial significativo para la
+            conservación de la aracnofauna en esta área crítica para la salud
+            del ecosistema más fragmentado del país.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Sección: Posibilidades de Mejora -->
-    <section class="bg-gradient-to-r from-green-200 via-white to-green-200 py-16">
+    <section
+      class="bg-gradient-to-r from-green-200 via-white to-green-200 py-16"
+    >
       <div class="container mx-auto px-6 lg:px-8">
         <h2 class="text-4xl font-extrabold text-center text-esmeralda mb-12">
           POSIBILIDADES DE MEJORA
         </h2>
         <p class="mt-4 text-lg max-w-4xl mx-auto text-gray-700">
-          Para mejorar el alcance y la profundidad del estudio sobre la aracnofauna en La Esmeralda, se recomienda implementar un mayor número de días de muestreo y diversificar las metodologías empleadas. Además, sería beneficioso explorar variables adicionales como las temporalidades y las condiciones climáticas que podrían influir en la actividad de ciertos grupos de arácnidos. También se sugiere analizar los diferentes hábitats presentes dentro de la reserva y evaluar los riesgos potenciales que enfrentan las diversas especies.
+          Para mejorar el alcance y la profundidad del estudio sobre la
+          aracnofauna en La Esmeralda, se recomienda implementar un mayor número
+          de días de muestreo y diversificar las metodologías empleadas. Además,
+          sería beneficioso explorar variables adicionales como las
+          temporalidades y las condiciones climáticas que podrían influir en la
+          actividad de ciertos grupos de arácnidos. También se sugiere analizar
+          los diferentes hábitats presentes dentro de la reserva y evaluar los
+          riesgos potenciales que enfrentan las diversas especies.
         </p>
       </div>
     </section>

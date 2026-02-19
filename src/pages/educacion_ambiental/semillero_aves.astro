@@ -1,19 +1,19 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import Carousel from '../../components/ui/Carousel.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Carousel from "../../components/ui/Carousel.astro";
 
 const carouselImages = [
-  '/images/educacion/aves/aves_1.avif',
-  '/images/educacion/aves/aves_2.avif',
-  '/images/educacion/aves/aves_3.avif',
-  '/images/educacion/aves/aves_4.avif',
-  '/images/educacion/aves/aves_5.avif',
-  '/images/educacion/aves/aves_6.avif',
-  '/images/educacion/aves/aves_7.avif',
-  '/images/educacion/aves/aves_8.avif',
-  '/images/educacion/aves/aves_9.avif',
+  "/images/educacion/aves/aves_1.avif",
+  "/images/educacion/aves/aves_2.avif",
+  "/images/educacion/aves/aves_3.avif",
+  "/images/educacion/aves/aves_4.avif",
+  "/images/educacion/aves/aves_5.avif",
+  "/images/educacion/aves/aves_6.avif",
+  "/images/educacion/aves/aves_7.avif",
+  "/images/educacion/aves/aves_8.avif",
+  "/images/educacion/aves/aves_9.avif",
 ];
 ---
 
@@ -29,7 +29,7 @@ const carouselImages = [
       class="relative bg-cover bg-center h-96"
       style="background-image: url('/images/educacion/fondo_aves.avif')"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">
             Semillero Avistadores de Aves
@@ -48,10 +48,18 @@ const carouselImages = [
           ¿Qué es el Semillero Avistadores?
         </h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          El Semillero Avistadores de Aves es un programa de ciencia ciudadana que invita a niños, jóvenes y adultos a descubrir la increíble diversidad de aves que habitan en la Reserva Natural La Esmeralda. A través de salidas de campo, talleres de identificación y monitoreo participativo, formamos observadores comprometidos con la conservación de la avifauna.
+          El Semillero Avistadores de Aves es un programa de ciencia ciudadana
+          que invita a niños, jóvenes y adultos a descubrir la increíble
+          diversidad de aves que habitan en la Reserva Natural La Esmeralda. A
+          través de salidas de campo, talleres de identificación y monitoreo
+          participativo, formamos observadores comprometidos con la conservación
+          de la avifauna.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed">
-          Colombia es el país con mayor diversidad de aves en el mundo, y el bosque seco tropical alberga especies únicas y amenazadas. Nuestro semillero contribuye al conocimiento científico local mientras conecta a las personas con la belleza y fragilidad de estos ecosistemas.
+          Colombia es el país con mayor diversidad de aves en el mundo, y el
+          bosque seco tropical alberga especies únicas y amenazadas. Nuestro
+          semillero contribuye al conocimiento científico local mientras conecta
+          a las personas con la belleza y fragilidad de estos ecosistemas.
         </p>
       </div>
     </section>
@@ -63,7 +71,10 @@ const carouselImages = [
           Aves de la Reserva
         </h2>
         <div class="max-w-5xl mx-auto">
-          <Carousel images={carouselImages} alt="Aves observadas en la reserva" />
+          <Carousel
+            images={carouselImages}
+            alt="Aves observadas en la reserva"
+          />
         </div>
       </div>
     </section>
@@ -74,14 +85,17 @@ const carouselImages = [
         <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
           Actividades del Semillero
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
           <div class="bg-green-50 p-6 rounded-lg shadow-lg">
             <div class="text-4xl mb-4 text-center">🔭</div>
             <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
               Salidas de Avistamiento
             </h3>
             <p class="text-gray-600 text-center">
-              Recorridos guiados por la reserva durante las horas de mayor actividad de las aves, al amanecer y al atardecer.
+              Recorridos guiados por la reserva durante las horas de mayor
+              actividad de las aves, al amanecer y al atardecer.
             </p>
           </div>
 
@@ -91,7 +105,8 @@ const carouselImages = [
               Talleres de Identificación
             </h3>
             <p class="text-gray-600 text-center">
-              Aprendizaje sobre características morfológicas, cantos y comportamientos para identificar especies de aves.
+              Aprendizaje sobre características morfológicas, cantos y
+              comportamientos para identificar especies de aves.
             </p>
           </div>
 
@@ -101,7 +116,8 @@ const carouselImages = [
               Monitoreo Comunitario
             </h3>
             <p class="text-gray-600 text-center">
-              Registro sistemático de especies avistadas que contribuye a bases de datos científicas como eBird.
+              Registro sistemático de especies avistadas que contribuye a bases
+              de datos científicas como eBird.
             </p>
           </div>
 
@@ -111,7 +127,8 @@ const carouselImages = [
               Reconocimiento de Cantos
             </h3>
             <p class="text-gray-600 text-center">
-              Entrenamiento auditivo para identificar aves por sus vocalizaciones y llamados característicos.
+              Entrenamiento auditivo para identificar aves por sus
+              vocalizaciones y llamados característicos.
             </p>
           </div>
 
@@ -121,7 +138,8 @@ const carouselImages = [
               Fotografía de Aves
             </h3>
             <p class="text-gray-600 text-center">
-              Técnicas básicas de fotografía de naturaleza para documentar las especies observadas.
+              Técnicas básicas de fotografía de naturaleza para documentar las
+              especies observadas.
             </p>
           </div>
 
@@ -131,7 +149,8 @@ const carouselImages = [
               Conservación de Hábitats
             </h3>
             <p class="text-gray-600 text-center">
-              Acciones de conservación como instalación de bebederos, comederos y cajas nido para aves.
+              Acciones de conservación como instalación de bebederos, comederos
+              y cajas nido para aves.
             </p>
           </div>
         </div>
@@ -150,25 +169,25 @@ const carouselImages = [
               🦜 Loros y Pericos
             </h3>
             <p class="text-gray-600">
-              La reserva alberga varias especies de psitácidos, aves carismáticas y vocales que juegan un papel importante en la dispersión de semillas.
+              La reserva alberga varias especies de psitácidos, aves
+              carismáticas y vocales que juegan un papel importante en la
+              dispersión de semillas.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🕊️ Colibríes
-            </h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">🕊️ Colibríes</h3>
             <p class="text-gray-600">
-              Polinizadores esenciales del bosque seco tropical, los colibríes deslumbran con su vuelo acrobático y colores iridiscentes.
+              Polinizadores esenciales del bosque seco tropical, los colibríes
+              deslumbran con su vuelo acrobático y colores iridiscentes.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🦅 Rapaces
-            </h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">🦅 Rapaces</h3>
             <p class="text-gray-600">
-              Águilas, halcones y gavilanes son indicadores de la salud del ecosistema y controladores naturales de poblaciones de roedores.
+              Águilas, halcones y gavilanes son indicadores de la salud del
+              ecosistema y controladores naturales de poblaciones de roedores.
             </p>
           </div>
 
@@ -177,7 +196,8 @@ const carouselImages = [
               🐦 Aves Endémicas y Amenazadas
             </h3>
             <p class="text-gray-600">
-              Registramos especies de distribución restringida y bajo amenaza, contribuyendo a su conservación mediante el monitoreo constante.
+              Registramos especies de distribución restringida y bajo amenaza,
+              contribuyendo a su conservación mediante el monitoreo constante.
             </p>
           </div>
         </div>
@@ -196,7 +216,8 @@ const carouselImages = [
               🔬 Ciencia Ciudadana
             </h3>
             <p class="text-gray-600">
-              Formar observadores capacitados que contribuyan al conocimiento científico sobre la avifauna local y regional.
+              Formar observadores capacitados que contribuyan al conocimiento
+              científico sobre la avifauna local y regional.
             </p>
           </div>
 
@@ -205,16 +226,16 @@ const carouselImages = [
               🌿 Conservación
             </h3>
             <p class="text-gray-600">
-              Promover la protección de las aves y sus hábitats a través de acciones concretas y educación ambiental.
+              Promover la protección de las aves y sus hábitats a través de
+              acciones concretas y educación ambiental.
             </p>
           </div>
 
           <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              👥 Comunidad
-            </h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">👥 Comunidad</h3>
             <p class="text-gray-600">
-              Construir una red de observadores de aves que comparta conocimientos y experiencias en torno a la conservación.
+              Construir una red de observadores de aves que comparta
+              conocimientos y experiencias en torno a la conservación.
             </p>
           </div>
 
@@ -223,7 +244,8 @@ const carouselImages = [
               💚 Conexión Natural
             </h3>
             <p class="text-gray-600">
-              Fortalecer el vínculo emocional de las personas con la naturaleza a través de la observación y apreciación de las aves.
+              Fortalecer el vínculo emocional de las personas con la naturaleza
+              a través de la observación y apreciación de las aves.
             </p>
           </div>
         </div>
@@ -237,7 +259,8 @@ const carouselImages = [
           ¿Te apasionan las aves?
         </h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Únete al Semillero Avistadores y descubre el maravilloso mundo de las aves del bosque seco tropical.
+          Únete al Semillero Avistadores y descubre el maravilloso mundo de las
+          aves del bosque seco tropical.
         </p>
         <a
           href="/vinculate/"
@@ -253,8 +276,7 @@ const carouselImages = [
             <path
               fill-rule="evenodd"
               d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
+              clip-rule="evenodd"></path>
           </svg>
         </a>
       </div>

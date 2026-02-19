@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import Carousel from '../../components/ui/Carousel.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Carousel from "../../components/ui/Carousel.astro";
 
 const carouselImages = [
-  '/images/emprendimientos/yogurt/yogur_img_1.jpeg',
-  '/images/emprendimientos/yogurt/yogur_img_2.jpeg',
-  '/images/emprendimientos/yogurt/yogur_img_3.jpeg',
-  '/images/emprendimientos/yogurt/yogur_img_4.jpeg',
+  "/images/emprendimientos/yogurt/yogur_img_1.jpeg",
+  "/images/emprendimientos/yogurt/yogur_img_2.jpeg",
+  "/images/emprendimientos/yogurt/yogur_img_3.jpeg",
+  "/images/emprendimientos/yogurt/yogur_img_4.jpeg",
 ];
 ---
 
@@ -24,14 +24,12 @@ const carouselImages = [
       class="relative bg-cover bg-center h-96"
       style="background-image: url('/images/emprendimientos/yogurt/fondo_landing_yogurt.jpeg')"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
           <h1 class="text-4xl md:text-5xl font-bold mb-4">
             Yogurt Artesanal La Esmeralda
           </h1>
-          <p class="text-xl md:text-2xl">
-            Cremoso, natural y lleno de sabor
-          </p>
+          <p class="text-xl md:text-2xl">Cremoso, natural y lleno de sabor</p>
         </div>
       </div>
     </section>
@@ -39,14 +37,17 @@ const carouselImages = [
     <!-- Introducción -->
     <section class="container mx-auto px-6 py-16">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-6">
-          Nuestro Yogurt
-        </h2>
+        <h2 class="text-3xl font-bold text-esmeralda mb-6">Nuestro Yogurt</h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          El Yogurt Artesanal La Esmeralda es elaborado con leche fresca de vacas de la región y frutas naturales cultivadas en la reserva. Sin conservantes ni colorantes artificiales, cada vasito es una explosión de sabor y nutrición que apoya la sostenibilidad local.
+          El Yogurt Artesanal La Esmeralda es elaborado con leche fresca de
+          vacas de la región y frutas naturales cultivadas en la reserva. Sin
+          conservantes ni colorantes artificiales, cada vasito es una explosión
+          de sabor y nutrición que apoya la sostenibilidad local.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed">
-          Nuestro proceso artesanal garantiza un producto cremoso, saludable y delicioso que refleja el cuidado y dedicación que ponemos en cada aspecto de nuestra reserva.
+          Nuestro proceso artesanal garantiza un producto cremoso, saludable y
+          delicioso que refleja el cuidado y dedicación que ponemos en cada
+          aspecto de nuestra reserva.
         </p>
       </div>
     </section>
@@ -58,7 +59,10 @@ const carouselImages = [
           Nuestro Proceso
         </h2>
         <div class="max-w-5xl mx-auto">
-          <Carousel images={carouselImages} alt="Elaboración de yogurt artesanal" />
+          <Carousel
+            images={carouselImages}
+            alt="Elaboración de yogurt artesanal"
+          />
         </div>
       </div>
     </section>
@@ -69,14 +73,17 @@ const carouselImages = [
         <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
           Nuestros Sabores
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
           <div class="bg-pink-50 p-6 rounded-lg shadow-lg">
             <div class="text-4xl mb-4 text-center">🍓</div>
             <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
               Fresa Natural
             </h3>
             <p class="text-gray-600 text-center">
-              Con fresas frescas y dulces, sin azúcares añadidos, sabor suave y delicioso.
+              Con fresas frescas y dulces, sin azúcares añadidos, sabor suave y
+              delicioso.
             </p>
           </div>
 
@@ -106,7 +113,8 @@ const carouselImages = [
               Miel y Granola
             </h3>
             <p class="text-gray-600 text-center">
-              Endulzado con miel natural y granola artesanal, perfecto para el desayuno.
+              Endulzado con miel natural y granola artesanal, perfecto para el
+              desayuno.
             </p>
           </div>
 
@@ -145,7 +153,8 @@ const carouselImages = [
               🥛 100% Natural
             </h3>
             <p class="text-gray-600">
-              Sin conservantes, colorantes ni saborizantes artificiales. Solo ingredientes naturales de la más alta calidad.
+              Sin conservantes, colorantes ni saborizantes artificiales. Solo
+              ingredientes naturales de la más alta calidad.
             </p>
           </div>
 
@@ -154,7 +163,8 @@ const carouselImages = [
               💪 Rico en Probióticos
             </h3>
             <p class="text-gray-600">
-              Cultivos vivos que benefician tu salud digestiva y fortalecen tu sistema inmunológico.
+              Cultivos vivos que benefician tu salud digestiva y fortalecen tu
+              sistema inmunológico.
             </p>
           </div>
 
@@ -163,7 +173,8 @@ const carouselImages = [
               🌾 Frutas Frescas
             </h3>
             <p class="text-gray-600">
-              Utilizamos frutas de temporada cultivadas localmente, garantizando frescura y sabor auténtico.
+              Utilizamos frutas de temporada cultivadas localmente, garantizando
+              frescura y sabor auténtico.
             </p>
           </div>
 
@@ -172,7 +183,8 @@ const carouselImages = [
               💚 Apoyas la Conservación
             </h3>
             <p class="text-gray-600">
-              Cada compra contribuye directamente a la protección del bosque seco tropical y su biodiversidad.
+              Cada compra contribuye directamente a la protección del bosque
+              seco tropical y su biodiversidad.
             </p>
           </div>
         </div>
@@ -202,8 +214,7 @@ const carouselImages = [
             <path
               fill-rule="evenodd"
               d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
+              clip-rule="evenodd"></path>
           </svg>
         </a>
       </div>
