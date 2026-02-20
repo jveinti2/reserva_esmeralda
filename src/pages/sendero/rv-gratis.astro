@@ -1,16 +1,19 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Recorrido Virtual Gratuito - La Esmeralda">
   <!-- Background Image Container -->
-  <div class="min-h-screen bg-[url('/recorrido.avif')] bg-center bg-cover bg-no-repeat">
+  <div
+    class="min-h-screen bg-[url('/recorrido.avif')] bg-center bg-cover bg-no-repeat"
+  >
     <div class="container mx-auto px-4 py-8">
-
       <!-- Mobile Layout -->
       <div class="md:hidden">
         <div class="mb-6">
-          <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-6 text-shadow-custom">
+          <h1
+            class="text-4xl font-extrabold text-center text-gray-900 mb-6 text-shadow-custom"
+          >
             🌿 Bienvenido al recorrido virtual gratuito
           </h1>
         </div>
@@ -20,8 +23,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <iframe
             src="/tour-360/index.html"
             class="w-full min-h-screen rounded-lg shadow-2xl"
-            title="Recorrido Virtual 360"
-          ></iframe>
+            title="Recorrido Virtual 360"></iframe>
         </div>
 
         <!-- Content Section -->
@@ -30,16 +32,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             y si este pedacito de la reserva te gusto ¡debes verla por completo!
           </p>
 
-          <h2 class="text-center text-4xl font-extrabold text-white text-shadow-custom">
+          <h2
+            class="text-center text-4xl font-extrabold text-white text-shadow-custom"
+          >
             ¿Quieres ver el recorrido completo?
           </h2>
 
           <p class="text-center text-2xl text-white text-shadow-custom">
-            Te dejamos los posibles aportes que puedes hacer para que veas el recorrido completo.
+            Te dejamos los posibles aportes que puedes hacer para que veas el
+            recorrido completo.
           </p>
 
           <!-- Payment Buttons -->
-          <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <div
+            class="flex flex-col sm:flex-row gap-3 justify-center items-center"
+          >
             <button
               id="epayco-button-10usd"
               class="w-full sm:w-auto bg-lime-500 hover:bg-lime-800 text-white font-medium rounded-lg px-6 py-3 transition-all focus:ring-4 focus:ring-lime-300"
@@ -98,12 +105,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </h2>
 
           <p class="text-2xl text-white text-shadow-custom">
-            Te invitamos a hacer el aporte que desees para contribuir al sostenimiento de este sitio natural. 👉 tambien te da la posibilidad de hacer el recorrido completo y explorar la Reserva completa.
+            Te invitamos a hacer el aporte que desees para contribuir al
+            sostenimiento de este sitio natural. 👉 tambien te da la posibilidad
+            de hacer el recorrido completo y explorar la Reserva completa.
           </p>
 
-          <p class="text-2xl text-white text-shadow-custom">
-            Aporta Aqui 👇
-          </p>
+          <p class="text-2xl text-white text-shadow-custom">Aporta Aqui 👇</p>
 
           <!-- Payment Buttons Desktop -->
           <div class="flex gap-3 flex-wrap">
@@ -154,8 +161,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <iframe
             src="/tour-360/index.html"
             class="w-full min-h-screen rounded-lg shadow-2xl"
-            title="Recorrido Virtual 360"
-          ></iframe>
+            title="Recorrido Virtual 360"></iframe>
         </div>
       </div>
     </div>
@@ -169,72 +175,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   if (window.innerWidth < 768) {
     const initEpayco = () => {
       // 10 USD Button
-      document.getElementById('epayco-button-10usd')?.addEventListener('click', function() {
-        var handler = ePayco.checkout.configure({
-          key: 'd26b8a1a7a57889cd84d7fc4ca695ed0',
-          test: false
-        });
+      document
+        .getElementById("epayco-button-10usd")
+        ?.addEventListener("click", function () {
+          var handler = ePayco.checkout.configure({
+            key: "d26b8a1a7a57889cd84d7fc4ca695ed0",
+            test: false,
+          });
 
-        handler.open({
-          external: true,
-          amount: '10',
-          tax: '0.00',
-          tax_base: '10',
-          name: 'Donacion 10 usd',
-          description: 'Donacion 10 usd',
-          currency: 'usd',
-          country: 'CO',
-          response: window.location.origin + '/recorrido-virtual',
-          confirmation: window.location.origin + '/recorrido-virtual'
+          handler.open({
+            external: true,
+            amount: "10",
+            tax: "0.00",
+            tax_base: "10",
+            name: "Donacion 10 usd",
+            description: "Donacion 10 usd",
+            currency: "usd",
+            country: "CO",
+            response: window.location.origin + "/recorrido-virtual",
+            confirmation: window.location.origin + "/recorrido-virtual",
+          });
         });
-      });
 
       // 25 USD Button
-      document.getElementById('epayco-button-25usd')?.addEventListener('click', function() {
-        var handler = ePayco.checkout.configure({
-          key: 'd26b8a1a7a57889cd84d7fc4ca695ed0',
-          test: false
-        });
+      document
+        .getElementById("epayco-button-25usd")
+        ?.addEventListener("click", function () {
+          var handler = ePayco.checkout.configure({
+            key: "d26b8a1a7a57889cd84d7fc4ca695ed0",
+            test: false,
+          });
 
-        handler.open({
-          external: true,
-          amount: '24.99',
-          tax: '0.00',
-          tax_base: '24.99',
-          name: 'Donacion 25 usd',
-          description: 'Donacion 25 usd',
-          currency: 'usd',
-          country: 'CO',
-          response: window.location.origin + '/recorrido-virtual',
-          confirmation: window.location.origin + '/recorrido-virtual'
+          handler.open({
+            external: true,
+            amount: "24.99",
+            tax: "0.00",
+            tax_base: "24.99",
+            name: "Donacion 25 usd",
+            description: "Donacion 25 usd",
+            currency: "usd",
+            country: "CO",
+            response: window.location.origin + "/recorrido-virtual",
+            confirmation: window.location.origin + "/recorrido-virtual",
+          });
         });
-      });
 
       // 50 USD Button
-      document.getElementById('epayco-button-50usd')?.addEventListener('click', function() {
-        var handler = ePayco.checkout.configure({
-          key: 'd26b8a1a7a57889cd84d7fc4ca695ed0',
-          test: false
-        });
+      document
+        .getElementById("epayco-button-50usd")
+        ?.addEventListener("click", function () {
+          var handler = ePayco.checkout.configure({
+            key: "d26b8a1a7a57889cd84d7fc4ca695ed0",
+            test: false,
+          });
 
-        handler.open({
-          external: true,
-          amount: '50',
-          tax: '0.00',
-          tax_base: '50',
-          name: 'Donacion 50 usd',
-          description: 'Donacion 50 usd',
-          currency: 'usd',
-          country: 'CO',
-          response: window.location.origin + '/recorrido-virtual',
-          confirmation: window.location.origin + '/recorrido-virtual'
+          handler.open({
+            external: true,
+            amount: "50",
+            tax: "0.00",
+            tax_base: "50",
+            name: "Donacion 50 usd",
+            description: "Donacion 50 usd",
+            currency: "usd",
+            country: "CO",
+            response: window.location.origin + "/recorrido-virtual",
+            confirmation: window.location.origin + "/recorrido-virtual",
+          });
         });
-      });
     };
 
     // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initEpayco);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initEpayco);
     } else {
       initEpayco();
     }
