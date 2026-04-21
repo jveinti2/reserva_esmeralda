@@ -81,25 +81,6 @@ import Footer from "../../components/layout/Footer.astro";
       </div>
     </div>
 
-    <!-- Mapa del Sendero -->
-    <div class="container m-auto my-16 px-4">
-      <div class="lg:mx-auto lg:max-w-3xl">
-        <h2
-          class="text-center font-bold text-esmeralda text-3xl md:text-4xl leading-tight mb-8"
-        >
-          Mapa del Sendero
-        </h2>
-        <div class="rounded-xl overflow-hidden shadow-lg">
-          <img
-            src="/sendero/mapa.png"
-            alt="Mapa del Sendero Interpretativo Alas y Naturaleza - Reserva Natural La Esmeralda"
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-
     <!-- Los 5 Despertares -->
     <div class="bg-esmeralda py-16">
       <!-- Wave Divider Top -->
@@ -132,21 +113,29 @@ import Footer from "../../components/layout/Footer.astro";
         <div class="lg:mx-auto lg:max-w-6xl space-y-12">
           <!-- Despertar 1 -->
           <div
-            class="mx-3 md:mx-0 p-6 bg-white border border-gray-200 rounded-lg shadow-md"
+            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
           >
-            <div class="flex items-center gap-4 mb-4">
-              <div class="text-5xl">📍</div>
-              <div>
-                <h3 class="text-2xl font-bold text-esmeralda">
-                  Punto de interés #1 - Despertar del papel
-                </h3>
-                <p class="text-gray-600 font-medium">Mapa del inicio</p>
+            <div class="p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="text-5xl">📍</div>
+                <div>
+                  <h3 class="text-2xl font-bold text-esmeralda">
+                    Punto de interés #1 - Despertar del papel
+                  </h3>
+                  <p class="text-gray-600 font-medium">Mapa del inicio</p>
+                </div>
               </div>
+              <p class="text-gray-700">
+                Reconoces tu papel: caminas como actor de reparto en una obra donde
+                la naturaleza es protagonista.
+              </p>
             </div>
-            <p class="text-gray-700 mb-4">
-              Reconoces tu papel: caminas como actor de reparto en una obra donde
-              la naturaleza es protagonista.
-            </p>
+            <img
+              src="/sendero/mapa.png"
+              alt="Mapa del Sendero Interpretativo Alas y Naturaleza - Reserva Natural La Esmeralda"
+              class="w-full h-auto"
+              loading="lazy"
+            />
           </div>
 
           <!-- Despertar 2 -->
