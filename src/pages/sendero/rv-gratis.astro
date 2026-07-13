@@ -51,7 +51,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
               id="epayco-button-10usd"
               class="w-full sm:w-auto bg-lime-500 hover:bg-lime-800 text-white font-medium rounded-lg px-6 py-3 transition-all focus:ring-4 focus:ring-lime-300"
             >
-              💵 10 USD
+              💵 15 usd
             </button>
             <button
               id="epayco-button-25usd"
@@ -120,7 +120,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
               rel="noopener noreferrer"
               class="bg-lime-500 hover:bg-lime-800 text-white font-medium rounded-lg px-6 py-3 transition-all focus:ring-4 focus:ring-lime-300"
             >
-              💵 10 USD
+              💵 15 usd
             </a>
             <a
               href="https://biz.payulatam.com/L0f1606204847AB"
@@ -174,7 +174,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   // Only run payment scripts on mobile
   if (window.innerWidth < 768) {
     const initEpayco = () => {
-      // 10 USD Button
+      // 15 usd Button
       document
         .getElementById("epayco-button-10usd")
         ?.addEventListener("click", function () {
@@ -188,8 +188,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             amount: "10",
             tax: "0.00",
             tax_base: "10",
-            name: "Donacion 10 usd",
-            description: "Donacion 10 usd",
+            name: "Donacion 15 usd",
+            description: "Donacion 15 usd",
             currency: "usd",
             country: "CO",
             response: window.location.origin + "/recorrido-virtual",
