@@ -813,9 +813,16 @@
   z-index: 60;
   margin-bottom: -60px;
   transition:
+    transform 0.35s var(--ease-esm),
     background 0.4s ease,
     box-shadow 0.4s ease,
     backdrop-filter 0.4s ease;
+}
+
+/* Se retira al bajar y vuelve al subir: asi no pisa las secciones
+   fijadas (testimonios) ni tapa el contenido en pantallas cortas. */
+.site-header.is-oculto {
+  transform: translateY(-100%);
 }
 
 .site-header.is-scrolled {

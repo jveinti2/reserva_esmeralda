@@ -260,12 +260,32 @@ const enProgramas = programas.some(
     const menuCerrar = document.getElementById("menu-cerrar");
     const menuMovil = document.getElementById("menu-movil");
 
-    // --- Tenido al hacer scroll -------------------------------
+    // --- Tenido y autoocultado al hacer scroll -----------------
     if (header) {
       let ticking = false;
+      let ultimaY = window.scrollY;
+
       const pintar = () => {
-        header.classList.toggle("is-scrolled", window.scrollY > 40);
+        const y = window.scrollY;
+        header.classList.toggle("is-scrolled", y > 40);
+
+        // Con un menu abierto la barra se queda: esconderla dejaria
+        // el panel colgando sin su boton de cierre.
+        const menuAbierto =
+          (menuMovil && !menuMovil.hasAttribute("hidden")) ||
+          (mega && mega.classList.contains("abierto"));
+
+        const delta = y - ultimaY;
+        if (menuAbierto || y < 140) {
+          header.classList.remove("is-oculto");
+        } else if (delta > 4) {
+          header.classList.add("is-oculto");
+        } else if (delta < -4) {
+          header.classList.remove("is-oculto");
+        }
+        ultimaY = y;
       };
+
       const alScroll = () => {
         if (ticking) return;
         ticking = true;
@@ -324,8 +344,10 @@ const enProgramas = programas.some(
     // --- Panel movil ------------------------------------------
     function abrirMenu(abierto: boolean) {
       if (!menuMovil || !menuBtn) return;
-      if (abierto) menuMovil.removeAttribute("hidden");
-      else menuMovil.setAttribute("hidden", "");
+      if (abierto) {
+        menuMovil.removeAttribute("hidden");
+        header?.classList.remove("is-oculto");
+      } else menuMovil.setAttribute("hidden", "");
       menuBtn.setAttribute("aria-expanded", String(abierto));
       document.documentElement.style.overflow = abierto ? "hidden" : "";
       if (abierto) menuCerrar?.focus();
