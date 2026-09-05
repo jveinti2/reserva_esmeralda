@@ -2,15 +2,27 @@
 interface Props {
   images: string[];
   alt?: string;
+  /** Clases del contenedor externo. Por defecto tarjeta con esquinas redondeadas. */
+  wrapperClass?: string;
+  /** Clases que fijan la altura de las slides. */
+  heightClass?: string;
+  /** Carga la primera imagen con prioridad (heroes above-the-fold). */
+  eager?: boolean;
 }
 
-const { images, alt = "Imagen" } = Astro.props;
+const {
+  images,
+  alt = "Imagen",
+  wrapperClass = "relative w-full overflow-hidden rounded-lg",
+  heightClass = "relative h-64 md:h-96 w-full",
+  eager = false,
+} = Astro.props;
 const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div id={carouselId} class="carousel-wrapper relative w-full overflow-hidden rounded-lg">
+<div id={carouselId} class:list={["carousel-wrapper", wrapperClass]}>
   <!-- Carousel container -->
-  <div class="relative h-64 md:h-96 w-full">
+  <div class:list={[heightClass]}>
     {images.map((image, index) => (
       <div
         class:list={[
@@ -24,6 +36,8 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
           class="w-full h-full object-cover"
           alt={`${alt} ${index + 1}`}
           loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 && eager ? "high" : undefined}
+          decoding="async"
         />
       </div>
     ))}
@@ -150,6 +164,6 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initCarousels);
+  initCarousels();
   document.addEventListener('astro:page-load', initCarousels);
 </script>
