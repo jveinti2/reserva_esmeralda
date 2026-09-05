@@ -16,6 +16,7 @@ const carouselImages = [
 <BaseLayout
   title="La Esmeralda Reserva Natural | Cerveza Artesanal"
   description="Cerveza artesanal con ingredientes naturales. Sabor único del bosque seco tropical."
+  preloadImage="/images/emprendimientos/cerveza/fondo_cerveza_2.avif"
 >
   <Header />
 
@@ -125,6 +126,10 @@ const carouselImages = [
         <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <div>
             <img
+          width="960"
+          height="1280"
+          loading="lazy"
+          decoding="async"
               src="/images/emprendimientos/cerveza/maestro_cervecero.avif"
               alt="Maestro Cervecero"
               class="rounded-lg shadow-lg"

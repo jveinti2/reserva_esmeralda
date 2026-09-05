@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer.astro';
 <BaseLayout
   title="La Esmeralda Reserva Natural | Vincúlate"
   description="Descubre cómo puedes vincularte con nuestra reserva natural: recorrido virtual, plan de padrinos o voluntariado."
+  preloadImage="/images/banner_2.avif"
 >
   <Header />
 
@@ -37,6 +38,10 @@ import Footer from '../components/layout/Footer.astro';
         <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
           <a href="/sendero/rv-gratis/" class="relative h-48 block overflow-hidden cursor-pointer">
             <img
+          width="1116"
+          height="667"
+          loading="lazy"
+          decoding="async"
               src="/images/vinculate/recorrido.avif"
               alt="Recorrido Virtual 360"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -97,6 +102,10 @@ import Footer from '../components/layout/Footer.astro';
         <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
           <div class="relative h-48 overflow-hidden">
             <img
+          width="1000"
+          height="800"
+          loading="lazy"
+          decoding="async"
               src="/images/padrinos.avif"
               alt="Plan Padrinos y Madrinas"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -147,6 +156,10 @@ import Footer from '../components/layout/Footer.astro';
         <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
           <div class="relative h-48 overflow-hidden">
             <img
+          width="1025"
+          height="899"
+          loading="lazy"
+          decoding="async"
               src="/images/vinculate/voluntariado.avif"
               alt="Programa de Voluntariado"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

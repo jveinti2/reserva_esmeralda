@@ -2,7 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Recorrido Virtual Gratuito - La Esmeralda">
+<BaseLayout
+  title="Recorrido Virtual Gratuito - La Esmeralda"
+  preloadImage="/recorrido.avif"
+>
   <!-- Background Image Container -->
   <div
     class="min-h-screen bg-[url('/recorrido.avif')] bg-center bg-cover bg-no-repeat"
@@ -80,6 +83,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <!-- Logo -->
           <div class="flex justify-center mt-8">
             <img
+          width="600"
+          height="228"
+          loading="lazy"
+          decoding="async"
               src="/logo-sin-bg-blanco.avif"
               alt="La Esmeralda Reserva Natural"
               class="w-64"
@@ -150,6 +157,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
           <!-- Logo Desktop -->
           <img
+          width="600"
+          height="228"
+          loading="lazy"
+          decoding="async"
             src="/logo-sin-bg-blanco.avif"
             alt="La Esmeralda Reserva Natural"
             class="w-72"

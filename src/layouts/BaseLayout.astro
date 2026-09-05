@@ -4,11 +4,15 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  /** Imagen LCP de la pagina. Se precarga porque los fondos CSS
+      son invisibles para el preload scanner del navegador. */
+  preloadImage?: string;
 }
 
 const {
   title = 'La Esmeralda Reserva Natural - Hogar de las ostras de agua dulce',
   description = 'La Reserva Natural La Esmeralda es un oasis de naturaleza en el corazón del Tolima. Descubre nuestro hogar legendario de las ostras de agua dulce, la fauna y la flora silvestre, y ayúdanos a continuar en la misión de la conservación natural.',
+  preloadImage,
 } = Astro.props;
 ---
 
@@ -23,6 +27,12 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
+
+    {
+      preloadImage && (
+        <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+      )
+    }
 
     <!-- Tipografia autohospedada: sin peticiones a terceros -->
     <link
