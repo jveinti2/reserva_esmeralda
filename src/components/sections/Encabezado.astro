@@ -31,7 +31,7 @@ const {
   <div class="encabezado-principal">
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}
     <h2 class:list={["titulo", { "on-dark": claro }]}>
-      {titulo}{acento && <> <em>{acento}</em></>}{cola && <> {cola}</>}
+      {titulo}{acento && <> <em>{acento}</em></>}{cola && <>{" "}{cola}</>}
     </h2>
     {!doble && lead && <p class="lead">{lead}</p>}
   </div>

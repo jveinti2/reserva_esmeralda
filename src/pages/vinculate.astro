@@ -1,290 +1,284 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Encabezado from "../components/sections/Encabezado.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+const planes = [
+  {
+    nombre: "Plan Semilla",
+    precio: "$80 USD",
+    duracion: "3 días / 2 noches",
+    destacado: false,
+    incluye: [
+      "Alojamiento compartido",
+      "3 comidas diarias",
+      "Inducción",
+      "Reforestación",
+      "Certificado",
+    ],
+  },
+  {
+    nombre: "Plan Siembra",
+    precio: "$150 USD",
+    duracion: "7 días / 6 noches",
+    destacado: true,
+    incluye: [
+      "Todo del Plan Semilla +",
+      "Talleres de educación ambiental",
+      "Monitoreo de fauna",
+      "Mantenimiento de senderos",
+      "Participación en investigación",
+    ],
+  },
+  {
+    nombre: "Plan Cosecha",
+    precio: "$250 USD",
+    duracion: "15 días / 14 noches",
+    destacado: false,
+    incluye: [
+      "Todo del Plan Siembra +",
+      "Proyecto de investigación propio",
+      "Formación científica",
+      "Carta de recomendación",
+      "Emprendimientos verdes",
+    ],
+  },
+];
+
+const beneficiosPadrinos = [
+  "Certificado digital de padrino",
+  "Reportes de impacto",
+  "Visitas guiadas",
+];
+
+const beneficiosVoluntariado = [
+  "Alojamiento y alimentación",
+  "Capacitación y talleres",
+  "Certificado de participación",
+];
 ---
 
 <BaseLayout
   title="La Esmeralda Reserva Natural | Vincúlate"
   description="Descubre cómo puedes vincularte con nuestra reserva natural: recorrido virtual, plan de padrinos o voluntariado."
   preloadImage="/images/banner_2.avif"
+  ogImage="/images/banner_2.avif"
 >
   <Header />
 
   <main>
-    <!-- Hero Section -->
-    <div class="bg-[url('/images/banner_2.avif')] bg-cover bg-center bg-no-repeat">
-      <div class="container m-auto">
-        <h1 class="px-4 font-bold text-4xl md:text-6xl leading-tight mb-3 pt-24 lg:pt-32 text-white drop-shadow-xl shadow-black text-shadow-custom">
-          ¿Te gustaría<br />
-          <span class="text-lime-500 text-5xl md:text-9xl">Vincularte?</span>
-        </h1>
-      </div>
-    </div>
+    <Hero
+      imagen="/images/banner_2.avif"
+      alt="Barranquero posado en la Reserva Natural La Esmeralda"
+      posicion="50% 45%"
+      eyebrow="Vincúlate · Doima, Piedras, Tolima"
+      titulo="¿Te gustaría"
+      acento="vincularte?"
+      lead="Existen diferentes formas de apoyar nuestra labor de conservación. Elige la que mejor se adapte a ti y sé parte del cambio."
+      tamano="compacto"
+    />
 
-    <div class="lg:mx-auto lg:max-w-6xl container m-auto px-4 py-12 md:py-16">
-      <!-- Intro -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <p class="text-lg text-gray-700">
-          Existen diferentes formas de apoyar nuestra labor de conservación.
-          Elige la opción que mejor se adapte a ti y sé parte del cambio.
-        </p>
-      </div>
+    <section class="banda-papel">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Tres caminos"
+          titulo="Formas de estar"
+          acento="cerca"
+          lead="Desde una visita virtual hasta quince días viviendo el bosque seco tropical."
+          doble={true}
+          clase="reveal"
+        />
 
-      <!-- Cards Grid -->
-      <div class="grid gap-8 md:grid-cols-3 mb-16">
-
-        <!-- Card 1: Aventura Virtual -->
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-          <a href="/sendero/rv-gratis/" class="relative h-48 block overflow-hidden cursor-pointer">
-            <img
-          width="1116"
-          height="667"
-          loading="lazy"
-          decoding="async"
-              src="/images/vinculate/recorrido.avif"
-              alt="Recorrido Virtual 360"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <!-- Indicador de click -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="bg-white/90 rounded-full p-4 shadow-lg group-hover:scale-110 transition-transform">
-                <svg class="w-10 h-10 text-lime-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
+        <div class="grid12 vias" style="margin-top: 48px;">
+          <!-- 01 · Aventura virtual -->
+          <article class="via reveal">
+            <a href="/sendero/rv-gratis/" class="via-media" aria-label="Abrir el recorrido virtual 360">
+              <img
+                src="/images/vinculate/recorrido.avif"
+                alt="Recorrido virtual 360 por la reserva"
+                width="1116"
+                height="667"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="via-velo"></span>
+              <span class="via-play">
+                <span>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+                </span>
+              </span>
+              <span class="chip chip-lima via-chip">Virtual 360</span>
+            </a>
+            <div class="via-cuerpo">
+              <h3>Aventura virtual</h3>
+              <p>
+                Explora nuestra reserva desde cualquier lugar del mundo con un
+                recorrido virtual 360. Tu aporte nos ayuda a seguir conservando.
+              </p>
+              <div class="via-pie">
+                <span class="via-pie-nota">Apoya con tu donación</span>
+                <div class="via-donaciones">
+                  <button id="epayco-btn-15" type="button" class="btn-donar">
+                    $15 USD
+                  </button>
+                  <button id="epayco-btn-25" type="button" class="btn-donar destacado">
+                    $25 USD
+                  </button>
+                  <button id="epayco-btn-50" type="button" class="btn-donar">
+                    $50 USD
+                  </button>
+                </div>
               </div>
             </div>
-            <span class="absolute bottom-4 left-4 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-              VIRTUAL 360
-            </span>
-            <span class="absolute bottom-4 right-4 bg-white/90 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">
-              Click para explorar
-            </span>
-          </a>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Aventura Virtual</h3>
-            <p class="text-gray-600 mb-4">
-              Explora nuestra reserva desde cualquier lugar del mundo con un recorrido virtual 360.
-              Tu aporte nos ayuda a seguir conservando.
-            </p>
+          </article>
 
-            <div class="border-t border-gray-200 pt-4">
-              <p class="text-sm text-gray-500 mb-3">Apoya con tu donación:</p>
-              <div class="flex gap-2">
-                <button
-                  id="epayco-btn-15"
-                  type="button"
-                  style="background-color: #84cc16; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
-                >
-                  $15 USD
-                </button>
-                <button
-                  id="epayco-btn-25"
-                  type="button"
-                  style="background-color: #65a30d; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
-                >
-                  $25 USD
-                </button>
-                <button
-                  id="epayco-btn-50"
-                  type="button"
-                  style="background-color: #4d7c0f; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; flex: 1; font-size: 0.875rem;"
-                >
-                  $50 USD
-                </button>
+          <!-- 02 · Padrinos y madrinas -->
+          <article class="via reveal">
+            <div class="via-media">
+              <img
+                src="/images/padrinos.avif"
+                alt="Plan de padrinos y madrinas de la reserva"
+                width="1000"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="via-velo"></span>
+              <span class="chip chip-glass via-chip">Padrinos</span>
+            </div>
+            <div class="via-cuerpo">
+              <h3>Padrinos y madrinas</h3>
+              <p>
+                Únete a nuestro programa de apadrinamiento y participa
+                activamente en las actividades de conservación de la reserva.
+              </p>
+              <ul class="via-lista">
+                {
+                  beneficiosPadrinos.map((b) => (
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                      {b}
+                    </li>
+                  ))
+                }
+              </ul>
+              <div class="via-pie">
+                <a href="/contactanos/" class="btn btn-esm">Quiero ser padrino</a>
               </div>
             </div>
-          </div>
+          </article>
+
+          <!-- 03 · Voluntariado -->
+          <article class="via reveal">
+            <div class="via-media">
+              <img
+                src="/images/vinculate/voluntariado.avif"
+                alt="Programa de voluntariado en la reserva"
+                width="1025"
+                height="899"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="via-velo"></span>
+              <span class="chip chip-glass via-chip">Voluntariado</span>
+            </div>
+            <div class="via-cuerpo">
+              <h3>Voluntariado</h3>
+              <p>
+                Vive una experiencia inmersiva de 3 a 15 días. Participa en
+                actividades de conservación, reforestación y educación
+                ambiental.
+              </p>
+              <ul class="via-lista">
+                {
+                  beneficiosVoluntariado.map((b) => (
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                      {b}
+                    </li>
+                  ))
+                }
+              </ul>
+              <div class="via-pie">
+                <a href="/contactanos/" class="btn btn-esm">Quiero ser voluntario</a>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <!-- Card 2: Plan Padrinos y Madrinas -->
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-          <div class="relative h-48 overflow-hidden">
-            <img
-          width="1000"
-          height="800"
-          loading="lazy"
-          decoding="async"
-              src="/images/padrinos.avif"
-              alt="Plan Padrinos y Madrinas"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <span class="absolute bottom-4 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-              PADRINOS
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Plan Padrinos y Madrinas</h3>
-            <p class="text-gray-600 mb-4">
-              Únete a nuestro programa de apadrinamiento y participa activamente
-              en las actividades de conservación de la reserva.
+    <!-- Planes de voluntariado -->
+    <section class="banda-oscura">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Voluntariado"
+          titulo="Elige cuánto"
+          acento="tiempo"
+          cola="te quedas"
+          lead="Tres estancias con el mismo fondo: trabajar el bosque seco tropical con quienes lo cuidan a diario."
+          doble={true}
+          claro={true}
+          clase="reveal"
+        />
+
+        <div class="grid12 planes" style="margin-top: 56px;">
+          {
+            planes.map((p, i) => (
+              <article class:list={["plan", "reveal", { destacado: p.destacado }]}>
+                {p.destacado && <span class="plan-etiqueta">Recomendado</span>}
+                <span class="plan-n acento">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{p.nombre}</h3>
+                <span class="plan-precio">{p.precio}</span>
+                <span class="plan-duracion">{p.duracion}</span>
+                <ul class="plan-lista">
+                  {p.incluye.map((x) => (
+                    <li>{x}</li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Brochure -->
+    <section class="banda-papel">
+      <div class="wrap">
+        <div class="grid12 descarga reveal">
+          <div class="descarga-texto">
+            <h2>¿Interesado en más información?</h2>
+            <p>
+              Descarga nuestro brochure y conoce más sobre la reserva natural,
+              la fruta Kumquat y su potencial en la innovación agroindustrial.
             </p>
-
-            <ul class="text-sm text-gray-600 space-y-2 mb-6">
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Certificado digital de padrino
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Reportes de impacto
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Visitas guiadas
-              </li>
-            </ul>
-
+          </div>
+          <div class="descarga-cta">
             <a
-              href="/contactanos/"
-              class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg transition-colors"
+              href="/docs/KUMQUAT_UNA_OPORTUNIDAD_PARA_LA_INNOVACION_AGROINDUSTRIAL.pdf"
+              download
+              class="btn btn-esm"
             >
-              Quiero ser padrino
+              Descargar documento
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"></path></svg>
             </a>
           </div>
         </div>
-
-        <!-- Card 3: Voluntariado -->
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-          <div class="relative h-48 overflow-hidden">
-            <img
-          width="1025"
-          height="899"
-          loading="lazy"
-          decoding="async"
-              src="/images/vinculate/voluntariado.avif"
-              alt="Programa de Voluntariado"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <span class="absolute bottom-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-              VOLUNTARIADO
-            </span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Voluntariado</h3>
-            <p class="text-gray-600 mb-4">
-              Vive una experiencia inmersiva de 3 a 15 días. Participa en
-              actividades de conservación, reforestación y educación ambiental.
-            </p>
-
-            <ul class="text-sm text-gray-600 space-y-2 mb-6">
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Alojamiento y alimentación
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Capacitación y talleres
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                Certificado de participación
-              </li>
-            </ul>
-
-            <a
-              href="/contactanos/"
-              class="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-colors"
-            >
-              Quiero ser voluntario
-            </a>
-          </div>
-        </div>
       </div>
+    </section>
 
-      <!-- Planes de Voluntariado -->
-      <div class="bg-gradient-to-br from-lime-50 to-green-50 rounded-2xl p-8 mb-16">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
-          Planes de <span class="text-lime-600">Voluntariado</span>
-        </h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-xl p-6 shadow-md">
-            <div class="text-center mb-4">
-              <span class="text-3xl">🌱</span>
-              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Semilla</h3>
-              <p class="text-lime-600 font-bold text-2xl">$80 USD</p>
-              <p class="text-gray-500 text-sm">3 días / 2 noches</p>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li>Alojamiento compartido</li>
-              <li>3 comidas diarias</li>
-              <li>Inducción</li>
-              <li>Reforestación</li>
-              <li>Certificado</li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-xl p-6 shadow-md ring-2 ring-lime-500 relative">
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-              RECOMENDADO
-            </span>
-            <div class="text-center mb-4">
-              <span class="text-3xl">🌿</span>
-              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Siembra</h3>
-              <p class="text-lime-600 font-bold text-2xl">$150 USD</p>
-              <p class="text-gray-500 text-sm">7 días / 6 noches</p>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li>Todo del Plan Semilla +</li>
-              <li>Talleres educación ambiental</li>
-              <li>Monitoreo de fauna</li>
-              <li>Mantenimiento senderos</li>
-              <li>Participación investigación</li>
-            </ul>
-          </div>
-
-          <div class="bg-white rounded-xl p-6 shadow-md">
-            <div class="text-center mb-4">
-              <span class="text-3xl">🌳</span>
-              <h3 class="font-bold text-xl text-gray-900 mt-2">Plan Cosecha</h3>
-              <p class="text-lime-600 font-bold text-2xl">$250 USD</p>
-              <p class="text-gray-500 text-sm">15 días / 14 noches</p>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li>Todo del Plan Siembra +</li>
-              <li>Proyecto investigación propio</li>
-              <li>Formación científica</li>
-              <li>Carta de recomendación</li>
-              <li>Emprendimientos verdes</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Seccion Descarga Documento -->
-      <div class="bg-gray-100 rounded-2xl p-8 text-center">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">¿Interesado en más información?</h3>
-        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Descarga nuestro brochure y conoce más sobre la reserva natural,
-          la fruta Kumquat y su potencial en la innovación agroindustrial.
-        </p>
-        <a
-          href="/docs/KUMQUAT_UNA_OPORTUNIDAD_PARA_LA_INNOVACION_AGROINDUSTRIAL.pdf"
-          download
-          class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-colors"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-          Descargar Documento
-        </a>
-      </div>
-    </div>
+    <CTABanda
+      eyebrow="Hablemos"
+      titulo="Cuéntanos qué te"
+      acento="mueve"
+      texto="Padrinazgo, voluntariado o una idea que aún no está en esta página: escríbenos y la miramos juntos."
+      primario={{ texto: "Escríbenos", href: "/contactanos/" }}
+      secundario={{ texto: "Ver vivencias", href: "/servicios/" }}
+    />
   </main>
 
   <Footer />
