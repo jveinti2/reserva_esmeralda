@@ -1,189 +1,97 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import Carousel from '../components/ui/Carousel.astro';
+import PaginaHub from "../layouts/PaginaHub.astro";
+
+const tarjetas = [
+  {
+    href: "/educacion_ambiental/semillero_arte_ambiental/",
+    imagen: "/images/educacion/fondo_arte_ambiental.avif",
+    ancho: 800,
+    alto: 450,
+    alt: "Niños pintando en el semillero de bio arte",
+    chip: "01",
+    titulo: "Semillero Bio Arte",
+  },
+  {
+    href: "/educacion_ambiental/semillero_aves/",
+    imagen: "/images/educacion/fondo_aves.avif",
+    ancho: 800,
+    alto: 450,
+    alt: "Jóvenes observando aves con binoculares",
+    chip: "02",
+    titulo: "Semillero Avistadores",
+  },
+  {
+    href: "/educacion_ambiental/semillero_sembradores/",
+    imagen: "/images/educacion/fondo_sembradores.avif",
+    ancho: 800,
+    alto: 450,
+    alt: "Participantes sembrando árboles en la reserva",
+    chip: "03",
+    titulo: "Semillero Sembradores",
+  },
+];
+
+const puntos = [
+  {
+    titulo: "Aprendizaje vivencial",
+    texto:
+      "Conectamos a niños y jóvenes directamente con la naturaleza a través de experiencias prácticas que despiertan su curiosidad y amor por el medio ambiente.",
+  },
+  {
+    titulo: "Ciencia ciudadana",
+    texto:
+      "Empoderamos a los participantes para que se conviertan en investigadores activos de su entorno, contribuyendo al conocimiento científico local.",
+  },
+  {
+    titulo: "Expresión creativa",
+    texto:
+      "Fomentamos la creatividad como herramienta de sensibilización, permitiendo que los participantes expresen su conexión con la naturaleza a través del arte.",
+  },
+  {
+    titulo: "Conservación activa",
+    texto:
+      "Promovemos acciones concretas de conservación, desde la reforestación hasta la protección de especies, involucrando a las comunidades en el cuidado activo del territorio.",
+  },
+  {
+    titulo: "Comunidad y cooperación",
+    texto:
+      "Construimos redes de colaboración entre participantes, familias y organizaciones, fortaleciendo el tejido social en torno a la conservación ambiental.",
+  },
+  {
+    titulo: "Transformación cultural",
+    texto:
+      "Aspiramos a generar un cambio cultural profundo que valore y respete la biodiversidad, garantizando un futuro sostenible para todos.",
+  },
+];
 ---
 
-<BaseLayout
+<PaginaHub
   title="La Esmeralda Reserva Natural | Educación Ambiental"
   description="Formando defensores de la naturaleza. Programas de educación ambiental en la Reserva Natural La Esmeralda."
->
-  <Header />
-
-  <main>
-    <!-- Hero con carousel de fondo -->
-    <section class="relative">
-      <Carousel
-        images={[
-          "/images/educacion/fondo_educacion_1.avif",
-          "/images/educacion/fondo_educacion_2.avif",
-          "/images/educacion/fondo_educacion_3.avif",
-        ]}
-        alt="Educación Ambiental"
-        wrapperClass="absolute inset-0 w-full h-full z-0 overflow-hidden"
-        heightClass="relative w-full h-full"
-        eager={true}
-      />
-
-      <!-- Hero content -->
-      <div class="relative z-10 flex items-center justify-center h-96 max-w-screen-xl px-4 py-16 mx-auto">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white relative z-10 text-shadow-custom">
-            EDUCACIÓN AMBIENTAL
-          </h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Semilleros -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-screen-xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Nuestros Semilleros</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Semillero Bio Arte -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="800"
-          height="450"
-          loading="lazy"
-          decoding="async"
-              src="/images/educacion/fondo_arte_ambiental.avif"
-              alt="Semillero Bio Arte"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                SEMILLERO BIO ARTE
-              </h3>
-              <a
-                href="/educacion_ambiental/semillero_arte_ambiental/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Semillero Avistadores -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="600"
-          height="399"
-          loading="lazy"
-          decoding="async"
-              src="/images/educacion/fondo_aves.avif"
-              alt="Semillero Avistadores"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                SEMILLERO AVISTADORES
-              </h3>
-              <a
-                href="/educacion_ambiental/semillero_aves/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Semillero Sembradores -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="1002"
-          height="668"
-          loading="lazy"
-          decoding="async"
-              src="/images/educacion/fondo_sembradores.avif"
-              alt="Semillero Sembradores"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                SEMILLERO SEMBRADORES
-              </h3>
-              <a
-                href="/educacion_ambiental/semillero_sembradores/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de detalle -->
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-6">
-          Formando Defensores de la Naturaleza
-        </h2>
-        <h3 class="text-xl font-semibold text-center text-gray-700 mb-10">
-          Nuestra misión es cultivar una nueva generación de líderes ambientales comprometidos con la protección y conservación de los ecosistemas, promoviendo valores de respeto, conocimiento y amor por la naturaleza.
-        </h3>
-
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Aprendizaje Vivencial
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Conectamos a niños y jóvenes directamente con la naturaleza a través de experiencias prácticas que despiertan su curiosidad y amor por el medio ambiente.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Ciencia Ciudadana
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Empoderamos a los participantes para que se conviertan en investigadores activos de su entorno, contribuyendo al conocimiento científico local.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Expresión Creativa
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Fomentamos la creatividad como herramienta de sensibilización, permitiendo que los participantes expresen su conexión con la naturaleza a través del arte.
-            </p>
-          </div>
-
-          <div class="bg-red-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Conservación Activa
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Promovemos acciones concretas de conservación, desde la reforestación hasta la protección de especies, involucrando a las comunidades en el cuidado activo del territorio.
-            </p>
-          </div>
-
-          <div class="bg-teal-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Comunidad y Cooperación
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Construimos redes de colaboración entre participantes, familias y organizaciones, fortaleciendo el tejido social en torno a la conservación ambiental.
-            </p>
-          </div>
-
-          <div class="bg-indigo-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              Transformación Cultural
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Aspiramos a generar un cambio cultural profundo que valore y respete la biodiversidad, garantizando un futuro sostenible para todos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+  eyebrow="Programa 02 · Reserva Natural La Esmeralda"
+  heroTitulo="Educación"
+  heroAcento="ambiental"
+  heroLead="Semilleros que conectan a niños y jóvenes con el bosque seco tropical a través del arte, las aves y la siembra."
+  heroImagen="/images/educacion/fondo_educacion_1.avif"
+  heroAlt="Niños en una actividad de educación ambiental en la reserva"
+  galeria={[
+    "/images/educacion/fondo_educacion_1.avif",
+    "/images/educacion/fondo_educacion_2.avif",
+    "/images/educacion/fondo_educacion_3.avif",
+  ]}
+  galeriaAlt="Educación ambiental en la reserva"
+  introEyebrow="Nuestra misión"
+  introTitulo="Formando defensores de la"
+  introAcento="naturaleza"
+  introLead="Nuestra misión es cultivar una nueva generación de líderes ambientales comprometidos con la protección y conservación de los ecosistemas, promoviendo valores de respeto, conocimiento y amor por la naturaleza."
+  tarjetasEyebrow="Nuestros semilleros"
+  tarjetasTitulo="Tres semilleros"
+  tarjetasAcento="ambientales"
+  tarjetas={tarjetas}
+  puntosTitulo="Cómo trabajamos la"
+  puntosAcento="educación"
+  puntos={puntos}
+  ctaTitulo="Trae a tu grupo a la"
+  ctaAcento="reserva"
+  ctaTexto="Colegios, familias y organizaciones: escríbenos y armamos una jornada de educación ambiental a la medida."
+/>

@@ -1,0 +1,179 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Encabezado from "../components/sections/Encabezado.astro";
+import Tile from "../components/ui/Tile.astro";
+import Carousel from "../components/ui/Carousel.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+interface Tarjeta {
+  href: string;
+  imagen: string;
+  alt: string;
+  ancho?: number;
+  alto?: number;
+  chip?: string;
+  titulo: string;
+  texto?: string;
+}
+
+interface Punto {
+  titulo: string;
+  texto: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  /** Titular del hero, partido para que el acento vaya en Fraunces italica. */
+  heroTitulo: string;
+  heroAcento?: string;
+  heroLead?: string;
+  heroImagen: string;
+  heroAlt: string;
+  heroPosicion?: string;
+  /** Imagenes del carrusel de la intro (las que antes vivian en el hero). */
+  galeria: string[];
+  galeriaAlt: string;
+  tarjetasEyebrow: string;
+  tarjetasTitulo: string;
+  tarjetasAcento?: string;
+  tarjetas: Tarjeta[];
+  introEyebrow: string;
+  introTitulo: string;
+  introAcento?: string;
+  introLead: string;
+  puntosTitulo: string;
+  puntosAcento?: string;
+  puntos: Punto[];
+  ctaTitulo: string;
+  ctaAcento?: string;
+  ctaTexto: string;
+}
+
+const {
+  title,
+  description,
+  eyebrow,
+  heroTitulo,
+  heroAcento,
+  heroLead,
+  heroImagen,
+  heroAlt,
+  heroPosicion = "50% 45%",
+  galeria,
+  galeriaAlt,
+  tarjetasEyebrow,
+  tarjetasTitulo,
+  tarjetasAcento,
+  tarjetas,
+  introEyebrow,
+  introTitulo,
+  introAcento,
+  introLead,
+  puntosTitulo,
+  puntosAcento,
+  puntos,
+  ctaTitulo,
+  ctaAcento,
+  ctaTexto,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} preloadImage={heroImagen} ogImage={heroImagen}>
+  <Header />
+
+  <main>
+    <Hero
+      imagen={heroImagen}
+      alt={heroAlt}
+      posicion={heroPosicion}
+      eyebrow={eyebrow}
+      titulo={heroTitulo}
+      acento={heroAcento}
+      lead={heroLead}
+      tamano="compacto"
+    />
+
+    <!-- Intro: texto + galeria del programa -->
+    <section class="banda-papel">
+      <div class="wrap grid12 hub-intro">
+        <div class="hub-intro-texto reveal">
+          <span class="eyebrow">{introEyebrow}</span>
+          <h2 class="titulo">
+            {introTitulo}{introAcento && <> <em>{introAcento}</em></>}
+          </h2>
+          <p class="lead">{introLead}</p>
+        </div>
+        <div class="hub-intro-galeria reveal">
+          <Carousel
+            images={galeria}
+            alt={galeriaAlt}
+            wrapperClass="relative w-full overflow-hidden rounded-[28px]"
+            heightClass="relative w-full h-72 lg:h-[420px]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarjetas del programa -->
+    <section class="banda-niebla">
+      <div class="wrap hub-tarjetas-envoltura">
+        <Encabezado
+          eyebrow={tarjetasEyebrow}
+          titulo={tarjetasTitulo}
+          acento={tarjetasAcento}
+          clase="reveal"
+        />
+        <div class="hub-tarjetas reveal">
+          {
+            tarjetas.map((t) => (
+              <Tile
+                href={t.href}
+                imagen={t.imagen}
+                alt={t.alt}
+                ancho={t.ancho}
+                alto={t.alto}
+                chip={t.chip}
+                titulo={t.titulo}
+                texto={t.texto}
+                enlaceTexto="Conocer más"
+                clase="hub-tile"
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Lo que hacemos -->
+    <section class="banda-papel">
+      <div class="wrap hub-puntos-envoltura">
+        <div class="hub-puntos-cabecera reveal">
+          <span class="eyebrow">Lo que hacemos</span>
+          <h2 class="titulo hub-puntos-h2">
+            {puntosTitulo}{puntosAcento && <> <em>{puntosAcento}</em></>}
+          </h2>
+        </div>
+        <div class="hub-puntos reveal">
+          {
+            puntos.map((p, i) => (
+              <div class="hub-punto">
+                <span class="hub-punto-n acento">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{p.titulo}</h3>
+                <p>{p.texto}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CTABanda titulo={ctaTitulo} acento={ctaAcento} texto={ctaTexto} />
+  </main>
+
+  <Footer />
+</BaseLayout>

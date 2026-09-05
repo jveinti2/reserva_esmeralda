@@ -1,219 +1,97 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import Carousel from '../components/ui/Carousel.astro';
+import PaginaHub from "../layouts/PaginaHub.astro";
+
+const tarjetas = [
+  {
+    href: "/conservacion_investigacion/herpetos/",
+    imagen: "/images/conservacion/fondo_herpectus.avif",
+    ancho: 700,
+    alto: 450,
+    alt: "Caimán en el río Opia, dentro de la reserva",
+    chip: "01",
+    titulo: "Herpetos",
+  },
+  {
+    href: "/conservacion_investigacion/nutria/",
+    imagen: "/images/conservacion/fondo_nutria.avif",
+    ancho: 1080,
+    alto: 1080,
+    alt: "Nutria neotropical en el corredor del río Opia",
+    chip: "02",
+    titulo: "Nutria y ostras de agua dulce",
+  },
+  {
+    href: "/conservacion_investigacion/aracnidos/",
+    imagen: "/images/conservacion/fondo_aracnidos.avif",
+    ancho: 626,
+    alto: 351,
+    alt: "Arácnido del bosque seco tropical",
+    chip: "03",
+    titulo: "Arácnidos",
+  },
+];
+
+const puntos = [
+  {
+    titulo: "Investigación de ecosistemas críticos",
+    texto:
+      "Exploramos hábitats que albergan especies en riesgo, identificando áreas clave para la conservación de la biodiversidad en nuestro territorio.",
+  },
+  {
+    titulo: "Protección de especies endémicas",
+    texto:
+      "Trabajamos para asegurar la supervivencia de especies que solo se encuentran en nuestra región, promoviendo su estudio y protección activa.",
+  },
+  {
+    titulo: "Innovación en conservación",
+    texto:
+      "Desarrollamos enfoques científicos innovadores para la conservación de especies clave y sus hábitats, contribuyendo a un futuro más equilibrado con la naturaleza.",
+  },
+  {
+    titulo: "Educación para la conservación",
+    texto:
+      "A través de iniciativas educativas, empoderamos a las comunidades locales para que sean defensores de la conservación y garantes de la biodiversidad.",
+  },
+  {
+    titulo: "Monitoreo ambiental",
+    texto:
+      "Implementamos sistemas de monitoreo para evaluar el impacto de nuestras actividades de conservación y mejorar la gestión de los recursos naturales.",
+  },
+  {
+    titulo: "Colaboración científica",
+    texto:
+      "Nos asociamos con instituciones académicas y científicas para realizar investigaciones de impacto que aseguren la preservación de nuestros ecosistemas más frágiles.",
+  },
+];
 ---
 
-<BaseLayout
+<PaginaHub
   title="La Esmeralda Reserva Natural | Conservación e Investigación"
   description="Preservando la biodiversidad para el futuro. Proyectos de conservación e investigación en la Reserva Natural La Esmeralda."
->
-  <Header />
-
-  <main>
-    <!-- Hero con carousel de fondo -->
-    <section class="relative">
-      <Carousel
-        images={[
-          "/images/conservacion/fondo_conservacion_1.avif",
-          "/images/conservacion/fondo_conservacion_2.avif",
-          "/images/conservacion/fondo_conservacion_3.avif",
-        ]}
-        alt="Conservación"
-        wrapperClass="absolute inset-0 w-full h-full z-0 overflow-hidden"
-        heightClass="relative w-full h-full"
-        eager={true}
-      />
-
-      <!-- Hero content -->
-      <div class="relative z-10 flex items-center justify-center h-96 max-w-screen-xl px-4 py-16 mx-auto">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white relative z-10 text-shadow-custom">
-            CONSERVACIÓN E INVESTIGACIÓN
-          </h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Proyectos de conservación -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-screen-xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Proyectos en curso</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Tarjeta 1: Herpetos -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="700"
-          height="450"
-          loading="lazy"
-          decoding="async"
-              src="/images/conservacion/fondo_herpectus.avif"
-              alt="herpetos"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                HERPETOS
-              </h3>
-              <a
-                href="/conservacion_investigacion/herpetos/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Tarjeta 2: Nutria y Ostras -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="1080"
-          height="1080"
-          loading="lazy"
-          decoding="async"
-              src="/images/conservacion/fondo_nutria.avif"
-              alt="nutria"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                NUTRIA Y OSTRAS DE AGUA DULCE
-              </h3>
-              <a
-                href="/conservacion_investigacion/nutria/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Tarjeta 3: Arácnidos -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="626"
-          height="351"
-          loading="lazy"
-          decoding="async"
-              src="/images/conservacion/fondo_aracnidos.avif"
-              alt="aracnidos"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10">
-                ARÁCNIDOS
-              </h3>
-              <a
-                href="/conservacion_investigacion/aracnidos/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de detalle -->
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-6">
-          Preservando la Biodiversidad para el Futuro
-        </h2>
-        <h3 class="text-xl font-semibold text-center text-gray-700 mb-10">
-          Nuestra misión es estudiar y proteger los ecosistemas que albergan especies únicas y vitales, promoviendo prácticas sostenibles y creando un legado de conservación para las futuras generaciones.
-        </h3>
-
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-green-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Investigación de Ecosistemas Críticos
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Exploramos hábitats que albergan especies en riesgo, identificando áreas clave para la conservación de la biodiversidad en nuestro territorio.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-blue-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Protección de Especies Endémicas
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Trabajamos para asegurar la supervivencia de especies que solo se encuentran en nuestra región, promoviendo su estudio y protección activa.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-yellow-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Innovación en Conservación
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Desarrollamos enfoques científicos innovadores para la conservación de especies clave y sus hábitats, contribuyendo a un futuro más equilibrado con la naturaleza.
-            </p>
-          </div>
-
-          <div class="bg-red-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-red-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Educación para la Conservación
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              A través de iniciativas educativas, empoderamos a las comunidades locales para que sean defensores de la conservación y garantes de la biodiversidad.
-            </p>
-          </div>
-
-          <div class="bg-teal-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-teal-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Monitoreo Ambiental
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Implementamos sistemas de monitoreo para evaluar el impacto de nuestras actividades de conservación y mejorar la gestión de los recursos naturales.
-            </p>
-          </div>
-
-          <div class="bg-indigo-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <div class="mb-4 text-center">
-              <svg class="w-12 h-12 text-indigo-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l1.412 4.245h4.491l-3.632 2.736 1.412 4.245L12 8.49l-3.632 2.736 1.412-4.245H6.097z" />
-              </svg>
-            </div>
-            <h4 class="text-lg font-bold text-gray-800 text-center">
-              Colaboración Científica
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Nos asociamos con instituciones académicas y científicas para realizar investigaciones de impacto que aseguren la preservación de nuestros ecosistemas más frágiles.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+  eyebrow="Programa 01 · Reserva Natural La Esmeralda"
+  heroTitulo="Conservación"
+  heroAcento="e investigación"
+  heroLead="Estudiamos y protegemos los ecosistemas que albergan especies únicas del bosque seco tropical."
+  heroImagen="/images/conservacion/fondo_conservacion_1.avif"
+  heroAlt="Trabajo de campo en los proyectos de conservación de la reserva"
+  galeria={[
+    "/images/conservacion/fondo_conservacion_1.avif",
+    "/images/conservacion/fondo_conservacion_2.avif",
+    "/images/conservacion/fondo_conservacion_3.avif",
+  ]}
+  galeriaAlt="Conservación e investigación en la reserva"
+  introEyebrow="Nuestra misión"
+  introTitulo="Preservando la biodiversidad para el"
+  introAcento="futuro"
+  introLead="Nuestra misión es estudiar y proteger los ecosistemas que albergan especies únicas y vitales, promoviendo prácticas sostenibles y creando un legado de conservación para las futuras generaciones."
+  tarjetasEyebrow="Proyectos en curso"
+  tarjetasTitulo="Tres frentes de"
+  tarjetasAcento="investigación"
+  tarjetas={tarjetas}
+  puntosTitulo="Cómo trabajamos la"
+  puntosAcento="conservación"
+  puntos={puntos}
+  ctaTitulo="Investiga con"
+  ctaAcento="nosotros"
+  ctaTexto="Si eres investigador, estudiante o simplemente quieres aportar, hay un lugar para ti en los proyectos de la reserva."
+/>

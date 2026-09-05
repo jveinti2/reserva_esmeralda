@@ -1,212 +1,91 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import Carousel from '../components/ui/Carousel.astro';
+import PaginaHub from "../layouts/PaginaHub.astro";
+
+const tarjetas = [
+  {
+    href: "/emprendimientos/cerveza/",
+    imagen: "/images/emprendimientos/img_cerveza_card_1.avif",
+    alt: "Cerveza artesanal de la reserva",
+    chip: "01",
+    titulo: "Cerveza artesanal",
+  },
+  {
+    href: "/emprendimientos/yogurt/",
+    imagen: "/images/emprendimientos/img_1_yogurt.avif",
+    alt: "Yogurt artesanal de la reserva",
+    chip: "02",
+    titulo: "Yogurt artesanal",
+  },
+  {
+    href: "/emprendimientos/mermelada/",
+    imagen: "/images/emprendimientos/img_1_mermalada_.avif",
+    alt: "Mermelada artesanal de la reserva",
+    chip: "03",
+    titulo: "Mermelada artesanal",
+  },
+];
+
+const puntos = [
+  {
+    titulo: "Producción sostenible",
+    texto:
+      "Todos nuestros productos se elaboran utilizando prácticas amigables con el ambiente, minimizando residuos y priorizando insumos locales y orgánicos.",
+  },
+  {
+    titulo: "Autofinanciamiento",
+    texto:
+      "Los ingresos generados por nuestros emprendimientos se reinvierten en proyectos de conservación, educación ambiental y mejoramiento de la reserva.",
+  },
+  {
+    titulo: "Impacto comunitario",
+    texto:
+      "Generamos empleo local y compartimos conocimientos con la comunidad sobre producción artesanal y emprendimiento sostenible.",
+  },
+  {
+    titulo: "Economía circular",
+    texto:
+      "Aprovechamos residuos orgánicos de la reserva como insumos, cerrando ciclos y reduciendo el impacto ambiental de nuestra operación.",
+  },
+  {
+    titulo: "Calidad artesanal",
+    texto:
+      "Cada producto es elaborado con dedicación y técnicas tradicionales, garantizando calidad superior y sabores únicos.",
+  },
+  {
+    titulo: "Conciencia ambiental",
+    texto:
+      "Cada compra apoya directamente la conservación del bosque seco tropical y la protección de especies en peligro.",
+  },
+];
 ---
 
-<BaseLayout
+<PaginaHub
   title="La Esmeralda Reserva Natural | Emprendimientos Verdes"
-  description="Sostenibilidad económica y ambiental. Emprendimientos verdes que generan impacto positivo en la comunidad."
->
-  <Header />
-
-  <main>
-    <!-- Hero con carousel -->
-    <section class="relative">
-      <Carousel
-        images={[
-          "/images/emprendimientos/fondo_emprendimientos_1.avif",
-          "/images/emprendimientos/fondo_emprendimientos_2.avif",
-          "/images/emprendimientos/fondo_emprendimientos_3.avif",
-        ]}
-        alt="Emprendimientos"
-        wrapperClass="absolute inset-0 w-full h-full z-0 overflow-hidden"
-        heightClass="relative w-full h-full"
-        eager={true}
-      />
-
-      <!-- Hero content -->
-      <div class="relative z-10 flex items-center justify-center h-96 max-w-screen-xl px-4 py-16 mx-auto">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white relative z-10 text-shadow-custom">
-            EMPRENDIMIENTOS VERDES
-          </h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Nuestros emprendimientos -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-screen-xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">Nuestros Emprendimientos</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Cerveza Artesanal -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="900"
-          height="1600"
-          loading="lazy"
-          decoding="async"
-              src="/images/emprendimientos/img_cerveza_card_1.avif"
-              alt="Cerveza Artesanal"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10 text-shadow-custom">
-                CERVEZA ARTESANAL
-              </h3>
-              <a
-                href="/emprendimientos/cerveza/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Yogurt Artesanal -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="632"
-          height="407"
-          loading="lazy"
-          decoding="async"
-              src="/images/emprendimientos/img_1_yogurt.avif"
-              alt="Yogurt Artesanal"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10 text-shadow-custom">
-                YOGURT ARTESANAL
-              </h3>
-              <a
-                href="/emprendimientos/yogurt/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-
-          <!-- Mermelada Artesanal -->
-          <div class="relative overflow-hidden bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 h-80">
-            <img
-          width="413"
-          height="404"
-          loading="lazy"
-          decoding="async"
-              src="/images/emprendimientos/img_1_mermalada_.avif"
-              alt="Mermelada Artesanal"
-              class="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-            <div class="relative flex flex-col justify-between h-full p-6">
-              <h3 class="text-2xl font-semibold text-white relative z-10 text-shadow-custom">
-                MERMELADA ARTESANAL
-              </h3>
-              <a
-                href="/emprendimientos/mermelada/"
-                class="mt-auto inline-block px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-              >
-                Conocer Más
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de impacto -->
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-900 mb-6">
-          Emprendimientos con Propósito
-        </h2>
-        <h3 class="text-xl font-semibold text-center text-gray-700 mb-10">
-          Nuestros emprendimientos verdes combinan sostenibilidad económica con conservación ambiental, generando ingresos que financian las actividades de la reserva mientras promovemos prácticas responsables con el medio ambiente.
-        </h3>
-
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              🌱 Producción Sostenible
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Todos nuestros productos se elaboran utilizando prácticas amigables con el ambiente, minimizando residuos y priorizando insumos locales y orgánicos.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              💰 Autofinanciamiento
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Los ingresos generados por nuestros emprendimientos se reinvierten en proyectos de conservación, educación ambiental y mejoramiento de la reserva.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              👥 Impacto Comunitario
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Generamos empleo local y compartimos conocimientos con la comunidad sobre producción artesanal y emprendimiento sostenible.
-            </p>
-          </div>
-
-          <div class="bg-red-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              ♻️ Economía Circular
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Aprovechamos residuos orgánicos de la reserva como insumos, cerrando ciclos y reduciendo el impacto ambiental de nuestra operación.
-            </p>
-          </div>
-
-          <div class="bg-teal-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              🏆 Calidad Artesanal
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Cada producto es elaborado con dedicación y técnicas tradicionales, garantizando calidad superior y sabores únicos.
-            </p>
-          </div>
-
-          <div class="bg-indigo-50 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex flex-col">
-            <h4 class="text-lg font-bold text-gray-800 text-center mb-4">
-              🌍 Conciencia Ambiental
-            </h4>
-            <p class="text-gray-600 text-center flex-grow">
-              Cada compra apoya directamente la conservación del bosque seco tropical y la protección de especies en peligro.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sello Verde -->
-    <section class="py-16 bg-gradient-to-r from-green-100 to-lime-100">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-8">
-          Reconocimiento Ambiental
-        </h2>
-        <div class="max-w-2xl mx-auto">
-          <img
-          width="1000"
-          height="1000"
-          loading="lazy"
-          decoding="async"
-            src="/images/emprendimientos/sello_verde_cortolima.avif"
-            alt="Sello Verde Cortolima"
-            class="mx-auto mb-6 max-w-xs"
-          />
-          <p class="text-lg text-gray-700">
-            Nuestros emprendimientos cuentan con el reconocimiento de CORTOLIMA, certificando nuestro compromiso con prácticas ambientalmente responsables y sostenibles.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+  description="Emprendimientos con propósito. Productos artesanales sostenibles que financian la conservación en la Reserva Natural La Esmeralda."
+  eyebrow="Programa 03 · Reserva Natural La Esmeralda"
+  heroTitulo="Emprendimientos"
+  heroAcento="verdes"
+  heroLead="Productos artesanales del bosque cuya venta financia la conservación de la reserva."
+  heroImagen="/images/emprendimientos/fondo_emprendimientos_1.avif"
+  heroAlt="Productos artesanales de los emprendimientos verdes de la reserva"
+  galeria={[
+    "/images/emprendimientos/fondo_emprendimientos_1.avif",
+    "/images/emprendimientos/fondo_emprendimientos_2.avif",
+    "/images/emprendimientos/fondo_emprendimientos_3.avif",
+  ]}
+  galeriaAlt="Emprendimientos verdes de la reserva"
+  introEyebrow="Nuestra misión"
+  introTitulo="Emprendimientos con"
+  introAcento="propósito"
+  introLead="Nuestros emprendimientos verdes combinan sostenibilidad económica con conservación ambiental, generando ingresos que financian las actividades de la reserva mientras promovemos prácticas responsables con el medio ambiente."
+  tarjetasEyebrow="Nuestros emprendimientos"
+  tarjetasTitulo="Tres productos del"
+  tarjetasAcento="bosque"
+  tarjetas={tarjetas}
+  puntosTitulo="Cómo trabajamos los"
+  puntosAcento="emprendimientos"
+  puntos={puntos}
+  ctaTitulo="Compra y"
+  ctaAcento="conserva"
+  ctaTexto="Cada producto que llevas sostiene el trabajo de conservación del bosque seco tropical. Escríbenos para conocer precios y disponibilidad."
+/>
