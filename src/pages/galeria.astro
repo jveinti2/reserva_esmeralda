@@ -2,35 +2,22 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Encabezado from "../components/sections/Encabezado.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
 
-const galleryImages = [
-  { src: "/images/galeria/g1_1.avif", alt: "Galería 1" },
-  { src: "/images/galeria/g1_2.avif", alt: "Galería 2" },
-  { src: "/images/galeria/g1_3.avif", alt: "Galería 3" },
-  { src: "/images/galeria/g2_1.avif", alt: "Galería 4" },
-  { src: "/images/galeria/g2_2.avif", alt: "Galería 5" },
-  { src: "/images/galeria/g2_3.avif", alt: "Galería 6" },
-  { src: "/images/galeria/g3_1.avif", alt: "Galería 7" },
-  { src: "/images/galeria/g3_2.avif", alt: "Galería 8" },
-  { src: "/images/galeria/g3_3.avif", alt: "Galería 9" },
-  { src: "/images/galeria/g4_1.avif", alt: "Galería 10" },
-  { src: "/images/galeria/g4_2.avif", alt: "Galería 11" },
-  { src: "/images/galeria/g4_3.avif", alt: "Galería 12" },
-  { src: "/images/galeria/g5_1.avif", alt: "Galería 13" },
-  { src: "/images/galeria/g5_2.avif", alt: "Galería 14" },
-  { src: "/images/galeria/g5_3.avif", alt: "Galería 15" },
-  { src: "/images/galeria/g6_1.avif", alt: "Galería 16" },
-  { src: "/images/galeria/g6_2.avif", alt: "Galería 17" },
-  { src: "/images/galeria/g6_3.avif", alt: "Galería 18" },
-  { src: "/images/galeria/g7_1.avif", alt: "Galería 19" },
-  { src: "/images/galeria/g7_2.avif", alt: "Galería 20" },
-  { src: "/images/galeria/g7_3.avif", alt: "Galería 21" },
-  { src: "/images/galeria/g8_1.avif", alt: "Galería 22" },
-  { src: "/images/galeria/g8_2.avif", alt: "Galería 23" },
-  { src: "/images/galeria/g8_3.avif", alt: "Galería 24" },
-  { src: "/images/galeria/g9_1.avif", alt: "Galería 25" },
-  { src: "/images/galeria/g9_2.avif", alt: "Galería 26" },
-  { src: "/images/galeria/g9_3.avif", alt: "Galería 27" },
+const imagenes = Array.from({ length: 9 }, (_, g) =>
+  Array.from({ length: 3 }, (_, n) => ({
+    src: `/images/galeria/g${g + 1}_${n + 1}.avif`,
+    alt: `Fotografía ${g * 3 + n + 1} de la Reserva Natural La Esmeralda`,
+  })),
+).flat();
+
+const colecciones = [
+  { titulo: "Flora", texto: "Descubre la diversidad de plantas del bosque seco tropical." },
+  { titulo: "Fauna", texto: "Conoce las especies que habitan nuestra reserva." },
+  { titulo: "Paisajes", texto: "Paisajes únicos del ecosistema de La Esmeralda." },
+  { titulo: "Comunidad", texto: "Personas que hacen posible la conservación." },
 ];
 ---
 
@@ -38,63 +25,75 @@ const galleryImages = [
   title="La Esmeralda Reserva Natural | Galería"
   description="Explora la belleza natural de La Esmeralda a través de nuestra galería fotográfica."
   preloadImage="/images/galeria/banner_galeria.avif"
+  ogImage="/images/galeria/banner_galeria.avif"
 >
   <Header />
 
   <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-96"
-      style="background-image: url('/images/galeria/banner_galeria.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-6xl font-bold mb-4">
-            Galería Fotográfica
-          </h1>
-          <p class="text-xl md:text-2xl">
-            Descubre la belleza del bosque seco tropical
+    <Hero
+      imagen="/images/galeria/banner_galeria.avif"
+      alt="Grupo de visitantes en la Reserva Natural La Esmeralda"
+      posicion="50% 40%"
+      eyebrow="Galería fotográfica"
+      titulo="Un vistazo a"
+      acento="nuestra reserva"
+      lead="Cada imagen cuenta una historia de conservación, biodiversidad y conexión con la naturaleza."
+      tamano="compacto"
+    />
+
+    <section class="banda-papel">
+      <div class="wrap grid12 galeria-intro">
+        <div class="galeria-intro-texto reveal">
+          <span class="eyebrow">La belleza del bosque seco</span>
+          <h2 class="titulo">Los rincones más hermosos de <em>La Esmeralda</em></h2>
+        </div>
+        <div class="galeria-intro-lead reveal">
+          <p class="lead">
+            Explora los rincones más hermosos de La Esmeralda, desde sus
+            senderos llenos de vida hasta los rostros de quienes trabajan día a
+            día por la protección de este ecosistema único.
+          </p>
+          <p class="lead">
+            Te invitamos a sumergirte en esta experiencia visual y descubrir por
+            qué este lugar es tan especial para la conservación del bosque seco
+            tropical.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Introducción -->
-    <section class="container mx-auto px-6 py-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-6">
-          Un Vistazo a Nuestra Reserva
-        </h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          Cada imagen cuenta una historia de conservación, biodiversidad y
-          conexión con la naturaleza. Explora los rincones más hermosos de La
-          Esmeralda, desde sus senderos llenos de vida hasta los rostros de
-          quienes trabajan día a día por la protección de este ecosistema único.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Te invitamos a sumergirte en esta experiencia visual y descubrir por
-          qué este lugar es tan especial para la conservación del bosque seco
-          tropical.
-        </p>
+    <section class="banda-papel galeria-banda">
+      <div class="wrap">
+        <div class="mosaico reveal">
+          {
+            imagenes.map((img, i) => (
+              <button
+                type="button"
+                class="tile mosaico-pieza"
+                data-abre-foto={i}
+                aria-label={`Ampliar: ${img.alt}`}
+              >
+                <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+                <span class="mosaico-lupa">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6M11 8v6M8 11h6" /></svg>
+                </span>
+              </button>
+            ))
+          }
+        </div>
       </div>
     </section>
 
-    <!-- Galería -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
+    <section class="banda-niebla">
+      <div class="wrap colecciones-envoltura">
+        <Encabezado eyebrow="Explora" titulo="Nuestras" acento="colecciones" clase="reveal" />
+        <div class="colecciones reveal">
           {
-            galleryImages.map((image) => (
-              <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
+            colecciones.map((c, i) => (
+              <div class="coleccion">
+                <span class="coleccion-n acento">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{c.titulo}</h3>
+                <p>{c.texto}</p>
               </div>
             ))
           }
@@ -102,90 +101,72 @@ const galleryImages = [
       </div>
     </section>
 
-    <!-- Categorías -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Explora Nuestras Colecciones
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
-        >
-          <div
-            class="text-center p-6 bg-green-50 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <div class="text-5xl mb-4">🌿</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Flora</h3>
-            <p class="text-gray-600">
-              Descubre la diversidad de plantas del bosque seco tropical
-            </p>
-          </div>
-
-          <div
-            class="text-center p-6 bg-blue-50 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <div class="text-5xl mb-4">🦜</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Fauna</h3>
-            <p class="text-gray-600">
-              Conoce las especies que habitan nuestra reserva
-            </p>
-          </div>
-
-          <div
-            class="text-center p-6 bg-yellow-50 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <div class="text-5xl mb-4">🏞️</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Paisajes</h3>
-            <p class="text-gray-600">
-              Paisajes únicos del ecosistema de La Esmeralda
-            </p>
-          </div>
-
-          <div
-            class="text-center p-6 bg-purple-50 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <div class="text-5xl mb-4">👥</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Comunidad</h3>
-            <p class="text-gray-600">
-              Personas que hacen posible la conservación
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section
-      class="py-16 bg-gradient-to-r from-green-500 to-lime-500 text-white text-center"
-    >
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          ¿Quieres vivir esta experiencia en persona?
-        </h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Visita La Esmeralda y sé testigo de la belleza natural que
-          protegemos con dedicación cada día.
-        </p>
-        <a
-          href="/vinculate/"
-          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
-        >
-          Planea tu visita
-          <svg
-            class="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
+    <CTABanda
+      eyebrow="Galería"
+      titulo="¿Quieres vivir esto en"
+      acento="persona?"
+      texto="Visita La Esmeralda y sé testigo de la belleza natural que protegemos con dedicación cada día."
+      primario={{ texto: "Planea tu visita", href: "/contactanos/" }}
+      secundario={{ texto: "Vincúlate", href: "/vinculate/" }}
+    />
   </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Fotografía ampliada">
+    <button type="button" class="lightbox-cerrar" data-cierra-foto aria-label="Cerrar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav anterior" data-foto-anterior aria-label="Anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav siguiente" data-foto-siguiente aria-label="Siguiente">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
 
   <Footer />
 </BaseLayout>
+
+<script>
+  function initGaleria() {
+    const dlg = document.getElementById("lightbox") as HTMLDialogElement | null;
+    const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+    const piezas = Array.from(document.querySelectorAll<HTMLElement>("[data-abre-foto]"));
+    if (!dlg || !img || piezas.length === 0) return;
+    if (dlg.dataset.listo === "1") return;
+    dlg.dataset.listo = "1";
+
+    let actual = 0;
+
+    function mostrar(i: number) {
+      actual = (i + piezas.length) % piezas.length;
+      const foto = piezas[actual].querySelector("img");
+      if (!foto || !img) return;
+      img.src = foto.src;
+      img.alt = foto.alt;
+    }
+
+    piezas.forEach((p, i) => {
+      p.addEventListener("click", () => {
+        mostrar(i);
+        dlg.showModal();
+      });
+    });
+
+    dlg.querySelector("[data-cierra-foto]")?.addEventListener("click", () => dlg.close());
+    dlg.querySelector("[data-foto-anterior]")?.addEventListener("click", () => mostrar(actual - 1));
+    dlg.querySelector("[data-foto-siguiente]")?.addEventListener("click", () => mostrar(actual + 1));
+
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    dlg.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") mostrar(actual - 1);
+      if (e.key === "ArrowRight") mostrar(actual + 1);
+    });
+  }
+
+  initGaleria();
+  document.addEventListener("astro:page-load", initGaleria);
+</script>

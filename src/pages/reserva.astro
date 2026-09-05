@@ -1,359 +1,236 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import Card from '../components/ui/Card.astro';
-import TeamMember from '../components/ui/TeamMember.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Encabezado from "../components/sections/Encabezado.astro";
+import TeamMember from "../components/ui/TeamMember.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+const pilares = [
+  {
+    titulo: "Objetivo",
+    parrafos: [
+      "En nuestra Reserva Natural, nos dedicamos a la conservación de la diversidad biológica y a promover un uso sostenible de los recursos naturales. Este refugio alberga una rica variedad de recursos naturales que son esenciales para la fauna silvestre, proporcionando alimento y un suministro constante de agua.",
+      "Gracias a estos esfuerzos, tanto las especies nativas como aquellas que han encontrado un hogar aquí tras el deterioro de su hábitat pueden vivir en un entorno protegido, lejos de la amenaza de la caza. Trabajamos por un futuro donde la naturaleza y la humanidad coexistan en armonía.",
+    ],
+  },
+  {
+    titulo: "Misión",
+    parrafos: [
+      "Ser un referente vivo de conservación y educación ambiental que demuestra que un pequeño territorio puede generar un gran impacto. Proyectamos a la Reserva Natural La Esmeralda como un modelo inspirador de protección de la biodiversidad, restauración ecológica y aprendizaje comunitario.",
+      "A través de la educación ambiental, la participación ciudadana y alianzas estratégicas, buscamos cerrar la brecha entre las personas y la naturaleza, fortaleciendo una cultura ambiental que trascienda fronteras y contribuya a un futuro más armónico y sostenible.",
+    ],
+  },
+  {
+    titulo: "Visión",
+    parrafos: [
+      "Para el año 2030, la Reserva proyecta estar consolidada como la alternativa ambiental líder en la región, con un modelo de gestión privada que articula instituciones ambientales y comunidades locales. Seremos un referente vivo de conservación, educación ambiental y restauración ecológica, demostrando que un pequeño territorio puede generar grandes transformaciones.",
+      "Aspiramos a que cada persona se sienta conectada, inspirada y comprometida con la protección y regeneración de la biodiversidad, construyendo un territorio en el que la naturaleza y la comunidad coexistan en equilibrio y armonía.",
+    ],
+  },
+];
+
+const equipo = [
+  { name: "Rafael Mauricio Bahamón", role: "Nuestro director", quote: "Respeto y amor por la naturaleza", image: "/images/reserva/Rafael.avif" },
+  { name: "Esmeralda Becerra Vega", role: "Gerente de la reserva", quote: "Dejar una huella verde en cada corazón que se vincula", image: "/images/reserva/Esmeralda.avif" },
+  { name: "Natalia Bahamón Becerra", role: "Fuente de inspiración de la reserva", quote: "Espíritu natural libre por el mundo", image: "/images/reserva/Natalia.avif" },
+  { name: "Luis Tafur", role: "Cuidador de la reserva", quote: "La experiencia y sabiduría al servicio de la madre tierra", image: "/images/reserva/Luis.avif" },
+  { name: "Verónica Forero", role: "Coordinadora de mantenimiento", quote: "Querer es poder", image: "/images/reserva/Monica.avif" },
+  { name: "Doris Timoté", role: "Nuestra jardinera", quote: "La naturaleza no hace nada incompleto ni nada en vano", image: "/images/reserva/doris.avif" },
+];
+
+const cooperadores = [
+  { frase: "¡Tenemos estanque!", nombre: "Alfredo Vargas", texto: "Gracias ingeniero por su valioso aporte, con su ayuda hoy ya tenemos peces felices." },
+  { frase: "Mula parada no gana flete", nombre: "Mauricio Oviedo", texto: "Gracias a su aporte hoy la reserva tiene kiosco." },
+  { frase: "¡Vamos a pintar!", nombre: "Sandra Avendaño", texto: "Toda una artista, gracias a su aporte e inspiración hizo realidad el camino de las mariposas." },
+  { frase: "¡Lo hacemos hoy mismo!", nombre: "Edwin Pérez", texto: "Gracias por su aporte en la construcción de espacios naturales." },
+  { frase: "La fuerza, el trabajo y el cumplimiento", nombre: "Mayerly Castillo", texto: "Gracias por la entrega en hacer más bella la reserva." },
+  { frase: "La sabiduría ancestral campesina", nombre: "Mario Rojas y Nohemí Nieto", texto: "Gracias por todas las siembras, hoy la cosecha también lleva sus nombres." },
+];
+
+const normas = [
+  "No están permitidas las mascotas, equipos de sonido, drones, envases desechables, armas, cuchillos, navajas, encendedores, fósforos, cigarrillos y bebidas alcohólicas.",
+  "Para la convivencia en la reserva debes prometer comportamientos de cuidado, preservación, protección y no contaminación del medio ambiente, sin excepción alguna, incluyendo la contaminación auditiva, no consumo de bebidas alcohólicas, cigarrillos y ninguna sustancia alucinógena, dentro de la reserva.",
+  "No marques, no escribas o causes daño a las cortezas de los árboles.",
+  "No botes basura fuera de los recipientes.",
+  "No debes tomar los frutos de los árboles de la reserva sin la debida autorización.",
+  "Mantente siempre dentro de los senderos demarcados y no camines por áreas que no estén permitidas.",
+  "No arranques, pellizques o tomes flores de las plantas.",
+  "No grites, no hagas ruidos fuertes mientras estés en la zona de corredor biológico y área protegida.",
+  "Nunca sustraer muestras biológicas de una reserva natural.",
+  "No debes alimentar a los animales.",
+  "Las tomas fotográficas y filmaciones deben ser autorizadas. Incumplir esta norma da como consecuencia la expulsión inmediata de la reserva y en algunos casos le puede ocasionar sanciones legales.",
+  "No llevar personas no autorizadas: el ingreso de visitantes dentro de la reserva está prohibido, porque la carga humana dentro de la reserva atenta contra los principios de protección y conservación del área protegida.",
+];
+
+const marco = [
+  {
+    titulo: "Convenio de Diversidad Biológica",
+    html: 'Es un acuerdo internacional al cual Colombia forma parte. Los países miembros se comprometen a conservar la diversidad biológica a través de áreas protegidas y apoyan iniciativas que contribuyan a estos objetivos. Se busca formas de hacer más efectiva la conservación ecológica y social, coordinando un sistema de áreas protegidas. En Colombia, este convenio fue aprobado por la <strong>Ley 165 de 1994</strong>.',
+  },
+  {
+    titulo: "Constitución Política de 1991",
+    html: 'Tiene un conjunto de deberes ambientales para el Estado, destacando el <strong>artículo 79</strong>, que establece la obligación de proteger la diversidad y integridad del ambiente y conservar áreas de importancia ecológica. También se establecen deberes compartidos entre el Estado y los particulares, como la protección de riquezas culturales y naturales.',
+  },
+  {
+    titulo: "Ley 99 de 1993",
+    html: 'Conocida como la ley ambiental, define una Reserva Natural de la Sociedad Civil y designa un registro ante el Ministerio de Ambiente. El <strong>Decreto 1996 de 1999</strong> regula las RNSC, definiendo sus usos, actividades, zonificación y registro ante la Unidad Administrativa de Parques Nacionales Naturales.',
+  },
+  {
+    titulo: "Normativa complementaria",
+    html: 'La <strong>Ley 216 de 2003</strong> delega el registro de las RNSC a la Unidad de Parques Nacionales dentro del Ministerio de Ambiente, Vivienda y Desarrollo Territorial. La <strong>Resolución 0207 de 2007</strong> crea un registro de organizaciones que trabajan en las Reservas Naturales de la Sociedad Civil. El <strong>Decreto 2372 de 2010</strong> reglamenta el Sistema Nacional de Áreas Protegidas y incluye a las RNSC.',
+  },
+];
 ---
 
 <BaseLayout
   title="La Esmeralda Reserva Natural | Reserva"
   description="Conoce nuestra reserva natural, nuestro equipo, misión, visión y objetivos de conservación."
   preloadImage="/images/reserva.avif"
+  ogImage="/images/reserva.avif"
 >
   <Header />
 
   <main>
-    <!-- Hero Section -->
-    <div class="mb-7 bg-[url('/images/reserva.avif')] bg-cover bg-center bg-no-repeat">
-      <div class="container m-auto">
-        <h1
-          class="px-4 font-bold text-4xl md:text-6xl leading-tight mb-3 pt-24 lg:pt-32 text-white drop-shadow-xl shadow-black text-shadow-custom"
-        >
-          Nuestra reserva<br />
-          <span class="text-lime-500 text-5xl md:text-9xl">La Esmeralda</span>
-        </h1>
-      </div>
-    </div>
+    <Hero
+      imagen="/images/reserva.avif"
+      alt="Colibrí sobre una flor en la Reserva Natural La Esmeralda"
+      posicion="50% 45%"
+      eyebrow="RNSC 151-20 · Doima, Piedras, Tolima"
+      titulo="Nuestra reserva"
+      acento="La Esmeralda"
+      lead="Un modelo de gestión privada que articula instituciones ambientales y comunidades locales."
+      tamano="compacto"
+    />
 
-    <!-- Mission, Vision, Objective Cards -->
-    <div class="container m-auto">
-      <div class="pb-16 px-4 lg:mx-auto grid grid-cols-1 gap-8 md:grid-cols-3 lg:max-w-6xl">
-        <Card emoji="🎯" title="Objetivo" centered>
-          <p class="text-sm">
-            En nuestra Reserva Natural, nos dedicamos a la conservación de la
-            diversidad biológica y a promover un uso sostenible de los
-            recursos naturales. Este refugio alberga una rica variedad de
-            recursos naturales que son esenciales para la fauna silvestre,
-            proporcionando alimento y un suministro constante de agua. Gracias
-            a estos esfuerzos, tanto las especies nativas como aquellas que
-            han encontrado un hogar aquí tras el deterioro de su hábitat
-            pueden vivir en un entorno protegido, lejos de la amenaza de la
-            caza. Trabajamos por un futuro donde la naturaleza y la humanidad
-            coexistan en armonía.
-          </p>
-        </Card>
-
-        <Card emoji="🌱" title="Misión" centered>
-          <p class="text-sm mb-3">
-            Ser un referente vivo de conservación y educación ambiental que
-            demuestra que un pequeño territorio puede generar un gran impacto.
-            Proyectamos a la Reserva Natural La Esmeralda como un modelo
-            inspirador de protección de la biodiversidad, restauración
-            ecológica y aprendizaje comunitario.
-          </p>
-          <p class="text-sm">
-            A través de la educación ambiental, la participación ciudadana y
-            alianzas estratégicas, buscamos cerrar la brecha entre las
-            personas y la naturaleza, fortaleciendo una cultura ambiental que
-            trascienda fronteras y contribuya a un futuro más armónico y
-            sostenible.
-          </p>
-        </Card>
-
-        <Card emoji="🔭" title="Visión" centered>
-          <p class="text-sm mb-3">
-            Para el año 2030, la Reserva proyecta estar consolidada como
-            <strong>la alternativa ambiental líder en la región</strong>, con un
-            <strong>modelo de gestión privada</strong> que articula instituciones
-            ambientales y comunidades locales. Seremos un
-            <strong>referente vivo de conservación, educación ambiental y
-            restauración ecológica</strong>, demostrando que un pequeño territorio puede generar grandes
-            transformaciones.
-          </p>
-          <p class="text-sm">
-            Aspiramos a que cada persona se sienta
-            <strong>conectada, inspirada y comprometida</strong> con la protección y
-            regeneración de la biodiversidad, construyendo un territorio en el
-            que <strong>la naturaleza y la comunidad coexistan en equilibrio y
-            armonía</strong>.
-          </p>
-        </Card>
-      </div>
-
-      <!-- Team Section -->
-      <div class="lg:mx-auto lg:max-w-5xl pb-16">
-        <h2 class="text-center font-bold text-3xl md:text-5xl leading-tight m-3">
-          Nuestro
-          <span class="text-lime-500">equipo</span>
-        </h2>
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-12 lg:px-6">
-          <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-            <TeamMember
-              name="Rafael Mauricio Bahamón"
-              role="Nuestro director"
-              quote="Respeto y amor por la naturaleza"
-              image="/images/reserva/Rafael.avif"
-            />
-
-            <TeamMember
-              name="Esmeralda Becerra Vega"
-              role="Gerente de la reserva"
-              quote="Dejar una huella verde en cada corazón que se vincula"
-              image="/images/reserva/Esmeralda.avif"
-            />
-
-            <TeamMember
-              name="Natalia Bahamón Becerra"
-              role="Fuente de inspiración de la Reserva"
-              quote="Espíritu natural libre por el mundo"
-              image="/images/reserva/Natalia.avif"
-            />
-
-            <TeamMember
-              name="Luis Tafur"
-              role="Cuidador de la reserva"
-              quote="La experiencia y sabiduría al servicio de la madre tierra"
-              image="/images/reserva/Luis.avif"
-            />
-
-            <TeamMember
-              name="Verónica Forero"
-              role="Coordinadora de Mantenimiento"
-              quote="Querer es poder"
-              image="/images/reserva/Monica.avif"
-            />
-
-            <TeamMember
-              name="Doris Timoté"
-              role="Nuestro Jardinera"
-              quote="La naturaleza no hace nada incompleto ni nada en vano"
-              image="/images/reserva/doris.avif"
-            />
-          </div>
+    <!-- Objetivo, mision y vision -->
+    <section class="banda-oscura">
+      <div class="wrap pilares-envoltura">
+        <Encabezado
+          eyebrow="Quiénes somos"
+          titulo="Un pequeño territorio que genera grandes"
+          acento="transformaciones"
+          claro={true}
+          clase="reveal"
+        />
+        <div class="pilares reveal">
+          {
+            pilares.map((p, i) => (
+              <div class="pilar">
+                <span class="pilar-n acento">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{p.titulo}</h3>
+                {p.parrafos.map((t) => (
+                  <p>{t}</p>
+                ))}
+              </div>
+            ))
+          }
         </div>
       </div>
+    </section>
 
-      <!-- Cooperadores Activos Section -->
-      <div class="lg:mx-auto lg:max-w-5xl pb-16 px-4">
-        <h2 class="text-center font-bold text-3xl md:text-5xl leading-tight mb-8">
-          Cooperadores
-          <span class="text-lime-500">activos</span>
-        </h2>
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"¡Tenemos estanque!"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">🐟</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Alfredo Vargas</h3>
-              <p class="text-gray-600 text-sm mt-2">Gracias ingeniero por su valioso aporte, con su ayuda hoy ya tenemos peces felices.</p>
-            </div>
-          </div>
-
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"Mula parada no gana flete"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">🏠</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Mauricio Oviedo</h3>
-              <p class="text-gray-600 text-sm mt-2">Gracias a su aporte hoy la reserva tiene kiosco.</p>
-            </div>
-          </div>
-
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"¡Vamos a pintar!"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">🎨</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Sandra Avendaño</h3>
-              <p class="text-gray-600 text-sm mt-2">Toda una artista, gracias a su aporte e inspiración hizo realidad el camino de las mariposas.</p>
-            </div>
-          </div>
-
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"¡Lo hacemos hoy mismo!"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">🔨</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Edwin Pérez</h3>
-              <p class="text-gray-600 text-sm mt-2">Gracias por su aporte en la construcción de espacios naturales.</p>
-            </div>
-          </div>
-
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"La fuerza, el trabajo y el cumplimiento"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">💪</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Mayerly Castillo</h3>
-              <p class="text-gray-600 text-sm mt-2">Gracias por la entrega en hacer más bella la reserva.</p>
-            </div>
-          </div>
-
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="bg-lime-100 px-4 py-3">
-              <p class="text-lime-800 font-medium italic text-center">"La sabiduría ancestral campesina"</p>
-            </div>
-            <div class="p-6 text-center">
-              <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-lime-200 flex items-center justify-center">
-                <span class="text-3xl">🌾</span>
-              </div>
-              <h3 class="font-bold text-lg text-gray-900">Mario Rojas y Nohemí Nieto</h3>
-              <p class="text-gray-600 text-sm mt-2">Gracias por todas las siembras, hoy la cosecha también lleva sus nombres.</p>
-            </div>
-          </div>
+    <!-- Equipo -->
+    <section class="banda-papel">
+      <div class="wrap equipo-envoltura">
+        <Encabezado eyebrow="Las personas" titulo="Nuestro" acento="equipo" clase="reveal" />
+        <div class="equipo reveal">
+          {equipo.map((m) => <TeamMember {...m} />)}
         </div>
       </div>
+    </section>
 
-      <!-- Normativa Interna Section -->
-      <div class="lg:mx-auto lg:max-w-5xl pb-16 px-4">
-        <h2 class="text-center font-bold text-3xl md:text-5xl leading-tight mb-4">
-          Normativa
-          <span class="text-lime-500">interna</span>
-        </h2>
-        <p class="text-center text-gray-600 mb-8">para la convivencia en la reserva</p>
-
-        <div class="bg-gradient-to-br from-lime-50 to-green-50 border border-lime-200 rounded-2xl p-6 md:p-8 shadow-lg">
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No están permitidas las mascotas, equipos de sonido, drones, envases desechables, armas, cuchillos, navajas, encendedores, fósforos, cigarrillos y bebidas alcohólicas.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">Para la convivencia en la reserva debes prometer comportamientos de cuidado, preservación, protección y no contaminación del medio ambiente, sin excepción alguna, incluyendo la contaminación auditiva, no consumo de bebidas alcohólicas, cigarrillos y ninguna sustancia alucinógena, dentro de la reserva.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No marques, no escribas o causes daño a las cortezas de los árboles.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No botes basura fuera de los recipientes.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No debes tomar los frutos de los árboles de la reserva sin la debida autorización.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">Mantente siempre dentro de los senderos demarcados y no camines por áreas que no estén permitidas.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No arranques, pellizques o tomes flores de las plantas.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No grites, no hagas ruidos fuertes mientras estés en la zona de corredor biológico y área protegida.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">Nunca sustraer muestras biológicas de una reserva natural.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No debes alimentar a los animales.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">Las tomas fotográficas y filmaciones deben ser autorizadas. Incumplir esta norma da como consecuencia la expulsión inmediata de la reserva y en algunos casos le puede ocasionar sanciones legales.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">📢</span>
-              <p class="text-gray-700 text-sm md:text-base">No llevar personas no autorizadas, el ingreso de visitantes dentro de la Reserva está prohibido, porque la carga humana dentro de la reserva atenta contra los principios de protección y conservación del área protegida.</p>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-6 border-t border-lime-300">
-            <div class="flex items-start gap-3">
-              <span class="text-xl flex-shrink-0">🚫</span>
-              <p class="text-red-700 font-medium text-sm md:text-base">Incumplir esta normatividad es ir en contra de la preservación del medio ambiente. No cumplir estas normas dará como consecuencia la expulsión inmediata o incluso sanciones legales en algunos casos.</p>
-            </div>
-          </div>
-
-          <div class="mt-6 text-center">
-            <p class="text-lime-800 font-bold text-lg italic">"No te lleves nada, no dejes nada"</p>
-          </div>
+    <!-- Cooperadores -->
+    <section class="banda-niebla">
+      <div class="wrap coop-envoltura">
+        <Encabezado
+          eyebrow="Gracias"
+          titulo="Cooperadores"
+          acento="activos"
+          lead="Personas que pusieron manos, ideas y recursos para que la reserva sea lo que es hoy."
+          clase="reveal"
+        />
+        <div class="coop reveal">
+          {
+            cooperadores.map((c) => (
+              <figure class="coop-tarjeta">
+                <blockquote>«{c.frase}»</blockquote>
+                <figcaption>
+                  <span class="coop-nombre">{c.nombre}</span>
+                  <span class="coop-texto">{c.texto}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
         </div>
       </div>
+    </section>
 
-      <!-- Marco Juridico Section -->
-      <div class="lg:mx-auto lg:max-w-5xl pb-16 px-4">
-        <h2 class="text-center font-bold text-3xl md:text-5xl leading-tight mb-8">
-          Marco
-          <span class="text-lime-500">jurídico</span>
-        </h2>
-        <div class="space-y-6">
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-md">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-3xl">🌍</span>
-              <h3 class="font-bold text-xl text-gray-900">Convenio de Diversidad Biológica</h3>
-            </div>
-            <p class="text-gray-600">
-              Es un acuerdo internacional al cual Colombia forma parte. Los países miembros se comprometen a conservar la diversidad biológica a través de áreas protegidas y apoyan iniciativas que contribuyan a estos objetivos. Se busca formas de hacer más efectiva la conservación ecológica y social, coordinando un sistema de áreas protegidas. En Colombia, este convenio fue aprobado por la <strong>Ley 165 de 1994</strong>.
-            </p>
-          </div>
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-md">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-3xl">📜</span>
-              <h3 class="font-bold text-xl text-gray-900">Constitución Política de 1991</h3>
-            </div>
-            <p class="text-gray-600">
-              Tiene un conjunto de deberes ambientales para el Estado, destacando el <strong>artículo 79</strong>, que establece la obligación de proteger la diversidad y integridad del ambiente y conservar áreas de importancia ecológica. También se establecen deberes compartidos entre el Estado y los particulares, como la protección de riquezas culturales y naturales.
-            </p>
-          </div>
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-md">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-3xl">⚖️</span>
-              <h3 class="font-bold text-xl text-gray-900">Ley 99 de 1993</h3>
-            </div>
-            <p class="text-gray-600">
-              Conocida como la ley ambiental, define una Reserva Natural de la Sociedad Civil y designa un registro ante el Ministerio de Ambiente. El <strong>Decreto 1996 de 1999</strong> regula las RNSC, definiendo sus usos, actividades, zonificación y registro ante la Unidad Administrativa de Parques Nacionales Naturales.
-            </p>
-          </div>
-          <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-md">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-3xl">🏛️</span>
-              <h3 class="font-bold text-xl text-gray-900">Normativa Complementaria</h3>
-            </div>
-            <p class="text-gray-600">
-              La <strong>Ley 216 de 2003</strong> delega el registro de las RNSC a la Unidad de Parques Nacionales dentro del Ministerio de Ambiente, Vivienda y Desarrollo Territorial. La <strong>Resolución 0207 de 2007</strong> crea un registro de organizaciones que trabajan en las Reservas Naturales de la Sociedad Civil. El <strong>Decreto 2372 de 2010</strong> reglamenta el Sistema Nacional de Áreas Protegidas y incluye a las RNSC.
-            </p>
-          </div>
+    <!-- Normativa interna -->
+    <section class="banda-papel">
+      <div class="wrap grid12 normas-envoltura">
+        <div class="normas-columna reveal">
+          <span class="eyebrow">Antes de venir</span>
+          <h2 class="titulo">Normativa <em>interna</em></h2>
+          <p class="lead">Para la convivencia en la reserva.</p>
+          <p class="normas-lema acento">«No te lleves nada, no dejes nada»</p>
         </div>
+        <ol class="normas reveal">
+          {
+            normas.map((n, i) => (
+              <li>
+                <span class="norma-n">{String(i + 1).padStart(2, "0")}</span>
+                <span>{n}</span>
+              </li>
+            ))
+          }
+        </ol>
       </div>
+      <div class="wrap">
+        <p class="normas-aviso reveal">
+          Incumplir esta normatividad es ir en contra de la preservación del
+          medio ambiente. No cumplir estas normas dará como consecuencia la
+          expulsión inmediata o incluso sanciones legales en algunos casos.
+        </p>
+      </div>
+    </section>
 
-      <!-- Certificacion Section -->
-      <div class="lg:mx-auto lg:max-w-5xl pb-20 px-4">
-        <div class="bg-gradient-to-r from-lime-600 to-green-700 rounded-2xl p-8 md:p-12 shadow-xl text-center text-white">
-          <h2 class="font-bold text-2xl md:text-4xl mb-4">Una Joya Verde</h2>
-          <p class="text-lime-100 text-lg md:text-xl mb-6">
-            Nuestra Reserva <strong class="text-white">"La Esmeralda"</strong> fue identificada como <strong class="text-white">RNSC 151-20</strong> con resolución número <strong class="text-white">227 del 01 de diciembre del 2022</strong> emitida por el Ministerio de Medio Ambiente y Desarrollo Sostenible a través de Parques Nacionales Naturales de Colombia.
+    <!-- Marco juridico -->
+    <section class="banda-niebla">
+      <div class="wrap marco-envoltura">
+        <Encabezado eyebrow="Respaldo legal" titulo="Marco" acento="jurídico" clase="reveal" />
+        <div class="marco reveal">
+          {
+            marco.map((m, i) => (
+              <div class="marco-item">
+                <span class="marco-n acento">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{m.titulo}</h3>
+                <p set:html={m.html} />
+              </div>
+            ))
+          }
+        </div>
+        <div class="certificacion reveal">
+          <span class="chip chip-lima">RNSC 151-20</span>
+          <p>
+            Nuestra Reserva <strong>La Esmeralda</strong> fue identificada como
+            <strong>RNSC 151-20</strong> con resolución número
+            <strong>227 del 1 de diciembre de 2022</strong>, emitida por el
+            Ministerio de Medio Ambiente y Desarrollo Sostenible a través de
+            Parques Nacionales Naturales de Colombia.
           </p>
-          <div class="inline-flex items-center gap-2 bg-white/20 px-6 py-3 rounded-full">
-            <span class="text-2xl">🏆</span>
-            <span class="font-bold">Reserva Natural de la Sociedad Civil Certificada</span>
-          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <CTABanda
+      eyebrow="Una joya verde"
+      titulo="Ven a conocer la"
+      acento="reserva"
+      texto="Sendero interpretativo, vivencias de varios días o un recorrido virtual desde tu casa: hay muchas maneras de entrar."
+      primario={{ texto: "Planea tu visita", href: "/contactanos/" }}
+      secundario={{ texto: "Recorrido virtual 360°", href: "/sendero/rv-gratis/" }}
+    />
   </main>
 
   <Footer />

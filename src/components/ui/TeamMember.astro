@@ -9,23 +9,13 @@ interface Props {
 const { name, role, quote, image } = Astro.props;
 ---
 
-<div class="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700">
-  <div class="sm:w-2/4 sm:h-full">
-    <img
-      class="w-full h-full object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
-      src={image}
-      alt={name}
-      loading="lazy"
-    />
+<figure class="equipo-tarjeta">
+  <div class="tile equipo-foto">
+    <img src={image} alt={name} loading="lazy" decoding="async" />
   </div>
-
-  <div class="sm:w-2/4 sm:h-full p-5">
-    <h3 class="text-xl font-bold tracking-tight text-white">
-      {name}
-    </h3>
-    <span class="text-gray-400">{role}</span>
-    <p class="mt-3 mb-4 font-light text-gray-400">
-      {quote}
-    </p>
-  </div>
-</div>
+  <figcaption class="equipo-texto">
+    <h3>{name}</h3>
+    <span class="equipo-rol">{role}</span>
+    <p class="equipo-cita">{quote}</p>
+  </figcaption>
+</figure>
