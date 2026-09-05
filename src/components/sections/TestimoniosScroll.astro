@@ -1,0 +1,170 @@
+---
+// La seccion se fija y, al seguir bajando, va cambiando la voz.
+// Si el documento no se desplaza o el usuario prefiere menos movimiento,
+// los cuatro testimonios quedan apilados. El estado lo pone JS.
+
+const testimonios = [
+  {
+    avatar: "/testimonials/salvador.avif",
+    nombre: "Salvador Zinatelli",
+    cargo: "Consultor migratorio y educativo · Yolochoice",
+    firma: "Salvador Zinatelli · Voluntario",
+    cita:
+      "Vivo en Vancouver, Canadá. Fui a Colombia, conocí parte de sus territorios y fue muy agradable encontrar una reserva natural tan cerca de Ibagué que realmente tiene una belleza única, como son las ostras de agua dulce, y un ecosistema privilegiado. Tuve la oportunidad de participar en un pequeño retiro y clases de yoga: un lugar excelente para descansar y renovarse. Recomiendo vivir la experiencia del voluntariado en la Reserva Natural La Esmeralda.",
+  },
+  {
+    avatar: "/testimonials/Sybila.avif",
+    nombre: "Sybila Guerra",
+    cargo: "Psicóloga y emprendedora · Seryoga",
+    firma: "Sybila Guerra · Visitante",
+    cita:
+      "Yo fui y viví la experiencia en la reserva: es un lugar mágico. La interacción fue maravillosa; lo que más me conectó son sus espirales llenos de energía renovadora. Desde mi experiencia profesional también puedo opinar que el sitio es espectacular para la conexión interior. Recomiendo el coaching natural.",
+  },
+  {
+    avatar: "/testimonials/cecilia.avif",
+    nombre: "Cecilia Leal",
+    cargo: "Ingeniera forestal · Fundación Ambiental Oasis de Vida",
+    firma: "Cecilia Leal · Aliada",
+    cita:
+      "Vincularse a la reserva natural es una gran experiencia: poder tener contacto directo con la naturaleza es enriquecedor, y está tan cerca de Ibagué. Este pequeño paraíso enclavado en el bosque seco tropical es orgullo para la región y para sus propietarios, que son ejemplo de compromiso, protección y conservación de un ecosistema importante, singular y frágil. Prioridad de conservación a nivel mundial.",
+  },
+  {
+    avatar: "/testimonials/milton.avif",
+    nombre: "Milton Artunduaga",
+    cargo: "Músico y emprendedor · Cantares",
+    firma: "Milton Artunduaga · Artista",
+    cita:
+      "La tierra tiene música para que la escuchen: los árboles cantan con el viento mientras las aves bailan entre sí, las flores sonríen al ser tocadas delicadamente, los caminos guardan las historias de los caminantes que los recorren. En la Reserva Natural La Esmeralda puedes escuchar esta sinfonía una y otra vez, al cerrar los ojos o al mirar con detalle la mariposa que baila entre sus coloridos matices. ¡Mi invitación es que todos pongamos un granito de arena por nuestro planeta!",
+  },
+];
+---
+
+<section class="testi">
+  <div class="testi-pin">
+    <div class="testi-halo-lima"></div>
+    <div class="testi-halo-verde"></div>
+    <div class="grain"></div>
+
+    <div class="wrap grid12 testi-rejilla">
+      <div class="testi-col">
+        <span class="eyebrow testi-eyebrow">Testimonios</span>
+        <h2 class="titulo on-dark">
+          Voces de quienes han vivido la <em>magia</em> de la reserva
+        </h2>
+
+        <div class="testi-tabs">
+          {
+            testimonios.map((t, i) => (
+              <div class:list={["ttab", `tab${i + 1}`]}>
+                <img src={t.avatar} alt="" width="120" height="120" loading="lazy" decoding="async" />
+                <span class="ttab-texto">
+                  <span class="ttab-nombre">{t.nombre}</span>
+                  <span class="ttab-cargo">{t.cargo}</span>
+                </span>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="progress">
+          <span class="progress-riel"><span class="bar"></span></span>
+          <span class="progress-nota">
+            Sigue bajando
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="testi-citas">
+        <span aria-hidden="true" class="testi-comilla">“</span>
+        {
+          testimonios.map((t, i) => (
+            <figure class:list={["tq", `q${i + 1}`]}>
+              <blockquote>{t.cita}</blockquote>
+              <figcaption>{t.firma}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initTestimonios() {
+    const seccion = document.querySelector<HTMLElement>(".testi");
+    const pin = seccion?.querySelector<HTMLElement>(".testi-pin");
+    if (!seccion || !pin) return;
+    if (seccion.dataset.listo === "1") return;
+    seccion.dataset.listo = "1";
+
+    const se = document.scrollingElement || document.documentElement;
+    let reduce = false;
+    try {
+      reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (e) {}
+    let modo = "";
+
+    function medir() {
+      const vh = window.innerHeight;
+      // Sin scroll real (o con menos movimiento) los testimonios quedan apilados
+      const desplazable = se.scrollHeight - se.clientHeight > 200 && vh < 1800;
+
+      if (!desplazable || reduce) {
+        if (modo !== "estatico") {
+          modo = "estatico";
+          seccion.classList.remove("is-pinned");
+          seccion.style.height = "";
+          pin.style.height = "";
+          seccion.removeAttribute("data-active");
+          seccion.style.removeProperty("--p");
+        }
+        return;
+      }
+
+      modo = "fijada";
+      const altoPin = Math.min(vh, 960);
+      const paso = Math.round(vh * 0.75);
+      seccion.classList.add("is-pinned");
+      pin.style.height = altoPin + "px";
+      seccion.style.height = altoPin + 3 * paso + "px";
+      pintar();
+    }
+
+    function pintar() {
+      if (modo !== "fijada") return;
+      const total = seccion.offsetHeight - pin.offsetHeight;
+      if (total <= 0) return;
+      const p = Math.min(1, Math.max(0, -seccion.getBoundingClientRect().top / total));
+      const idx = Math.min(4, Math.floor(p * 4) + 1);
+      if (seccion.getAttribute("data-active") !== String(idx)) {
+        seccion.setAttribute("data-active", String(idx));
+      }
+      seccion.style.setProperty("--p", p.toFixed(4));
+    }
+
+    let esperando = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (esperando) return;
+        esperando = true;
+        requestAnimationFrame(() => {
+          esperando = false;
+          pintar();
+        });
+      },
+      { passive: true },
+    );
+    window.addEventListener("resize", medir);
+
+    medir();
+    // Las imagenes que cargan tarde cambian el alto del documento
+    setTimeout(medir, 600);
+    setTimeout(medir, 2500);
+    window.addEventListener("load", medir);
+  }
+
+  initTestimonios();
+  document.addEventListener("astro:page-load", initTestimonios);
+</script>

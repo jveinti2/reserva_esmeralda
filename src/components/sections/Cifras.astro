@@ -1,0 +1,31 @@
+---
+// Franja de cifras en cristal. Se usa dentro del hero y en los hubs.
+
+interface Cifra {
+  valor: string;
+  unidad?: string;
+  texto: string;
+  destacada?: boolean;
+}
+
+interface Props {
+  cifras: Cifra[];
+  clase?: string;
+}
+
+const { cifras, clase = "" } = Astro.props;
+---
+
+<div class:list={["glass cifras", clase]}>
+  {
+    cifras.map((c) => (
+      <div class="cifra">
+        <span class:list={["cifra-valor", { destacada: c.destacada }]}>
+          {c.valor}
+          {c.unidad && <span class="cifra-unidad">{c.unidad}</span>}
+        </span>
+        <span class="cifra-texto">{c.texto}</span>
+      </div>
+    ))
+  }
+</div>

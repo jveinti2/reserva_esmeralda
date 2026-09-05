@@ -1,0 +1,34 @@
+---
+// Cinta de texto en bucle, separada por puntos lima.
+
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="marquee marquesina-banda">
+  <div class="marquee-track">
+    <div class="marquesina-fila">
+      {
+        items.map((t) => (
+          <>
+            <span>{t}</span>
+            <span class="marquesina-punto" />
+          </>
+        ))
+      }
+    </div>
+    <div class="marquesina-fila" aria-hidden="true">
+      {
+        items.map((t) => (
+          <>
+            <span>{t}</span>
+            <span class="marquesina-punto" />
+          </>
+        ))
+      }
+    </div>
+  </div>
+</section>

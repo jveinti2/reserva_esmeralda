@@ -1,0 +1,48 @@
+---
+// Banda final con imagen a sangre y dos llamadas a la accion.
+
+interface Props {
+  imagen?: string;
+  alt?: string;
+  posicion?: string;
+  eyebrow?: string;
+  titulo: string;
+  acento?: string;
+  texto: string;
+  primario?: { texto: string; href: string };
+  secundario?: { texto: string; href: string };
+}
+
+const {
+  imagen = "/fondos/fondo5-2.avif",
+  alt = "Lagartija verde entre el follaje de la reserva",
+  posicion = "70% 50%",
+  eyebrow = "Vincúlate",
+  titulo,
+  acento,
+  texto,
+  primario = { texto: "Vincúlate ahora", href: "/vinculate/" },
+  secundario = { texto: "Contáctanos", href: "/contactanos/" },
+} = Astro.props;
+---
+
+<section class="cta-banda">
+  <img src={imagen} alt={alt} style={`object-position: ${posicion};`} loading="lazy" decoding="async" />
+  <div class="cta-velo"></div>
+  <div class="grain"></div>
+
+  <div class="wrap cta-contenido reveal">
+    <div class="cta-texto">
+      <span class="eyebrow cta-eyebrow">{eyebrow}</span>
+      <h2 class="titulo on-dark cta-h2">{titulo}{acento && <> <em>{acento}</em></>}</h2>
+      <p class="cta-parrafo">{texto}</p>
+      <div class="cta-botones">
+        <a href={primario.href} class="btn btn-lima">
+          {primario.texto}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        {secundario && <a href={secundario.href} class="btn btn-ghost">{secundario.texto}</a>}
+      </div>
+    </div>
+  </div>
+</section>

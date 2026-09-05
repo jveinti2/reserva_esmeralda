@@ -1,0 +1,83 @@
+---
+// Tarjeta de poster que abre el video en un <dialog> nativo. Sin librerias.
+
+interface Props {
+  video: string;
+  poster: string;
+  titulo: string;
+  nota?: string;
+  duracion?: string;
+  clase?: string;
+}
+
+const {
+  video,
+  poster,
+  titulo,
+  nota = "Video promocional",
+  duracion,
+  clase = "",
+} = Astro.props;
+
+const id = `video-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<button type="button" class:list={["glass tile video-card", clase]} data-abre-video={id}>
+  <span class="video-marco">
+    <img src={poster} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+    <span class="video-velo"></span>
+    <span class="video-play">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+    </span>
+    {duracion && <span class="chip chip-glass video-chip">Video · {duracion}</span>}
+  </span>
+  <span class="video-pie">
+    <span class="video-titulo">{titulo}</span>
+    <span class="video-nota">{nota}</span>
+  </span>
+</button>
+
+<dialog id={id} class="video-dialog" aria-label={titulo}>
+  <button type="button" class="video-cerrar" data-cierra-video aria-label="Cerrar video">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+  </button>
+  <video controls preload="none" poster={poster} width="1280" height="720">
+    <source src={video} type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
+</dialog>
+
+<script>
+  function initVideoDialog() {
+    document.querySelectorAll<HTMLElement>("[data-abre-video]").forEach((btn) => {
+      const id = btn.getAttribute("data-abre-video");
+      const dlg = id ? (document.getElementById(id) as HTMLDialogElement | null) : null;
+      if (!dlg || btn.dataset.listo === "1") return;
+      btn.dataset.listo = "1";
+
+      const video = dlg.querySelector("video");
+
+      btn.addEventListener("click", () => {
+        dlg.showModal();
+        video?.play().catch(() => {});
+      });
+
+      dlg.querySelector("[data-cierra-video]")?.addEventListener("click", () => dlg.close());
+
+      // Click en el fondo del dialogo
+      dlg.addEventListener("click", (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+
+      dlg.addEventListener("close", () => {
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    });
+  }
+
+  initVideoDialog();
+  document.addEventListener("astro:page-load", initVideoDialog);
+</script>

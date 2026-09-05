@@ -1,0 +1,93 @@
+---
+// Hero con imagen a sangre, ken burns, degradados y grano.
+// Slots: acciones (botones), lateral (tarjeta), pie (franja de cifras).
+
+interface Props {
+  imagen: string;
+  alt: string;
+  ancho?: number;
+  alto?: number;
+  posicion?: string;
+  eyebrow?: string;
+  titulo: string;
+  /** Segunda linea del titular, en Fraunces italica lima. */
+  acento?: string;
+  subtitulo?: string;
+  lead?: string;
+  /** "completo" = pantalla entera (portada). "compacto" = cabecera de seccion. */
+  tamano?: "completo" | "compacto";
+  /** Alineacion del bloque de texto. */
+  alineacion?: "izquierda" | "centro";
+}
+
+const {
+  imagen,
+  alt,
+  ancho,
+  alto,
+  posicion = "50% 40%",
+  eyebrow,
+  titulo,
+  acento,
+  subtitulo,
+  lead,
+  tamano = "completo",
+  alineacion = "izquierda",
+} = Astro.props;
+
+const conLateral = Astro.slots.has("lateral");
+const conPie = Astro.slots.has("pie");
+---
+
+<section class:list={["hero", tamano, alineacion]}>
+  <img
+    class="hero-img hero-fondo"
+    src={imagen}
+    alt={alt}
+    width={ancho}
+    height={alto}
+    style={`object-position: ${posicion};`}
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-velo-v"></div>
+  <div class="hero-velo-h"></div>
+  <div class="grain"></div>
+
+  <div class="wrap hero-contenido">
+    <div class:list={["hero-fila", { "con-lateral": conLateral }]}>
+      <div class="hero-texto">
+        {eyebrow && <span class="eyebrow rise d1 hero-eyebrow">{eyebrow}</span>}
+        <h1 class="rise d2 hero-titulo">
+          {titulo}
+          {acento && <><br /><em>{acento}</em></>}
+        </h1>
+        {subtitulo && <p class="rise d3 hero-subtitulo">{subtitulo}</p>}
+        {lead && <p class="rise d4 hero-lead">{lead}</p>}
+        {
+          Astro.slots.has("acciones") && (
+            <div class="rise d5 hero-acciones">
+              <slot name="acciones" />
+            </div>
+          )
+        }
+      </div>
+
+      {
+        conLateral && (
+          <div class="rise d6 hero-lateral">
+            <slot name="lateral" />
+          </div>
+        )
+      }
+    </div>
+
+    {
+      conPie && (
+        <div class="rise d6 hero-pie">
+          <slot name="pie" />
+        </div>
+      )
+    }
+  </div>
+</section>

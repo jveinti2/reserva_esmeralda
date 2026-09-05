@@ -1,0 +1,83 @@
+---
+import Encabezado from "./Encabezado.astro";
+import Tile from "../ui/Tile.astro";
+
+const programas = [
+  {
+    href: "/conservacion_investigacion/",
+    imagen: "/images/conservacion/fondo_conservacion_1.avif",
+    ancho: 1200,
+    alto: 759,
+    alt: "Voluntarios trabajando en proyectos de conservación en la reserva",
+    chip: "01 · Conservación",
+    titulo: "Conservación e Investigación",
+    texto:
+      "Proyectos científicos para proteger especies emblemáticas del bosque seco tropical: herpetos, arácnidos, nutria neotropical y ostras de agua dulce.",
+    enlaceTexto: "Conocer más",
+    grande: true,
+  },
+  {
+    href: "/educacion_ambiental/",
+    imagen: "/images/educacion/fondo_educacion_1.avif",
+    ancho: 1920,
+    alto: 1280,
+    alt: "Niños en un semillero de educación ambiental",
+    chip: "02 · Educación",
+    titulo: "Educación Ambiental",
+    texto:
+      "Semilleros ambientales que conectan a niños y jóvenes con la naturaleza a través del arte, la observación de aves y la reforestación.",
+    grande: false,
+  },
+  {
+    href: "/emprendimientos/",
+    imagen: "/images/emprendimientos/fondo_emprendimientos_1.avif",
+    ancho: 1080,
+    alto: 1080,
+    alt: "Productos artesanales de los emprendimientos verdes de la reserva",
+    chip: "03 · Emprendimientos",
+    titulo: "Emprendimientos Verdes",
+    texto:
+      "Productos artesanales sostenibles que financian la conservación: cerveza, yogur y mermeladas con ingredientes del bosque.",
+    grande: false,
+  },
+];
+---
+
+<section class="banda-niebla">
+  <div class="wrap bento-envoltura">
+    <Encabezado
+      eyebrow="Nuestros programas"
+      titulo="Tres caminos para"
+      acento="proteger"
+      cola="el bosque seco"
+      lead="Trabajamos en tres ejes fundamentales para la conservación del bosque seco tropical: investigar, educar y emprender."
+      doble={true}
+      clase="reveal"
+    >
+      <a href="/conservacion_investigacion/" class="arrow-link">
+        Ver todos los programas
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </Encabezado>
+
+    <div class="bento reveal">
+      {
+        programas.map((p) => (
+          <Tile
+            href={p.href}
+            imagen={p.imagen}
+            alt={p.alt}
+            ancho={p.ancho}
+            alto={p.alto}
+            chip={p.chip}
+            titulo={p.titulo}
+            texto={p.texto}
+            enlaceTexto={p.enlaceTexto}
+            escala={p.grande ? "alto" : "normal"}
+            clase={p.grande ? "bento-grande" : "bento-normal"}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

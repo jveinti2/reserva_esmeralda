@@ -1,0 +1,95 @@
+---
+// Columna izquierda fija + filas editoriales con imagen, chips y flecha.
+
+const experiencias = [
+  {
+    href: "/sendero/",
+    imagen: "/images/aventura-banner.avif",
+    ancho: 1200,
+    alto: 615,
+    alt: "Entrada al sendero interpretativo de la reserva",
+    chips: [
+      { texto: "2,5 km", lima: false },
+      { texto: "5 puntos de interés", lima: false },
+      { texto: "Guiado", lima: false },
+    ],
+    titulo: "Sendero interpretativo",
+    texto:
+      "Recorre 2,5 km de caminos naturales y aprende sobre conservación con nuestros guías.",
+  },
+  {
+    href: "/servicios/",
+    imagen: "/images/servicios/exp_1.avif",
+    ancho: 768,
+    alto: 667,
+    alt: "Visitantes en una vivencia dentro de la reserva",
+    chips: [
+      { texto: "Varios días", lima: false },
+      { texto: "Talleres", lima: false },
+      { texto: "Fauna", lima: false },
+    ],
+    titulo: "Vivencias",
+    texto:
+      "Experiencias inmersivas de varios días: talleres, observación de fauna, reforestación y conexión con la naturaleza.",
+  },
+  {
+    href: "/sendero/rv-gratis/",
+    imagen: "/recorrido.avif",
+    ancho: 1200,
+    alto: 800,
+    alt: "Camino de entrada a la reserva, punto de partida del recorrido virtual",
+    chips: [
+      { texto: "Gratis", lima: true },
+      { texto: "360°", lima: false },
+      { texto: "Desde tu casa", lima: false },
+    ],
+    titulo: "Recorrido virtual 360°",
+    texto:
+      "Entra a la reserva desde donde estés y conócela antes de venir a caminarla.",
+  },
+];
+---
+
+<section class="banda-papel">
+  <div class="wrap grid12 exp-envoltura">
+    <div class="exp-columna">
+      <span class="eyebrow">Vive la experiencia</span>
+      <h2 class="titulo">Tres puertas de entrada al <em>bosque</em></h2>
+      <p class="lead">
+        Descubre el bosque seco tropical de primera mano, a pie o desde donde
+        estés.
+      </p>
+      <div class="exp-cta">
+        <a href="/contactanos/" class="btn btn-esm">
+          Planea tu visita
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <span class="exp-nota">Colegios, familias, investigadores y voluntarios</span>
+      </div>
+    </div>
+
+    <div class="exp-lista reveal">
+      {
+        experiencias.map((e) => (
+          <a href={e.href} class="exp-row">
+            <div class="tile exp-img">
+              <img src={e.imagen} alt={e.alt} width={e.ancho} height={e.alto} loading="lazy" decoding="async" />
+            </div>
+            <div class="exp-cuerpo">
+              <div class="exp-chips">
+                {e.chips.map((c) => (
+                  <span class:list={["chip", c.lima ? "chip-lima" : "chip-niebla"]}>{c.texto}</span>
+                ))}
+              </div>
+              <h3>{e.titulo}</h3>
+              <p>{e.texto}</p>
+            </div>
+            <span class="ico-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

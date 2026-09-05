@@ -1,0 +1,68 @@
+---
+// Dieciseis aliados en dos filas que corren en sentidos opuestos.
+
+const fila1 = [
+  { nombre: "Parques Nacionales Naturales de Colombia", logo: "/logos/parques-naturales.avif" },
+  { nombre: "Cortolima", logo: "/logos/cortolima.avif" },
+  { nombre: "Universidad de Ibagué", logo: "/logos/unibague.avif" },
+  { nombre: "Universidad del Tolima", logo: "/logos/utolima.avif" },
+  { nombre: "SENA", logo: "/logos/sena.avif" },
+  { nombre: "Alcaldía de Piedras", logo: "/logos/logo_alcaldia_piedras.avif" },
+  { nombre: "Policía Nacional", logo: "/logos/policia.avif" },
+  { nombre: "Institución Educativa Doima", logo: "/logos/iedudoima.avif" },
+];
+
+const fila2 = [
+  { nombre: "Amina Melandro", logo: "/logos/logo_amina_melandro.avif" },
+  { nombre: "Aprocade", logo: "/logos/aprocade.avif" },
+  { nombre: "GAP", logo: "/logos/gap.avif" },
+  { nombre: "Fundación Ambiental Oasis de Vida", logo: "/logos/faov.avif" },
+  { nombre: "OFP", logo: "/logos/ofp.avif" },
+  { nombre: "Comunera", logo: "/logos/comunera.avif" },
+  { nombre: "Colombo", logo: "/logos/colombo.avif" },
+  { nombre: "Avícola Triple A", logo: "/logos/avicola_triple_A.avif" },
+];
+---
+
+<section class="banda-papel aliados">
+  <div class="wrap aliados-cabecera reveal">
+    <div class="aliados-titulo">
+      <span class="eyebrow">Nuestros aliados</span>
+      <h2 class="titulo aliados-h2">
+        Dieciséis organizaciones caminan <em>con nosotros</em>
+      </h2>
+    </div>
+    <p class="aliados-nota">
+      Gracias por estar vinculados a esta aventura: academia, autoridades
+      ambientales, comunidad y empresa.
+    </p>
+  </div>
+
+  <div class="marquee aliados-cintas reveal">
+    <div class="marquee-track slow">
+      <div class="aliados-fila">
+        {fila1.map((a) => (
+          <div class="logo-tile"><img src={a.logo} alt={a.nombre} loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+      <div class="aliados-fila" aria-hidden="true">
+        {fila1.map((a) => (
+          <div class="logo-tile"><img src={a.logo} alt="" loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+    </div>
+
+    <div class="marquee-track slow rev">
+      <div class="aliados-fila">
+        {fila2.map((a) => (
+          <div class="logo-tile"><img src={a.logo} alt={a.nombre} loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+      <div class="aliados-fila" aria-hidden="true">
+        {fila2.map((a) => (
+          <div class="logo-tile"><img src={a.logo} alt="" loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

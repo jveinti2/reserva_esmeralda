@@ -1,0 +1,46 @@
+---
+// Eyebrow + h2 con acento + lead. Cabecera estandar de seccion.
+
+interface Props {
+  eyebrow?: string;
+  titulo: string;
+  /** Palabra o frase en Fraunces italica dentro del titular. */
+  acento?: string;
+  /** Texto que va despues del acento. */
+  cola?: string;
+  lead?: string;
+  /** Coloca el lead en una segunda columna a la derecha. */
+  doble?: boolean;
+  claro?: boolean;
+  clase?: string;
+}
+
+const {
+  eyebrow,
+  titulo,
+  acento,
+  cola,
+  lead,
+  doble = false,
+  claro = false,
+  clase = "",
+} = Astro.props;
+---
+
+<div class:list={["encabezado", { doble, claro }, clase]}>
+  <div class="encabezado-principal">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h2 class:list={["titulo", { "on-dark": claro }]}>
+      {titulo}{acento && <> <em>{acento}</em></>}{cola && <> {cola}</>}
+    </h2>
+    {!doble && lead && <p class="lead">{lead}</p>}
+  </div>
+  {
+    (doble || Astro.slots.has("default")) && (
+      <div class="encabezado-lateral">
+        {doble && lead && <p class="lead">{lead}</p>}
+        <slot />
+      </div>
+    )
+  }
+</div>

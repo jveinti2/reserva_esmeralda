@@ -3,12 +3,68 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 
-// Nuevos componentes
 import FloatingNotification from "../components/ui/FloatingNotification.astro";
-import NosotrosSection from "../components/sections/NosotrosSection.astro";
-import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
-import PartnersSection from "../components/sections/PartnersSection.astro";
+import VideoDialog from "../components/ui/VideoDialog.astro";
+import Hero from "../components/sections/Hero.astro";
+import Cifras from "../components/sections/Cifras.astro";
+import Marquesina from "../components/sections/Marquesina.astro";
+import ProgramasBento from "../components/sections/ProgramasBento.astro";
+import ExperienciaLista from "../components/sections/ExperienciaLista.astro";
+import TestimoniosScroll from "../components/sections/TestimoniosScroll.astro";
+import AliadosMarquee from "../components/sections/AliadosMarquee.astro";
 import FAQSection from "../components/sections/FAQSection.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+const cifras = [
+  {
+    valor: "151-20",
+    texto: "Reserva registrada · Resolución 227 de 2022",
+  },
+  { valor: "7", unidad: "años", texto: "Conservando el corredor biológico del río Opia" },
+  { valor: "2,5", unidad: "km", texto: "De sendero interpretativo con 5 puntos de interés" },
+  {
+    valor: "8 %",
+    texto: "Es lo que queda del bosque seco tropical en Colombia",
+    destacada: true,
+  },
+];
+
+const marquesina = [
+  "Bosque seco tropical",
+  "Ostras de agua dulce",
+  "Corredor biológico del río Opia",
+  "Sendero interpretativo de 2,5 km",
+  "Recorrido virtual 360°",
+  "Educación ambiental",
+  "Emprendimientos verdes",
+  "Doima · Piedras · Tolima",
+];
+
+const diferenciales = [
+  {
+    n: "01",
+    titulo: "Ostras de agua dulce",
+    texto:
+      "La rareza biológica que da nombre a la reserva y la convierte en un hogar legendario.",
+  },
+  {
+    n: "02",
+    titulo: "Corredor del río Opia",
+    texto: "Paso de la fauna silvestre del Tolima, custodiado durante siete años.",
+  },
+  {
+    n: "03",
+    titulo: "Investigación viva",
+    texto:
+      "Nutria neotropical, herpetos y arácnidos bajo estudio científico permanente.",
+  },
+  {
+    n: "04",
+    titulo: "Bosque seco tropical",
+    texto:
+      "Uno de los ecosistemas más amenazados del mundo: solo queda el 8 % de 9 millones de hectáreas.",
+  },
+];
 ---
 
 <BaseLayout
@@ -16,7 +72,6 @@ import FAQSection from "../components/sections/FAQSection.astro";
   description="Reserva Natural La Esmeralda - Conservación, investigación y educación ambiental en el bosque seco tropical del Tolima, Colombia."
   preloadImage="/banner_2.avif"
 >
-  <!-- Notificacion flotante -->
   <FloatingNotification
     text="¡Nueva página de emprendimientos disponible! Haz clic aquí"
     href="/emprendimientos/"
@@ -26,482 +81,143 @@ import FAQSection from "../components/sections/FAQSection.astro";
   <Header />
 
   <main>
-    <!-- Hero Section con Imagen -->
-    <section
-      class="relative h-screen bg-cover bg-center"
-      style="background-image: url('/banner_2.avif');"
+    <Hero
+      imagen="/banner_2.avif"
+      alt="Barranquero en el bosque seco tropical de la Reserva Natural La Esmeralda"
+      ancho={1920}
+      alto={1080}
+      posicion="50% 40%"
+      eyebrow="Reserva Natural de la Sociedad Civil 151-20 · Doima, Piedras, Tolima"
+      titulo="La Esmeralda"
+      acento="Reserva Natural"
+      subtitulo="Hogar legendario de las ostras de agua dulce"
+      lead="Conservando el bosque seco tropical del Tolima para las futuras generaciones, en el corredor biológico del río Opia."
     >
-      <div class="relative z-10 h-full flex items-center justify-center">
-        <div class="text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow-custom">
-            La Esmeralda <span class="text-lime-400">Reserva Natural</span>
-          </h1>
-          <p class="text-xl md:text-3xl mb-8 text-shadow-custom">
-            Hogar legendario de las ostras de agua dulce
-          </p>
-          <p
-            class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-shadow-custom"
-          >
-            Conservando el bosque seco tropical del Tolima para las futuras
-            generaciones
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <a
-              href="/reserva/"
-              class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-esmeralda hover:bg-esmeralda-700 rounded-lg transition-all shadow-lg"
-            >
-              🌿 Conoce nuestra reserva
-            </a>
-            <a
-              href="/vinculate/"
-              class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-900 bg-white hover:bg-gray-100 rounded-lg transition-all shadow-lg"
-            >
-              🤝 Vincúlate
-            </a>
-          </div>
+      <Fragment slot="acciones">
+        <a href="/reserva/" class="btn btn-lima">
+          Conoce la reserva
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="/sendero/rv-gratis/" class="btn btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="4"></ellipse><path d="M12 3v18"></path><path d="M4.5 9.5A9 9 0 0 1 19.5 9.5"></path></svg>
+          Recorrido virtual 360° · Gratis
+        </a>
+      </Fragment>
 
-          <!-- Video Promocional -->
-          <div class="max-w-xl mx-auto">
-            <div class="relative rounded-lg overflow-hidden shadow-2xl">
-              <video
-                controls
-                preload="metadata"
-                poster="/poster.avif"
-                width="1280"
-                height="720"
-                class="w-full h-auto"
-              >
-                <source src="/videos/reserva_promo.mp4" type="video/mp4" />
-                Tu navegador no soporta video HTML5.
-              </video>
+      <VideoDialog
+        slot="lateral"
+        video="/videos/reserva_promo.mp4"
+        poster="/poster.avif"
+        titulo="Un recorrido por la reserva"
+        duracion="2:40"
+      />
+
+      <Cifras slot="pie" cifras={cifras} />
+    </Hero>
+
+    <Marquesina items={marquesina} />
+
+    <!-- Nuestra reserva: texto + composicion de imagenes -->
+    <section class="banda-papel">
+      <div class="wrap">
+        <div class="grid12 nosotros">
+          <div class="nosotros-texto reveal">
+            <span class="eyebrow">Nuestra reserva</span>
+            <h2 class="titulo">
+              Un oasis para la fauna y la flora que transita por el <em>río Opia</em>
+            </h2>
+            <p class="lead">
+              Hace algún tiempo, dos personas apasionadas por la naturaleza
+              iniciamos el sueño de ser guardianes de una porción de terreno en
+              Doima, Piedras, Tolima, que gradualmente convertimos en un oasis
+              para la fauna y la flora silvestre que transita por el corredor
+              biológico del río Opia.
+            </p>
+            <p class="nosotros-parrafo">
+              Hoy, después de 7 años, somos la Reserva Natural de la Sociedad
+              Civil (RNSC) 151-20 La Esmeralda, según la resolución No. 227 del 1
+              de diciembre de 2022, emitida por el Ministerio del Medio Ambiente
+              a través de Parques Nacionales.
+            </p>
+            <p class="nosotros-cita">
+              ¡Seguimos creyendo que todos podemos pasar de la intención a los
+              hechos!
+            </p>
+            <div class="nosotros-cta">
+              <a href="/sendero/rv-gratis/" class="btn btn-esm">
+                Entra a la reserva ahora
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+              <span class="nosotros-nota">Recorrido virtual 360°, gratis</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Nosotros Detallado -->
-    <NosotrosSection />
-
-    <!-- Nuestros Programas -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-esmeralda mb-6">
-            Nuestros Programas
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Trabajamos en tres ejes fundamentales para la conservación del
-            bosque seco tropical
-          </p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <!-- Conservación e Investigación -->
-          <div
-            class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all"
-          >
-            <div class="relative h-64 overflow-hidden">
+          <div class="nosotros-composicion reveal">
+            <div class="tile nosotros-grande">
               <img
-          width="1200"
-          height="759"
-          loading="lazy"
-          decoding="async"
                 src="/images/conservacion/fondo_conservacion_1.avif"
-                alt="Conservación e Investigación"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Voluntarios sembrando árboles en la reserva"
+                width="1200"
+                height="759"
+                loading="lazy"
+                decoding="async"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
-              >
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Conservación e Investigación
-                </h3>
+              <div class="nosotros-velo"></div>
+              <div class="nosotros-pie">
+                <span class="nosotros-pie-eyebrow">Reforestación</span>
+                <span class="nosotros-pie-titulo">Cada árbol cuenta una historia</span>
               </div>
             </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">
-                Proyectos científicos para proteger especies emblemáticas del
-                bosque seco tropical: herpetos, arácnidos, nutria neotropical y
-                ostras de agua dulce.
-              </p>
-              <a
-                href="/conservacion_investigacion/"
-                class="inline-flex items-center text-esmeralda font-semibold hover:underline"
-              >
-                Conocer más
-                <svg
-                  class="ml-2 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
 
-          <!-- Educación Ambiental -->
-          <div
-            class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all"
-          >
-            <div class="relative h-64 overflow-hidden">
+            <div class="tile nosotros-pequena">
               <img
-          width="1920"
-          height="1280"
-          loading="lazy"
-          decoding="async"
                 src="/images/educacion/fondo_educacion_1.avif"
-                alt="Educación Ambiental"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Niños observando la naturaleza en un semillero ambiental"
+                width="1920"
+                height="1280"
+                loading="lazy"
+                decoding="async"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
-              >
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Educación Ambiental
-                </h3>
-              </div>
             </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">
-                Semilleros ambientales que conectan a niños y jóvenes con la
-                naturaleza a través del arte, la observación de aves y la
-                reforestación.
-              </p>
-              <a
-                href="/educacion_ambiental/"
-                class="inline-flex items-center text-esmeralda font-semibold hover:underline"
-              >
-                Conocer más
-                <svg
-                  class="ml-2 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
 
-          <!-- Emprendimientos Verdes -->
-          <div
-            class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all"
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-          width="1080"
-          height="1080"
-          loading="lazy"
-          decoding="async"
-                src="/images/emprendimientos/fondo_emprendimientos_1.avif"
-                alt="Emprendimientos Verdes"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
-              >
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Emprendimientos Verdes
-                </h3>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 mb-4">
-                Productos artesanales sostenibles que generan recursos para la
-                conservación: cerveza, yogurt y mermeladas con ingredientes del
-                bosque.
-              </p>
-              <a
-                href="/emprendimientos/"
-                class="inline-flex items-center text-esmeralda font-semibold hover:underline"
-              >
-                Conocer más
-                <svg
-                  class="ml-2 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </a>
+            <div class="nosotros-insignia">
+              <span class="insignia-eyebrow">Parques Nacionales</span>
+              <span class="insignia-codigo">RNSC 151-20</span>
+              <span class="insignia-nota">Resolución 227 · 1 dic 2022</span>
             </div>
           </div>
+        </div>
+
+        <div class="diferenciales reveal">
+          {
+            diferenciales.map((d) => (
+              <div class="diferencial">
+                <span class="diferencial-n acento">{d.n}</span>
+                <h3>{d.titulo}</h3>
+                <p>{d.texto}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- Experiencias -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-esmeralda mb-6">
-            Vive la Experiencia
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Descubre el bosque seco tropical de primera mano
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Sendero Interpretativo -->
-          <div class="relative overflow-hidden rounded-lg shadow-xl group h-96">
-            <img
-          width="1200"
-          height="615"
-          loading="lazy"
-          decoding="async"
-              src="/images/aventura-banner.avif"
-              alt="Sendero Interpretativo"
-              class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-            >
-            </div>
-            <div class="relative h-full flex flex-col justify-end p-8">
-              <h3 class="text-3xl font-bold text-white mb-4">
-                Sendero Interpretativo
-              </h3>
-              <p class="text-white text-lg mb-6">
-                Recorre 2.5 km de caminos naturales, descubre la biodiversidad
-                del bosque y aprende sobre conservación con nuestros guías
-                especializados.
-              </p>
-              <a
-                href="/sendero/"
-                class="inline-flex items-center text-white bg-esmeralda hover:bg-green-700 font-medium rounded-lg px-6 py-3 w-fit transition-all"
-              >
-                Descubrir el sendero
-                <svg
-                  class="ml-2 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
+    <ProgramasBento />
 
-          <!-- Vivencias -->
-          <div class="relative overflow-hidden rounded-lg shadow-xl group h-96">
-            <img
-          width="768"
-          height="667"
-          loading="lazy"
-          decoding="async"
-              src="/images/servicios/exp_1.avif"
-              alt="Vivencias en la Reserva"
-              class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-            >
-            </div>
-            <div class="relative h-full flex flex-col justify-end p-8">
-              <h3 class="text-3xl font-bold text-white mb-4">Vivencias</h3>
-              <p class="text-white text-lg mb-6">
-                Experiencias inmersivas de varios días: talleres ambientales,
-                observación de fauna, reforestación y conexión profunda con la
-                naturaleza.
-              </p>
-              <a
-                href="/servicios/"
-                class="inline-flex items-center text-white bg-esmeralda hover:bg-green-700 font-medium rounded-lg px-6 py-3 w-fit transition-all"
-              >
-                Ver vivencias
-                <svg
-                  class="ml-2 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ExperienciaLista />
 
-    <!-- Testimonios -->
-    <TestimonialsSection />
+    <TestimoniosScroll />
 
-    <!-- Aliados -->
-    <PartnersSection />
+    <AliadosMarquee />
 
-    <!-- FAQ -->
     <FAQSection />
 
-    <!-- CTA Final -->
-    <section
-      class="relative bg-[url('/fondos/fondo5-2.avif')] bg-cover bg-center text-white py-20 md:py-28"
-    >
-      <div class="absolute inset-0 bg-black/50"></div>
-      <div class="relative container mx-auto px-6 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
-          Sé Parte del <span class="text-lime-400">Cambio</span>
-        </h2>
-        <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-          La conservación del bosque seco tropical es tarea de todos. Únete a
-          nuestra misión y ayuda a proteger este ecosistema único.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/vinculate/"
-            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-900 bg-lime-400 hover:bg-lime-300 rounded-lg transition-all shadow-lg"
-          >
-            Vincúlate ahora
-            <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </a>
-          <a
-            href="/contactanos/"
-            class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-esmeralda hover:bg-esmeralda-600 rounded-lg transition-all shadow-lg"
-          >
-            Contáctanos
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ubicación y Contacto -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <div>
-            <h3 class="text-3xl font-bold text-esmeralda mb-6">Visítanos</h3>
-            <div class="space-y-4 mb-6">
-              <div class="flex items-start">
-                <svg
-                  class="w-6 h-6 text-esmeralda mt-1 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                    clip-rule="evenodd"></path>
-                </svg>
-                <div>
-                  <p class="font-semibold text-gray-800">Dirección</p>
-                  <p class="text-gray-600">
-                    Vereda Cay, Venadillo, Tolima, Colombia
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <svg
-                  class="w-6 h-6 text-esmeralda mt-1 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  ></path>
-                </svg>
-                <div>
-                  <p class="font-semibold text-gray-800">Teléfono</p>
-                  <p class="text-gray-600">+57 314 123 4567</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <svg
-                  class="w-6 h-6 text-esmeralda mt-1 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                  ></path>
-                  <path
-                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                  ></path>
-                </svg>
-                <div>
-                  <p class="font-semibold text-gray-800">Email</p>
-                  <p class="text-gray-600">info@esmeraldareservanatural.com</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <a
-                href="https://www.facebook.com/ReservalaesmeraldaenDoima"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-esmeralda hover:text-green-700 transition-colors"
-              >
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                  ></path>
-                </svg>
-              </a>
-              <a
-                href="https://www.instagram.com/laesmeraldareservanatural/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-esmeralda hover:text-green-700 transition-colors"
-              >
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                  ></path>
-                </svg>
-              </a>
-              <a
-                href="https://www.youtube.com/@reservanaturallaesmeralda7224"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-esmeralda hover:text-green-700 transition-colors"
-              >
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9047!2d-74.9586!3d4.7567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDUnMjQuMSJOIDc0wrA1NycyNS45Ilc!5e0!3m2!1ses!2sco!4v1234567890"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CTABanda
+      titulo="Sé parte del"
+      acento="cambio"
+      texto="La conservación del bosque seco tropical es tarea de todos. Únete a nuestra misión como voluntario, padrino o madrina, y ayuda a proteger este ecosistema único."
+    />
   </main>
 
-  <Footer />
+  <Footer mapa={true} />
 </BaseLayout>

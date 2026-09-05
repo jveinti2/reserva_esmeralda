@@ -1,0 +1,65 @@
+---
+// Tarjeta con imagen a sangre, degradado y texto encima.
+// Base del bento de programas, de los hubs, de la galeria y del detalle.
+
+interface Props {
+  href?: string;
+  imagen: string;
+  alt: string;
+  ancho?: number;
+  alto?: number;
+  chip?: string;
+  titulo: string;
+  texto?: string;
+  enlaceTexto?: string;
+  /** "alto" para la pieza grande del bento, "normal" para las demas. */
+  escala?: "alto" | "normal";
+  clase?: string;
+  estilo?: string;
+  eager?: boolean;
+}
+
+const {
+  href,
+  imagen,
+  alt,
+  ancho,
+  alto,
+  chip,
+  titulo,
+  texto,
+  enlaceTexto,
+  escala = "normal",
+  clase = "",
+  estilo,
+  eager = false,
+} = Astro.props;
+
+const Etiqueta = href ? "a" : "div";
+---
+
+<Etiqueta href={href} class:list={["tile", "tile-info", clase]} style={estilo}>
+  <img
+    src={imagen}
+    alt={alt}
+    width={ancho}
+    height={alto}
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : undefined}
+    decoding="async"
+  />
+  <div class="tile-velo"></div>
+  {chip && <span class="chip chip-glass tile-chip">{chip}</span>}
+  <div class:list={["tile-texto", escala]}>
+    <h3>{titulo}</h3>
+    {texto && <p>{texto}</p>}
+    {
+      enlaceTexto && (
+        <span class="arrow-link on-dark">
+          {enlaceTexto}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </span>
+      )
+    }
+  </div>
+</Etiqueta>

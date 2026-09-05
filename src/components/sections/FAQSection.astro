@@ -1,50 +1,56 @@
 ---
-import AccordionItem from '../ui/AccordionItem.astro';
+import AccordionItem from "../ui/AccordionItem.astro";
+
+const flecha =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+const preguntas = [
+  {
+    id: "1",
+    question: "¿Cómo podemos formar parte de la reserva La Esmeralda?",
+    answer: `<p>La reserva dispone de medios tecnológicos, como el recorrido virtual, y de dos programas específicos para vincularse:</p><div class="faq-enlaces"><a href="/vinculate/" class="arrow-link">Ir a voluntariado ${flecha}</a><a href="/sendero/rv-gratis/" class="arrow-link">Ir a recorrido virtual ${flecha}</a></div>`,
+  },
+  {
+    id: "2",
+    question: "¿Qué es una reserva natural de la sociedad civil (RNSC)?",
+    answer:
+      "<p>Son áreas de terreno protegidas, establecidas a voluntad de los propietarios de predios privados, dedicadas a la conservación y preservación de muestras de ecosistemas naturales. También permiten sistemas de producción sostenibles y ambientalmente responsables.</p>",
+  },
+  {
+    id: "3",
+    question: "¿Cuál es el costo de ingreso a la reserva?",
+    answer:
+      "<p>El ingreso a la reserva no tiene costo. Lo que debes hacer es acceder a alguno de los programas para vincularte: voluntariado o recorrido virtual.</p>",
+  },
+  {
+    id: "4",
+    question: "¿Qué es un área protegida?",
+    answer:
+      '<p>Es un territorio con fines de conservación ambiental. En términos formales engloba todas las categorías de protección definidas en el decreto 2372 de 2010, que a su vez conforman el Sistema Nacional de Áreas Protegidas (SINAP). Las áreas protegidas se clasifican en dos subtipos principales: públicas y privadas.</p><p><strong>Fuente:</strong> <a href="https://www.metropol.gov.co/planeacion/areas-protegidas/Paginas/contexto/las-areas-protegidas.aspx" target="_blank" rel="noopener noreferrer" class="faq-fuente">Las Áreas Protegidas (metropol.gov.co)</a></p>',
+  },
+  {
+    id: "5",
+    question: "¿Cómo se beneficia la población de la existencia de reservas?",
+    answer:
+      "<p>A medida que se preserven y protejan más ecosistemas, en cantidad y calidad, habrá mayor beneficio para las personas en el disfrute de los recursos naturales: aportes hídricos a las cuencas, agua menos contaminada, captura de carbono, emisión de oxígeno, microclimas y recuperación de la diversidad de fauna y flora.</p>",
+  },
+];
 ---
 
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold text-esmeralda mb-4">
-        ❓ ¡Conócenos más! Resolviendo tus dudas
-      </h2>
-      <p class="text-xl text-gray-600">
-        Respuestas a las preguntas más frecuentes
-      </p>
+<section class="banda-niebla">
+  <div class="wrap grid12 faq-envoltura">
+    <div class="faq-columna reveal">
+      <span class="eyebrow">Conócenos más</span>
+      <h2 class="titulo">Preguntas <em>frecuentes</em></h2>
+      <p class="lead">¿Tienes otra duda? Escríbenos y te respondemos.</p>
+      <a href="/contactanos/" class="arrow-link">
+        Contáctanos
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
     </div>
 
-    <div class="max-w-4xl mx-auto">
-      <AccordionItem
-        id="1"
-        question="¿Cómo podemos formar parte de la reserva La Esmeralda?"
-        answer='<p class="mb-4">La reserva dispone de medios tecnológicos llamados: recorrido virtual y dos programas específicos para vincularse. Estos son:</p><ul class="list-disc ml-6 space-y-2"><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a voluntariado</a></li><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a recorrido virtual</a></li></ul>'
-        isFirst={true}
-      />
-
-      <AccordionItem
-        id="2"
-        question="¿Qué es una reserva natural de la sociedad civil (RNSC)?"
-        answer="<p>Son áreas de terreno protegidas, que se establecieron a voluntad de los propietarios de predios privados, se dedican a la conservación y preservación de muestras de ecosistemas naturales, permitiéndose también tener sistemas de producción sostenibles, pero ambientalmente responsables.</p>"
-      />
-
-      <AccordionItem
-        id="3"
-        question="¿Cuál es el costo de ingreso a la Reserva?"
-        answer='<p class="mb-4">El ingreso a la reserva no tiene costo, lo que debes hacer es acceder a alguno de los programas para vincularte:</p><ul class="list-disc ml-6 space-y-2"><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a voluntariado</a></li><li><a href="/vinculate/" class="text-esmeralda hover:underline">👉 Ir a recorrido virtual</a></li></ul>'
-      />
-
-      <AccordionItem
-        id="4"
-        question="¿Qué es un área protegida?"
-        answer='<p class="mb-4">Es un territorio con fines de conservación ambiental, en aspectos formales y específicos engloba todas las categorías de protección definidas en el decreto 2372 de 2010, las cuales a su vez conforman el Sistema Nacional de Áreas Protegidas (SINAP). Adicionalmente, las áreas protegidas se clasifican en dos subtipos principales, las públicas y las privadas.</p><p class="mt-4"><strong>Fuente de información:</strong><br/><a href="https://www.metropol.gov.co/planeacion/areas-protegidas/Paginas/contexto/las-areas-protegidas.aspx" target="_blank" rel="noopener noreferrer" class="text-esmeralda hover:underline">Las Áreas Protegidas (metropol.gov.co)</a></p>'
-      />
-
-      <AccordionItem
-        id="5"
-        question="¿Cómo se beneficia la población de la existencia de reservas?"
-        answer="<p>A medida que se preserven y protejan más ecosistemas, en cantidad y calidad habrá mayor beneficio para las personas, en disfrute de recursos naturales. Las reservas brindan aportes hídricos a las cuencas, el agua es menos contaminada por actividad humana, captura de carbono, emisión de oxígeno, microclimas, recuperación de la diversidad de fauna y flora promoviendo equilibrio en el entorno natural.</p>"
-        isLast={true}
-      />
+    <div class="faq-lista reveal">
+      {preguntas.map((p) => <AccordionItem id={p.id} question={p.question} answer={p.answer} />)}
     </div>
   </div>
 </section>
