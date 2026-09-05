@@ -1,521 +1,227 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
-import Carousel from "../../components/ui/Carousel.astro";
+import PaginaDetalle from "../../layouts/PaginaDetalle.astro";
 
-const carouselImages = [
-  "/images/conservacion/nutria/nutria_2.avif",
-  "/images/conservacion/nutria/nutria_3.avif",
-  "/images/conservacion/nutria/nutria_4.avif",
+const galeria = [
+  { src: "/images/conservacion/nutria/nutria_2.avif", alt: "Nutria neotropical en el río Opia" },
+  { src: "/images/conservacion/nutria/nutria_3.avif", alt: "Nutria de río nadando" },
+  { src: "/images/conservacion/nutria/nutria_4.avif", alt: "Rastro de nutria en la ribera" },
+  { src: "/images/conservacion/nutria/nutria_11.avif", alt: "Ostra de agua dulce del río Opia" },
+  { src: "/images/conservacion/nutria/nutria_12.avif", alt: "Detalle de la ostra de río" },
+  { src: "/images/conservacion/nutria/rio_opia_1.avif", alt: "Cauce del río Opia a su paso por la reserva" },
+];
+
+const metas = [
+  {
+    titulo: "Recuperación de hábitat",
+    dato: "100 hectáreas",
+    texto: "Restaurar áreas ribereñas degradadas con especies nativas en los próximos 5 años.",
+  },
+  {
+    titulo: "Monitoreo de la nutria de río",
+    dato: "+25 %",
+    texto: "Aumentar los avistamientos de nutria de río en los próximos 5 años.",
+  },
+  {
+    titulo: "Monitoreo de la ostra de río",
+    dato: "+20 %",
+    texto: "Incrementar la población de ostra de río en los puntos críticos para el año 2030.",
+  },
+  {
+    titulo: "Sensibilización comunitaria",
+    dato: "200 personas",
+    texto: "Capacitar en conservación y gestión sostenible del agua en los primeros 3 años.",
+  },
+  {
+    titulo: "Reducción de amenazas",
+    dato: "−20 %",
+    texto: "Disminuir los niveles de contaminación del agua en los principales afluentes del río Opia en los próximos 5 años.",
+  },
+];
+
+const indicadores = [
+  { dato: "+30 %", texto: "Aumento en la cobertura vegetal ribereña en zonas de intervención." },
+  { dato: "−20 %", texto: "Reducción en la contaminación del agua en los puntos monitoreados." },
+  { dato: "+50 %", texto: "Incremento en la participación comunitaria en actividades de conservación." },
+  { dato: "+25 %", texto: "Aumento en los avistamientos de nutrias respecto a la línea base." },
+];
+
+const presupuesto = [
+  {
+    titulo: "Diagnóstico y evaluación inicial",
+    texto: "Identificación de las condiciones actuales y las áreas críticas del ecosistema.",
+  },
+  {
+    titulo: "Restauración y protección del hábitat",
+    texto: "Intervenciones para restaurar y conservar las zonas ribereñas afectadas.",
+  },
+  {
+    titulo: "Monitoreo participativo",
+    texto: "Colaboración con las comunidades locales para el seguimiento de las especies.",
+  },
+  {
+    titulo: "Educación ambiental y sensibilización",
+    texto: "Capacitación de la comunidad en conservación y sostenibilidad del ecosistema.",
+  },
+  {
+    titulo: "Fortalecimiento institucional y alianzas",
+    texto: "Construcción de alianzas estratégicas con entidades clave para el éxito del proyecto.",
+  },
+  {
+    titulo: "Personal",
+    texto: "Equipo multidisciplinario para la ejecución del proyecto en cada área.",
+  },
 ];
 ---
 
-<BaseLayout
-  title="La Esmeralda Reserva Natural | Nutria y Ostras de Agua Dulce"
+<PaginaDetalle
+  title="La Esmeralda Reserva Natural | Nutria y ostras de agua dulce"
   description="Conservación de la nutria (Lontra longicaudis) y la ostra en el río Opia. Ecosistemas en Peligro."
-  preloadImage="/images/conservacion/nutria/nutria_1.avif"
+  programa="Conservación e investigación"
+  programaHref="/conservacion_investigacion/"
+  heroTitulo="Nutrias y ostras de agua dulce:"
+  heroAcento="ecosistemas en peligro"
+  heroSubtitulo="Conservación de la nutria (Lontra longicaudis) y la ostra en el río Opia."
+  heroImagen="/images/conservacion/nutria/nutria_1.avif"
+  heroAlt="Nutria neotropical en la cuenca del río Opia"
+  ficha={[
+    { etiqueta: "Especies", valor: "Lontra longicaudis y Acostaea rivoli" },
+    { etiqueta: "Cuenca", valor: "Río Opia, Tolima" },
+    { etiqueta: "Estado de la ostra", valor: "En peligro crítico a nivel mundial" },
+    { etiqueta: "Horizonte", valor: "Visión 2030" },
+  ]}
+  galeria={galeria}
+  ctaTitulo="Cuida el río"
+  ctaAcento="Opia"
+  ctaTexto="El monitoreo participativo de la nutria y la ostra depende de las comunidades y de quienes apoyan la reserva."
 >
-  <Header />
+  <section>
+    <h2>Dos especies clave</h2>
+    <p class="destacado">
+      La nutria de río (<em>Lontra longicaudis</em>) es una especie de mamífero
+      semiacuático que se encuentra en la cuenca del río Opia, departamento del
+      Tolima. Está amenazada por la pérdida de hábitat, la contaminación de los
+      cuerpos de agua y la caza furtiva. La ostra pertenece al orden Unionoida y
+      está catalogada a nivel mundial en <strong>peligro crítico</strong>.
+    </p>
+    <div class="video-embebido">
+      <iframe
+        src="https://www.youtube.com/embed/9XOE8xMSQHA"
+        title="La nutria y la ostra del río Opia"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-screen"
-      style="background-image: url('/images/conservacion/nutria/nutria_1.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-5xl font-bold">
-            Nutrias y Ostras de Agua Dulce: Ecosistemas en Peligro
-          </h1>
-          <h2 class="text-2xl md:text-3xl mt-4">
-            Conservación de la nutria (Lontra longicaudis) y la ostra en el río
-            Opia
-          </h2>
-        </div>
-      </div>
-    </section>
+  <section>
+    <h2>Nuestro objetivo</h2>
+    <p>
+      Desarrollar un plan de conservación integral con monitoreo participativo
+      para la protección de la nutria de río (<em>Lontra longicaudis</em>) y la
+      ostra de río (<em>Acostaea rivoli</em>) en la cuenca del río Opia,
+      asegurando la restauración de sus hábitats, el monitoreo de sus
+      poblaciones y la sensibilización de las comunidades locales en torno a la
+      importancia de ambas especies y la protección de los ecosistemas.
+    </p>
+  </section>
 
-    <!-- Introducción con video -->
-    <section class="container mx-auto px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <p
-          class="text-lg lg:text-xl font-semibold text-gray-800 leading-relaxed"
-        >
-          La nutria de río (<em class="text-lime-500">Lontra longicaudis</em>)
-          es una especie de mamífero semiacuático que se encuentra en la cuenca
-          del río Opia, departamento del Tolima. Está amenazada por la pérdida
-          de hábitat, la contaminación de los cuerpos de agua y la caza furtiva.
-          La ostra pertenece al orden Unionoida y está catalogado a nivel
-          mundial como <em class="text-red-500">Peligro Crítico</em>.
-        </p>
-        <div
-          class="relative h-0 pb-[56.25%] shadow-lg rounded-lg overflow-hidden"
-        >
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/9XOE8xMSQHA"
-            title="YouTube video player"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
+  <section>
+    <h2>Por qué importan</h2>
+    <p>
+      La nutria de río y la ostra de río son especies clave en los ecosistemas
+      acuáticos de la cuenca del río Opia.
+    </p>
+    <p>
+      <strong>La nutria</strong> actúa como un regulador de las poblaciones de peces
+      y otros organismos acuáticos, manteniendo el equilibrio natural del ecosistema.
+    </p>
+    <p>
+      <strong>La ostra de río</strong> cumple una función esencial en la filtración
+      del agua, mejorando la calidad del ecosistema y garantizando la salud de los
+      cuerpos de agua.
+    </p>
+    <h3>Amenazas comunes</h3>
+    <ul>
+      <li>Pérdida de hábitat</li>
+      <li>Contaminación del agua</li>
+      <li>Sobreexplotación de recursos</li>
+      <li>Caza furtiva</li>
+    </ul>
+  </section>
 
-    <!-- Sección: Objetivo del Proyecto -->
-    <section class="relative py-20 bg-cover bg-center bg-fixed">
-      <div class="relative container mx-auto px-6 lg:px-8 text-center">
-        <h2 class="text-5xl font-extrabold text-lime-500 drop-shadow-lg mb-6">
-          Nuestro Objetivo
-        </h2>
+  <section>
+    <h2>Visión 2030: restauración y armonía</h2>
+    <p>
+      Para el año 2030, la cuenca del río Opia será un modelo regional de
+      <strong>conservación participativa</strong>, donde las poblaciones de
+      nutria de río y ostra de río se habrán recuperado significativamente.
+    </p>
+    <p>
+      Gracias a la restauración de los hábitats acuáticos y la mejora en la
+      calidad del agua, la fauna acuática prosperará nuevamente. Las comunidades
+      locales habrán adoptado prácticas sostenibles y mantendrán una relación
+      armoniosa y respetuosa con el entorno natural.
+    </p>
+    <p>
+      Este esfuerzo conjunto promoverá la sostenibilidad a largo plazo y
+      garantizará la conservación de los recursos naturales para las
+      generaciones futuras.
+    </p>
+  </section>
 
-        <p
-          class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black"
-        >
-          Desarrollar un plan de conservación integral con monitoreo
-          participativo para la protección de la nutria de río (Lontra
-          longicaudis) y la ostra de río (Acostaea rivoli) en la cuenca del río
-          Opia, asegurando la restauración de sus hábitats, el monitoreo de sus
-          poblaciones y la sensibilización de las comunidades locales en torno a
-          la importancia de ambas especies y la protección de los ecosistemas.
-        </p>
-
-        <div class="mt-12">
-          <Carousel images={carouselImages} alt="Nutria y ostras" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de importancia -->
-    <section
-      class="bg-gradient-to-br from-blue-100 via-green-200 to-lime-300 py-16 px-8"
-    >
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-center text-4xl font-bold text-gray-800 mb-12">
-          Importancia de la Nutria y la Ostra de Río
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="text-gray-700 space-y-6">
-            <p class="text-lg font-semibold">
-              La nutria de río (<em>Lontra longicaudis</em>) y la ostra de río (<em
-                >Acostaea rivoli</em
-              >) son especies clave en los ecosistemas acuáticos de la cuenca
-              del río Opia.
-            </p>
-            <p>
-              <span class="font-semibold text-gray-800">La nutria</span> actúa como
-              un regulador de las poblaciones de peces y otros organismos acuáticos,
-              manteniendo el equilibrio natural del ecosistema.
-            </p>
-            <p>
-              <span class="font-semibold text-gray-800">La ostra de río</span> cumple
-              una función esencial en la filtración del agua, mejorando la calidad
-              del ecosistema y garantizando la salud de los cuerpos de agua.
-            </p>
-            <p>
-              Sin embargo, ambas especies se enfrentan a amenazas comunes, como
-              la pérdida de hábitat, la contaminación del agua, la
-              sobreexplotación y la caza furtiva.
-            </p>
+  <section>
+    <h2>Metas</h2>
+    <div class="prosa-cajas">
+      {
+        metas.map((m) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{m.dato}</span>
+            <h3>{m.titulo}</h3>
+            <p>{m.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="relative">
-            <img
-          width="1080"
-          height="1080"
-          loading="lazy"
-          decoding="async"
-              src="/images/conservacion/nutria/nutria_11.avif"
-              alt="Nutria de río"
-              class="rounded-lg shadow-lg w-full h-64 object-cover"
-            />
-            <img
-          width="1080"
-          height="1080"
-          loading="lazy"
-          decoding="async"
-              src="/images/conservacion/nutria/nutria_12.avif"
-              alt="Ostra de río"
-              class="rounded-lg shadow-lg absolute top-8 right-8 w-48 h-48 object-cover border-4 border-white"
-            />
+  <section>
+    <h2>Indicadores de éxito</h2>
+    <p>Resultados que demuestran el impacto positivo en la cuenca del río Opia.</p>
+    <div class="prosa-cajas">
+      {
+        indicadores.map((i) => (
+          <div class="prosa-caja">
+            <span class="prosa-cifra">{i.dato}</span>
+            <p>{i.texto}</p>
           </div>
-        </div>
+        ))
+      }
+    </div>
+  </section>
 
-        <div class="mt-16 bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-2xl font-bold text-gray-800 mb-4">
-            Amenazas Comunes
-          </h3>
-          <ul class="list-disc list-inside space-y-2 text-gray-700">
-            <li>Pérdida de hábitat</li>
-            <li>Contaminación del agua</li>
-            <li>Sobreexplotación de recursos</li>
-            <li>Caza furtiva</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <section>
+    <h2>Sostenibilidad</h2>
+    <p>
+      Se garantizará la sostenibilidad del proyecto mediante la generación de
+      alianzas a largo plazo con entidades gubernamentales y ONG nacionales e
+      internacionales, así como el apoyo a las iniciativas o emprendimientos
+      verdes comunitarios.
+    </p>
+  </section>
 
-    <!-- Sección Visión 2030 -->
-    <section
-      class="bg-gradient-to-br from-green-200 via-teal-100 to-blue-200 py-20 px-8"
-    >
-      <div class="max-w-7xl mx-auto text-center">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-12">
-          Visión 2030: Restauración y Armonía
-        </h2>
-
-        <div class="text-xl text-gray-700 max-w-4xl mx-auto space-y-6">
-          <p>
-            Para el año 2030, la cuenca del río Opia será un modelo regional de <span
-              class="font-semibold text-teal-700"
-              >conservación participativa</span
-            >, donde las poblaciones de <span
-              class="font-semibold text-teal-700">nutria de río</span
-            > y <span class="font-semibold text-teal-700">ostra de río</span> se habrán
-            recuperado significativamente.
-          </p>
-          <p>
-            Gracias a la restauración de los hábitats acuáticos y la mejora en
-            la calidad del agua, la fauna acuática prosperará nuevamente. <span
-              class="font-semibold text-teal-700">Las comunidades locales</span
-            > habrán adoptado prácticas sostenibles y mantendrán una relación armoniosa
-            y respetuosa con el entorno natural.
-          </p>
-          <p>
-            Este esfuerzo conjunto promoverá la sostenibilidad a largo plazo y
-            garantizará la conservación de los recursos naturales para las
-            generaciones futuras.
-          </p>
-        </div>
-
-        <div class="mt-16 relative">
-          <img
-          width="800"
-          height="600"
-          loading="lazy"
-          decoding="async"
-            src="/images/conservacion/nutria/rio_opia_1.avif"
-            alt="Restauración y conservación del río Opia"
-            class="rounded-lg shadow-lg mx-auto w-full h-80 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-blue-200 to-transparent opacity-60"
-          >
+  <section>
+    <h2>Componentes del presupuesto del primer año</h2>
+    <div class="prosa-cajas">
+      {
+        presupuesto.map((p, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{p.titulo}</h3>
+            <p>{p.texto}</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Metas -->
-    <section class="py-16 px-8">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-4xl font-bold text-gray-900 text-center mb-12">
-          Metas
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-8 h-8 text-green-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m3-8a9 9 0 11-12.806 0 9 9 0 0112.806 0z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-              Recuperación de Hábitat
-            </h3>
-            <p class="text-gray-600">
-              Restaurar al menos <span class="font-bold">100 hectáreas</span> de áreas
-              ribereñas degradadas con especies nativas en los próximos 5 años.
-            </p>
-          </div>
-
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-8 h-8 text-blue-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-              Monitoreo de la Nutria de Río
-            </h3>
-            <p class="text-gray-600">
-              Aumentar en un <span class="font-bold">25%</span> los avistamientos
-              de nutria de río en los próximos 5 años.
-            </p>
-          </div>
-
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-8 h-8 text-teal-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0v10l-9-5m9 5l9-5"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-              Monitoreo de la Ostra de Río
-            </h3>
-            <p class="text-gray-600">
-              Incrementar en un <span class="font-bold">20%</span> la población de
-              ostra de río en los puntos críticos para el año 2030.
-            </p>
-          </div>
-
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-8 h-8 text-yellow-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v8m4-4H8"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-              Sensibilización Comunitaria
-            </h3>
-            <p class="text-gray-600">
-              Capacitar a <span class="font-bold">200 personas</span> en conservación
-              y gestión sostenible del agua en los primeros 3 años.
-            </p>
-          </div>
-
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-8 h-8 text-red-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 16h-1v-4h-3l4-8h1v4h3l-4 8z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-              Reducción de Amenazas
-            </h3>
-            <p class="text-gray-600">
-              Disminuir en un <span class="font-bold">20%</span> los niveles de contaminación
-              del agua en los principales afluentes del río Opia en los próximos 5
-              años.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Indicadores de Éxito -->
-    <section
-      class="relative bg-cover bg-center text-white"
-      style="background-image: url('/images/conservacion/nutria/nutria_13.avif')"
-    >
-      <div class="absolute inset-0 bg-black opacity-60"></div>
-
-      <div class="relative max-w-7xl mx-auto py-24 px-8 text-center">
-        <h2 class="text-5xl font-bold mb-8">Indicadores de Éxito</h2>
-
-        <p class="text-2xl mb-12 font-light">
-          Resultados que demuestran el impacto positivo en la cuenca del río
-          Opia
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          <div
-            class="p-8 bg-green-700/75 rounded-lg transform transition duration-500 hover:scale-105"
-          >
-            <h3 class="text-4xl font-semibold mb-4">+30%</h3>
-            <p class="text-lg">
-              Aumento del 30% en la cobertura vegetal ribereña en zonas de
-              intervención.
-            </p>
-          </div>
-
-          <div
-            class="p-8 bg-blue-700/75 rounded-lg transform transition duration-500 hover:scale-105"
-          >
-            <h3 class="text-4xl font-semibold mb-4">-20%</h3>
-            <p class="text-lg">
-              Reducción del 20% en la contaminación del agua en los puntos
-              monitoreados.
-            </p>
-          </div>
-
-          <div
-            class="p-8 bg-teal-700/75 rounded-lg transform transition duration-500 hover:scale-105"
-          >
-            <h3 class="text-4xl font-semibold mb-4">+50%</h3>
-            <p class="text-lg">
-              Incremento del 50% en la participación comunitaria en actividades
-              de conservación.
-            </p>
-          </div>
-
-          <div
-            class="p-8 bg-yellow-600/75 rounded-lg transform transition duration-500 hover:scale-105"
-          >
-            <h3 class="text-4xl font-semibold mb-4">+25%</h3>
-            <p class="text-lg">
-              Aumento del 25% en los avistamientos de nutrias respecto a la
-              línea base.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sostenibilidad -->
-    <section class="py-16 px-8 text-center bg-white">
-      <h2 class="text-4xl font-bold text-gray-800 mb-8">Sostenibilidad</h2>
-
-      <div class="max-w-3xl mx-auto text-lg text-gray-700">
-        <p>
-          Se garantizará la sostenibilidad del proyecto mediante la generación
-          de alianzas a largo plazo con entidades gubernamentales y ONGs
-          nacionales e internacionales, así como el apoyo a las iniciativas o
-          emprendimientos verdes comunitarios.
-        </p>
-      </div>
-
-      <div class="mt-10">
-        <span class="block w-24 mx-auto h-1 bg-green-600"></span>
-      </div>
-    </section>
-
-    <!-- Componentes del Presupuesto -->
-    <section
-      class="relative py-20 text-white bg-cover bg-center"
-      style="background-image: url('/images/conservacion/nutria/nutria_14.avif')"
-    >
-      <div class="absolute inset-0 bg-black/50"></div>
-
-      <div class="relative max-w-6xl mx-auto px-6">
-        <h2 class="text-5xl font-bold text-center mb-12">
-          Componentes del Presupuesto Inicial del Primer Año
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">
-              Diagnóstico y Evaluación Inicial
-            </h3>
-            <p>
-              Identificación de las condiciones actuales y las áreas críticas
-              del ecosistema.
-            </p>
-          </div>
-
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">
-              Restauración y Protección del Hábitat
-            </h3>
-            <p>
-              Intervenciones para restaurar y conservar las zonas ribereñas
-              afectadas.
-            </p>
-          </div>
-
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">Monitoreo Participativo</h3>
-            <p>
-              Colaboración con las comunidades locales para el seguimiento de
-              las especies.
-            </p>
-          </div>
-
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">
-              Educación Ambiental y Sensibilización
-            </h3>
-            <p>
-              Capacitación de la comunidad en conservación y sostenibilidad del
-              ecosistema.
-            </p>
-          </div>
-
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">
-              Fortalecimiento Institucional y Alianzas
-            </h3>
-            <p>
-              Construcción de alianzas estratégicas con entidades clave para el
-              éxito del proyecto.
-            </p>
-          </div>
-
-          <div
-            class="bg-white/20 rounded-lg p-6 text-center hover:bg-white/30 transition"
-          >
-            <h3 class="text-2xl font-semibold mb-2">Personal</h3>
-            <p>
-              Equipo multidisciplinario para la ejecución del proyecto en cada
-              área.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+        ))
+      }
+    </div>
+  </section>
+</PaginaDetalle>

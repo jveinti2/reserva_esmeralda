@@ -1,288 +1,156 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
-import Carousel from "../../components/ui/Carousel.astro";
+import PaginaDetalle from "../../layouts/PaginaDetalle.astro";
 
-const carouselImages = [
-  "/images/educacion/aves/aves_1.avif",
-  "/images/educacion/aves/aves_2.avif",
-  "/images/educacion/aves/aves_3.avif",
-  "/images/educacion/aves/aves_4.avif",
-  "/images/educacion/aves/aves_5.avif",
-  "/images/educacion/aves/aves_6.avif",
-  "/images/educacion/aves/aves_7.avif",
-  "/images/educacion/aves/aves_8.avif",
-  "/images/educacion/aves/aves_9.avif",
+const galeria = Array.from({ length: 9 }, (_, i) => ({
+  src: `/images/educacion/aves/aves_${i + 1}.avif`,
+  alt: `Ave observada en la Reserva Natural La Esmeralda (${i + 1})`,
+}));
+
+const actividades = [
+  {
+    titulo: "Salidas de avistamiento",
+    texto: "Recorridos guiados por la reserva durante las horas de mayor actividad de las aves, al amanecer y al atardecer.",
+  },
+  {
+    titulo: "Talleres de identificación",
+    texto: "Aprendizaje sobre características morfológicas, cantos y comportamientos para identificar especies de aves.",
+  },
+  {
+    titulo: "Monitoreo comunitario",
+    texto: "Registro sistemático de especies avistadas que contribuye a bases de datos científicas como eBird.",
+  },
+  {
+    titulo: "Reconocimiento de cantos",
+    texto: "Entrenamiento auditivo para identificar aves por sus vocalizaciones y llamados característicos.",
+  },
+  {
+    titulo: "Fotografía de aves",
+    texto: "Técnicas básicas de fotografía de naturaleza para documentar las especies observadas.",
+  },
+  {
+    titulo: "Conservación de hábitats",
+    texto: "Acciones de conservación como instalación de bebederos, comederos y cajas nido para aves.",
+  },
+];
+
+const especies = [
+  {
+    titulo: "Loros y pericos",
+    texto: "La reserva alberga varias especies de psitácidos, aves carismáticas y vocales que juegan un papel importante en la dispersión de semillas.",
+  },
+  {
+    titulo: "Colibríes",
+    texto: "Polinizadores esenciales del bosque seco tropical, los colibríes deslumbran con su vuelo acrobático y colores iridiscentes.",
+  },
+  {
+    titulo: "Rapaces",
+    texto: "Águilas, halcones y gavilanes son indicadores de la salud del ecosistema y controladores naturales de poblaciones de roedores.",
+  },
+  {
+    titulo: "Aves endémicas y amenazadas",
+    texto: "Registramos especies de distribución restringida y bajo amenaza, contribuyendo a su conservación mediante el monitoreo constante.",
+  },
+];
+
+const objetivos = [
+  {
+    titulo: "Ciencia ciudadana",
+    texto: "Formar observadores capacitados que contribuyan al conocimiento científico sobre la avifauna local y regional.",
+  },
+  {
+    titulo: "Conservación",
+    texto: "Promover la protección de las aves y sus hábitats a través de acciones concretas y educación ambiental.",
+  },
+  {
+    titulo: "Comunidad",
+    texto: "Construir una red de observadores de aves que comparta conocimientos y experiencias en torno a la conservación.",
+  },
+  {
+    titulo: "Conexión natural",
+    texto: "Fortalecer el vínculo emocional de las personas con la naturaleza a través de la observación y apreciación de las aves.",
+  },
 ];
 ---
 
-<BaseLayout
+<PaginaDetalle
   title="La Esmeralda Reserva Natural | Semillero Avistadores de Aves"
   description="Observando y protegiendo la avifauna del bosque seco tropical. Semillero de avistamiento de aves."
-  preloadImage="/images/educacion/fondo_aves.avif"
+  programa="Educación ambiental"
+  programaHref="/educacion_ambiental/"
+  heroTitulo="Semillero Avistadores"
+  heroAcento="de aves"
+  heroSubtitulo="Descubriendo la diversidad alada del bosque seco tropical."
+  heroImagen="/images/educacion/fondo_aves.avif"
+  heroAlt="Participante observando aves con binoculares en la reserva"
+  ficha={[
+    { etiqueta: "Programa", valor: "Educación ambiental" },
+    { etiqueta: "Dirigido a", valor: "Niños, jóvenes y adultos" },
+    { etiqueta: "Método", valor: "Ciencia ciudadana · registros en eBird" },
+    { etiqueta: "Mejor hora", valor: "Amanecer y atardecer" },
+  ]}
+  galeriaTitulo="Aves de la reserva"
+  galeria={galeria}
+  ctaTitulo="¿Te apasionan las"
+  ctaAcento="aves?"
+  ctaTexto="Únete al Semillero Avistadores y descubre el maravilloso mundo de las aves del bosque seco tropical."
 >
-  <Header />
+  <section>
+    <h2>¿Qué es el Semillero Avistadores?</h2>
+    <p class="destacado">
+      El Semillero Avistadores de Aves es un programa de ciencia ciudadana que
+      invita a niños, jóvenes y adultos a descubrir la increíble diversidad de
+      aves que habitan en la Reserva Natural La Esmeralda. A través de salidas
+      de campo, talleres de identificación y monitoreo participativo, formamos
+      observadores comprometidos con la conservación de la avifauna.
+    </p>
+    <p>
+      Colombia es el país con mayor diversidad de aves en el mundo, y el bosque
+      seco tropical alberga especies únicas y amenazadas. Nuestro semillero
+      contribuye al conocimiento científico local mientras conecta a las
+      personas con la belleza y fragilidad de estos ecosistemas.
+    </p>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-96"
-      style="background-image: url('/images/educacion/fondo_aves.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Semillero Avistadores de Aves
-          </h1>
-          <p class="text-xl md:text-2xl">
-            Descubriendo la diversidad alada del bosque seco tropical
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Introducción -->
-    <section class="container mx-auto px-6 py-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-6">
-          ¿Qué es el Semillero Avistadores?
-        </h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          El Semillero Avistadores de Aves es un programa de ciencia ciudadana
-          que invita a niños, jóvenes y adultos a descubrir la increíble
-          diversidad de aves que habitan en la Reserva Natural La Esmeralda. A
-          través de salidas de campo, talleres de identificación y monitoreo
-          participativo, formamos observadores comprometidos con la conservación
-          de la avifauna.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Colombia es el país con mayor diversidad de aves en el mundo, y el
-          bosque seco tropical alberga especies únicas y amenazadas. Nuestro
-          semillero contribuye al conocimiento científico local mientras conecta
-          a las personas con la belleza y fragilidad de estos ecosistemas.
-        </p>
-      </div>
-    </section>
-
-    <!-- Galería -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Aves de la Reserva
-        </h2>
-        <div class="max-w-5xl mx-auto">
-          <Carousel
-            images={carouselImages}
-            alt="Aves observadas en la reserva"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Actividades -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Actividades del Semillero
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-        >
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🔭</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Salidas de Avistamiento
-            </h3>
-            <p class="text-gray-600 text-center">
-              Recorridos guiados por la reserva durante las horas de mayor
-              actividad de las aves, al amanecer y al atardecer.
-            </p>
+  <section>
+    <h2>Actividades del semillero</h2>
+    <div class="prosa-cajas">
+      {
+        actividades.map((a, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{a.titulo}</h3>
+            <p>{a.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">📚</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Talleres de Identificación
-            </h3>
-            <p class="text-gray-600 text-center">
-              Aprendizaje sobre características morfológicas, cantos y
-              comportamientos para identificar especies de aves.
-            </p>
+  <section>
+    <h2>Especies destacadas</h2>
+    <div class="prosa-cajas">
+      {
+        especies.map((e) => (
+          <div class="prosa-caja">
+            <h3>{e.titulo}</h3>
+            <p>{e.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">📊</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Monitoreo Comunitario
-            </h3>
-            <p class="text-gray-600 text-center">
-              Registro sistemático de especies avistadas que contribuye a bases
-              de datos científicas como eBird.
-            </p>
+  <section>
+    <h2>Objetivos del semillero</h2>
+    <div class="prosa-cajas">
+      {
+        objetivos.map((o) => (
+          <div class="prosa-caja">
+            <h3>{o.titulo}</h3>
+            <p>{o.texto}</p>
           </div>
-
-          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🎧</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Reconocimiento de Cantos
-            </h3>
-            <p class="text-gray-600 text-center">
-              Entrenamiento auditivo para identificar aves por sus
-              vocalizaciones y llamados característicos.
-            </p>
-          </div>
-
-          <div class="bg-pink-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">📸</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Fotografía de Aves
-            </h3>
-            <p class="text-gray-600 text-center">
-              Técnicas básicas de fotografía de naturaleza para documentar las
-              especies observadas.
-            </p>
-          </div>
-
-          <div class="bg-teal-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🌳</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Conservación de Hábitats
-            </h3>
-            <p class="text-gray-600 text-center">
-              Acciones de conservación como instalación de bebederos, comederos
-              y cajas nido para aves.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Especies destacadas -->
-    <section class="py-16 bg-gradient-to-r from-blue-100 to-green-100">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Especies Destacadas de la Reserva
-        </h2>
-        <div class="max-w-4xl mx-auto space-y-6">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🦜 Loros y Pericos
-            </h3>
-            <p class="text-gray-600">
-              La reserva alberga varias especies de psitácidos, aves
-              carismáticas y vocales que juegan un papel importante en la
-              dispersión de semillas.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">🕊️ Colibríes</h3>
-            <p class="text-gray-600">
-              Polinizadores esenciales del bosque seco tropical, los colibríes
-              deslumbran con su vuelo acrobático y colores iridiscentes.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">🦅 Rapaces</h3>
-            <p class="text-gray-600">
-              Águilas, halcones y gavilanes son indicadores de la salud del
-              ecosistema y controladores naturales de poblaciones de roedores.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🐦 Aves Endémicas y Amenazadas
-            </h3>
-            <p class="text-gray-600">
-              Registramos especies de distribución restringida y bajo amenaza,
-              contribuyendo a su conservación mediante el monitoreo constante.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Objetivos -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Objetivos del Semillero
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🔬 Ciencia Ciudadana
-            </h3>
-            <p class="text-gray-600">
-              Formar observadores capacitados que contribuyan al conocimiento
-              científico sobre la avifauna local y regional.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🌿 Conservación
-            </h3>
-            <p class="text-gray-600">
-              Promover la protección de las aves y sus hábitats a través de
-              acciones concretas y educación ambiental.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">👥 Comunidad</h3>
-            <p class="text-gray-600">
-              Construir una red de observadores de aves que comparta
-              conocimientos y experiencias en torno a la conservación.
-            </p>
-          </div>
-
-          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              💚 Conexión Natural
-            </h3>
-            <p class="text-gray-600">
-              Fortalecer el vínculo emocional de las personas con la naturaleza
-              a través de la observación y apreciación de las aves.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-16 bg-esmeralda text-white text-center">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          ¿Te apasionan las aves?
-        </h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Únete al Semillero Avistadores y descubre el maravilloso mundo de las
-          aves del bosque seco tropical.
-        </p>
-        <a
-          href="/vinculate/"
-          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
-        >
-          Vincúlate aquí
-          <svg
-            class="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+        ))
+      }
+    </div>
+  </section>
+</PaginaDetalle>

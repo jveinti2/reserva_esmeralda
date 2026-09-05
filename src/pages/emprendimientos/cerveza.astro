@@ -1,235 +1,130 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
-import Carousel from "../../components/ui/Carousel.astro";
+import PaginaDetalle from "../../layouts/PaginaDetalle.astro";
 
-const carouselImages = [
-  "/images/emprendimientos/cerveza/cerveza_2.avif",
-  "/images/emprendimientos/cerveza/cerveza_3.avif",
-  "/images/emprendimientos/cerveza/cerveza_4.avif",
-  "/images/emprendimientos/cerveza/cerveza_5.avif",
-  "/images/emprendimientos/cerveza/cerveza_6.avif",
+const galeria = [2, 3, 4, 5, 6].map((n) => ({
+  src: `/images/emprendimientos/cerveza/cerveza_${n}.avif`,
+  alt: `Elaboración artesanal de la cerveza La Esmeralda (${n - 1})`,
+}));
+
+const variedades = [
+  {
+    titulo: "Cerveza de kumquat",
+    texto: "Elaborada con kumquats cultivados en la reserva, ofrece un sabor cítrico y refrescante único.",
+  },
+  {
+    titulo: "Cerveza con hierbas",
+    texto: "Aromatizada con hierbas aromáticas del bosque, brinda notas herbales y frescas.",
+  },
+  {
+    titulo: "Cerveza de miel",
+    texto: "Endulzada naturalmente con miel de abejas nativas, sabor suave y equilibrado.",
+  },
+];
+
+const beneficios = [
+  {
+    titulo: "100 % artesanal",
+    texto: "Elaborada en pequeños lotes con técnicas tradicionales, sin aditivos artificiales ni conservantes.",
+  },
+  {
+    titulo: "Ingredientes locales",
+    texto: "Utilizamos frutas y hierbas cultivadas en la reserva o por productores locales comprometidos con la sostenibilidad.",
+  },
+  {
+    titulo: "Impacto positivo",
+    texto: "Cada compra apoya directamente los proyectos de conservación y educación ambiental de la reserva.",
+  },
+  {
+    titulo: "Sabor único",
+    texto: "Experimenta perfiles de sabor que no encontrarás en ninguna otra parte, inspirados en nuestro ecosistema.",
+  },
 ];
 ---
 
-<BaseLayout
+<PaginaDetalle
   title="La Esmeralda Reserva Natural | Cerveza Artesanal"
   description="Cerveza artesanal con ingredientes naturales. Sabor único del bosque seco tropical."
-  preloadImage="/images/emprendimientos/cerveza/fondo_cerveza_2.avif"
+  programa="Emprendimientos verdes"
+  programaHref="/emprendimientos/"
+  heroTitulo="Cerveza artesanal"
+  heroAcento="La Esmeralda"
+  heroSubtitulo="Sabor auténtico con ingredientes del bosque seco tropical."
+  heroImagen="/images/emprendimientos/cerveza/fondo_cerveza_2.avif"
+  heroAlt="Cerveza artesanal de la Reserva Natural La Esmeralda"
+  ficha={[
+    { etiqueta: "Programa", valor: "Emprendimientos verdes" },
+    { etiqueta: "Variedades", valor: "Kumquat, hierbas y miel" },
+    { etiqueta: "Producción", valor: "Pequeños lotes, sin conservantes" },
+    { etiqueta: "Agua", valor: "De manantial de la reserva" },
+  ]}
+  galeriaTitulo="Proceso de elaboración"
+  galeria={galeria}
+  ctaTitulo="¿Quieres probar nuestra"
+  ctaAcento="cerveza?"
+  ctaTexto="Visita la reserva y descubre nuestros productos artesanales que apoyan la conservación."
 >
-  <Header />
+  <section>
+    <h2>Nuestra cerveza</h2>
+    <p class="destacado">
+      La Cerveza Artesanal La Esmeralda es el resultado de combinar técnicas
+      tradicionales de elaboración con ingredientes únicos de nuestro entorno.
+      Cada lote es preparado con dedicación, utilizando agua de manantial de la
+      reserva y frutas locales que aportan sabores distintivos y auténticos.
+    </p>
+    <p>
+      Este emprendimiento no solo produce una bebida de calidad excepcional,
+      sino que también genera recursos para la conservación de la reserva y
+      promueve el uso sostenible de productos del bosque.
+    </p>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-96"
-      style="background-image: url('/images/emprendimientos/cerveza/fondo_cerveza_2.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Cerveza Artesanal La Esmeralda
-          </h1>
-          <p class="text-xl md:text-2xl">
-            Sabor auténtico con ingredientes del bosque seco tropical
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Introducción -->
-    <section class="container mx-auto px-6 py-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-6">Nuestra Cerveza</h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          La Cerveza Artesanal La Esmeralda es el resultado de combinar técnicas
-          tradicionales de elaboración con ingredientes únicos de nuestro
-          entorno. Cada lote es preparado con dedicación, utilizando agua de
-          manantial de la reserva y frutas locales que aportan sabores
-          distintivos y auténticos.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Este emprendimiento no solo produce una bebida de calidad excepcional,
-          sino que también genera recursos para la conservación de la reserva y
-          promueve el uso sostenible de productos del bosque.
-        </p>
-      </div>
-    </section>
-
-    <!-- Galería -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Proceso de Elaboración
-        </h2>
-        <div class="max-w-5xl mx-auto">
-          <Carousel
-            images={carouselImages}
-            alt="Elaboración de cerveza artesanal"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Características -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Nuestras Variedades
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-        >
-          <div class="bg-amber-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🍺</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Cerveza de Kumquat
-            </h3>
-            <p class="text-gray-600 text-center">
-              Elaborada con kumquats cultivados en la reserva, ofrece un sabor
-              cítrico y refrescante único.
-            </p>
+  <section>
+    <h2>Nuestras variedades</h2>
+    <div class="prosa-cajas">
+      {
+        variedades.map((v, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{v.titulo}</h3>
+            <p>{v.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🌿</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Cerveza con Hierbas
-            </h3>
-            <p class="text-gray-600 text-center">
-              Aromatizada con hierbas aromáticas del bosque, brinda notas
-              herbales y frescas.
-            </p>
+  <section>
+    <h2>Nuestro maestro cervecero</h2>
+    <div class="tile prosa-imagen">
+      <img
+        src="/images/emprendimientos/cerveza/maestro_cervecero.avif"
+        alt="El maestro cervecero de La Esmeralda en plena elaboración"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <p>
+      Con años de experiencia en la elaboración artesanal de cerveza, nuestro
+      maestro cervecero combina conocimiento técnico con creatividad para
+      desarrollar recetas únicas que reflejan la esencia de La Esmeralda.
+    </p>
+    <p>
+      Cada lote es supervisado cuidadosamente para garantizar la más alta
+      calidad, desde la selección de ingredientes hasta el embotellado final.
+    </p>
+  </section>
+
+  <section>
+    <h2>¿Por qué elegir nuestra cerveza?</h2>
+    <div class="prosa-cajas">
+      {
+        beneficios.map((b) => (
+          <div class="prosa-caja">
+            <h3>{b.titulo}</h3>
+            <p>{b.texto}</p>
           </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🍯</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Cerveza de Miel
-            </h3>
-            <p class="text-gray-600 text-center">
-              Endulzada naturalmente con miel de abejas nativas, sabor suave y
-              equilibrado.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Maestro Cervecero -->
-    <section class="py-16 bg-gradient-to-r from-amber-100 to-orange-100">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Nuestro Maestro Cervecero
-        </h2>
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <img
-          width="960"
-          height="1280"
-          loading="lazy"
-          decoding="async"
-              src="/images/emprendimientos/cerveza/maestro_cervecero.avif"
-              alt="Maestro Cervecero"
-              class="rounded-lg shadow-lg"
-            />
-          </div>
-          <div>
-            <p class="text-lg text-gray-700 leading-relaxed mb-4">
-              Con años de experiencia en la elaboración artesanal de cerveza,
-              nuestro maestro cervecero combina conocimiento técnico con
-              creatividad para desarrollar recetas únicas que reflejan la
-              esencia de La Esmeralda.
-            </p>
-            <p class="text-lg text-gray-700 leading-relaxed">
-              Cada lote es supervisado cuidadosamente para garantizar la más
-              alta calidad, desde la selección de ingredientes hasta el
-              embotellado final.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beneficios -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          ¿Por qué elegir nuestra cerveza?
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🌱 100% Artesanal
-            </h3>
-            <p class="text-gray-600">
-              Elaborada en pequeños lotes con técnicas tradicionales, sin
-              aditivos artificiales ni conservantes.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🍃 Ingredientes Locales
-            </h3>
-            <p class="text-gray-600">
-              Utilizamos frutas y hierbas cultivadas en la reserva o por
-              productores locales comprometidos con la sostenibilidad.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              💚 Impacto Positivo
-            </h3>
-            <p class="text-gray-600">
-              Cada compra apoya directamente los proyectos de conservación y
-              educación ambiental de la reserva.
-            </p>
-          </div>
-
-          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">🏆 Sabor Único</h3>
-            <p class="text-gray-600">
-              Experimenta perfiles de sabor que no encontrarás en ninguna otra
-              parte, inspirados en nuestro ecosistema.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-16 bg-esmeralda text-white text-center">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          ¿Quieres probar nuestra cerveza?
-        </h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Visita la reserva y descubre nuestros productos artesanales que apoyan
-          la conservación.
-        </p>
-        <a
-          href="/vinculate/"
-          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
-        >
-          Contáctanos
-          <svg
-            class="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+        ))
+      }
+    </div>
+  </section>
+</PaginaDetalle>

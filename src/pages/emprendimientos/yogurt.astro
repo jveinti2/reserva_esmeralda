@@ -1,226 +1,103 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
-import Carousel from "../../components/ui/Carousel.astro";
+import PaginaDetalle from "../../layouts/PaginaDetalle.astro";
 
-const carouselImages = [
-  "/images/emprendimientos/yogurt/yogur_img_1.avif",
-  "/images/emprendimientos/yogurt/yogur_img_2.avif",
-  "/images/emprendimientos/yogurt/yogur_img_3.avif",
-  "/images/emprendimientos/yogurt/yogur_img_4.avif",
+const galeria = [1, 2, 3, 4].map((n) => ({
+  src: `/images/emprendimientos/yogurt/yogur_img_${n}.avif`,
+  alt: `Elaboración artesanal del yogurt La Esmeralda (${n})`,
+}));
+
+const sabores = [
+  { titulo: "Fresa natural", texto: "Con fresas frescas y dulces, sin azúcares añadidos, sabor suave y delicioso." },
+  { titulo: "Mango tropical", texto: "Mango de la región en trozos generosos, cremoso y refrescante." },
+  { titulo: "Mora del bosque", texto: "Mora fresca cultivada localmente, ligeramente ácida y nutritiva." },
+  { titulo: "Miel y granola", texto: "Endulzado con miel natural y granola artesanal, perfecto para el desayuno." },
+  { titulo: "Coco natural", texto: "Con trozos de coco fresco, tropical y cremoso." },
+  { titulo: "Durazno fresco", texto: "Durazno en trozos, suave y aromático." },
+];
+
+const beneficios = [
+  {
+    titulo: "100 % natural",
+    texto: "Sin conservantes, colorantes ni saborizantes artificiales. Solo ingredientes naturales de la más alta calidad.",
+  },
+  {
+    titulo: "Rico en probióticos",
+    texto: "Cultivos vivos que benefician tu salud digestiva y fortalecen tu sistema inmunológico.",
+  },
+  {
+    titulo: "Frutas frescas",
+    texto: "Utilizamos frutas de temporada cultivadas localmente, garantizando frescura y sabor auténtico.",
+  },
+  {
+    titulo: "Apoyas la conservación",
+    texto: "Cada compra contribuye directamente a la protección del bosque seco tropical y su biodiversidad.",
+  },
 ];
 ---
 
-<BaseLayout
+<PaginaDetalle
   title="La Esmeralda Reserva Natural | Yogurt Artesanal"
   description="Yogurt artesanal con frutas naturales. Nutritivo y delicioso, directo del campo."
-  preloadImage="/images/emprendimientos/yogurt/fondo_landing_yogurt.avif"
+  programa="Emprendimientos verdes"
+  programaHref="/emprendimientos/"
+  heroTitulo="Yogurt artesanal"
+  heroAcento="La Esmeralda"
+  heroSubtitulo="Cremoso, natural y lleno de sabor."
+  heroImagen="/images/emprendimientos/yogurt/fondo_landing_yogurt.avif"
+  heroAlt="Yogurt artesanal de la Reserva Natural La Esmeralda"
+  ficha={[
+    { etiqueta: "Programa", valor: "Emprendimientos verdes" },
+    { etiqueta: "Sabores", valor: "Seis, según la fruta de temporada" },
+    { etiqueta: "Leche", valor: "Fresca, de vacas de la región" },
+    { etiqueta: "Sin", valor: "Conservantes ni colorantes artificiales" },
+  ]}
+  galeriaTitulo="Nuestro proceso"
+  galeria={galeria}
+  ctaTitulo="¿Quieres probar nuestro"
+  ctaAcento="yogurt?"
+  ctaTexto="Visítanos en la reserva o contacta con nosotros para hacer tu pedido."
 >
-  <Header />
+  <section>
+    <h2>Nuestro yogurt</h2>
+    <p class="destacado">
+      El Yogurt Artesanal La Esmeralda es elaborado con leche fresca de vacas de
+      la región y frutas naturales cultivadas en la reserva. Sin conservantes ni
+      colorantes artificiales, cada vasito es una explosión de sabor y nutrición
+      que apoya la sostenibilidad local.
+    </p>
+    <p>
+      Nuestro proceso artesanal garantiza un producto cremoso, saludable y
+      delicioso que refleja el cuidado y dedicación que ponemos en cada aspecto
+      de nuestra reserva.
+    </p>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-96"
-      style="background-image: url('/images/emprendimientos/yogurt/fondo_landing_yogurt.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Yogurt Artesanal La Esmeralda
-          </h1>
-          <p class="text-xl md:text-2xl">Cremoso, natural y lleno de sabor</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Introducción -->
-    <section class="container mx-auto px-6 py-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-esmeralda mb-6">Nuestro Yogurt</h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-          El Yogurt Artesanal La Esmeralda es elaborado con leche fresca de
-          vacas de la región y frutas naturales cultivadas en la reserva. Sin
-          conservantes ni colorantes artificiales, cada vasito es una explosión
-          de sabor y nutrición que apoya la sostenibilidad local.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Nuestro proceso artesanal garantiza un producto cremoso, saludable y
-          delicioso que refleja el cuidado y dedicación que ponemos en cada
-          aspecto de nuestra reserva.
-        </p>
-      </div>
-    </section>
-
-    <!-- Galería -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Nuestro Proceso
-        </h2>
-        <div class="max-w-5xl mx-auto">
-          <Carousel
-            images={carouselImages}
-            alt="Elaboración de yogurt artesanal"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Sabores -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Nuestros Sabores
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-        >
-          <div class="bg-pink-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🍓</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Fresa Natural
-            </h3>
-            <p class="text-gray-600 text-center">
-              Con fresas frescas y dulces, sin azúcares añadidos, sabor suave y
-              delicioso.
-            </p>
+  <section>
+    <h2>Nuestros sabores</h2>
+    <div class="prosa-cajas">
+      {
+        sabores.map((s, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{s.titulo}</h3>
+            <p>{s.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🥭</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Mango Tropical
-            </h3>
-            <p class="text-gray-600 text-center">
-              Mango de la región en trozos generosos, cremoso y refrescante.
-            </p>
+  <section>
+    <h2>Beneficios de nuestro yogurt</h2>
+    <div class="prosa-cajas">
+      {
+        beneficios.map((b) => (
+          <div class="prosa-caja">
+            <h3>{b.titulo}</h3>
+            <p>{b.texto}</p>
           </div>
-
-          <div class="bg-purple-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🫐</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Mora del Bosque
-            </h3>
-            <p class="text-gray-600 text-center">
-              Mora fresca cultivada localmente, ligeramente ácida y nutritiva.
-            </p>
-          </div>
-
-          <div class="bg-yellow-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🍯</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Miel y Granola
-            </h3>
-            <p class="text-gray-600 text-center">
-              Endulzado con miel natural y granola artesanal, perfecto para el
-              desayuno.
-            </p>
-          </div>
-
-          <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🥥</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Coco Natural
-            </h3>
-            <p class="text-gray-600 text-center">
-              Con trozos de coco fresco, tropical y cremoso.
-            </p>
-          </div>
-
-          <div class="bg-blue-50 p-6 rounded-lg shadow-lg">
-            <div class="text-4xl mb-4 text-center">🍑</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">
-              Durazno Fresco
-            </h3>
-            <p class="text-gray-600 text-center">
-              Durazno en trozos, suave y aromático.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beneficios -->
-    <section class="py-16 bg-gradient-to-r from-pink-100 to-purple-100">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-esmeralda mb-12">
-          Beneficios de Nuestro Yogurt
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🥛 100% Natural
-            </h3>
-            <p class="text-gray-600">
-              Sin conservantes, colorantes ni saborizantes artificiales. Solo
-              ingredientes naturales de la más alta calidad.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              💪 Rico en Probióticos
-            </h3>
-            <p class="text-gray-600">
-              Cultivos vivos que benefician tu salud digestiva y fortalecen tu
-              sistema inmunológico.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              🌾 Frutas Frescas
-            </h3>
-            <p class="text-gray-600">
-              Utilizamos frutas de temporada cultivadas localmente, garantizando
-              frescura y sabor auténtico.
-            </p>
-          </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              💚 Apoyas la Conservación
-            </h3>
-            <p class="text-gray-600">
-              Cada compra contribuye directamente a la protección del bosque
-              seco tropical y su biodiversidad.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-16 bg-esmeralda text-white text-center">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          ¿Quieres probar nuestro yogurt?
-        </h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
-          Visítanos en la reserva o contacta con nosotros para hacer tu pedido.
-        </p>
-        <a
-          href="/vinculate/"
-          class="inline-flex items-center text-esmeralda bg-white hover:bg-gray-100 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-lg px-8 py-3.5 text-center transition-all"
-        >
-          Contáctanos
-          <svg
-            class="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+        ))
+      }
+    </div>
+  </section>
+</PaginaDetalle>

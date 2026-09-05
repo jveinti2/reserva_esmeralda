@@ -1,374 +1,209 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
-import Carousel from "../../components/ui/Carousel.astro";
+import PaginaDetalle from "../../layouts/PaginaDetalle.astro";
 
-const carouselImages = [
-  "/images/conservacion/herpetos/herpectos_4.avif",
-  "/images/conservacion/herpetos/herpectos_5.avif",
-  "/images/conservacion/herpetos/herpectos_3.avif",
+const galeria = [
+  { src: "/images/conservacion/herpetos/herpectos_4.avif", alt: "Anfibio registrado en el trabajo de campo" },
+  { src: "/images/conservacion/herpetos/herpectos_5.avif", alt: "Reptil hallado en la reserva" },
+  { src: "/images/conservacion/herpetos/herpectos_3.avif", alt: "Herpeto del bosque seco tropical" },
+  { src: "/images/conservacion/herpetos/bosque_secotropical.avif", alt: "Bosque seco tropical de la reserva" },
+  { src: "/images/conservacion/herpetos/fondo_seccion_resultados_1.avif", alt: "Vegetación del corredor del río Opia" },
+];
+
+const metas = [
+  "Identificar en campo y catalogar las especies de anfibios y reptiles presentes en la Reserva Natural La Esmeralda.",
+  "Evaluar el estado de conservación de estas especies en el contexto de las amenazas que enfrentan.",
+  "Contribuir al conocimiento científico sobre la herpetofauna del Tolima y promover acciones de conservación en la región, con la creación de un folleto informativo.",
+];
+
+const resultados = [
+  {
+    titulo: "Inventario completo de especies",
+    texto: "Identificación y catalogación de al menos 50 especies de anfibios y reptiles.",
+  },
+  {
+    titulo: "Evaluación del estado de conservación",
+    texto: "Evaluación del estado de conservación de las especies identificadas.",
+  },
+  {
+    titulo: "Base de datos digital",
+    texto: "Creación de una base de datos digital para la gestión de la información obtenida.",
+  },
+  {
+    titulo: "Publicación científica",
+    texto: "Elaboración y envío de un manuscrito para su publicación en una revista científica.",
+  },
+  {
+    titulo: "Sensibilización ambiental",
+    texto: "Programas de sensibilización y educación ambiental dirigidos a la comunidad local.",
+  },
+];
+
+const fases = [
+  { fase: "Fase 1", texto: "Recolección de datos", tiempo: "3 meses" },
+  { fase: "Fase 2", texto: "Análisis y evaluación", tiempo: "2 meses" },
+  { fase: "Fase 3", texto: "Creación de base de datos", tiempo: "1 mes" },
+  { fase: "Fase 4", texto: "Redacción del manuscrito", tiempo: "2 meses" },
+  { fase: "Fase 5", texto: "Sensibilización", tiempo: "1 mes" },
+];
+
+const recursos = [
+  {
+    titulo: "Recursos humanos",
+    items: [
+      "Biólogos con experiencia en herpetología.",
+      "Técnicos de campo para la recolección de datos.",
+      "Voluntarios o estudiantes para apoyo en investigaciones.",
+    ],
+  },
+  {
+    titulo: "Equipos y materiales",
+    items: [
+      "Redes de captura para anfibios y reptiles.",
+      "Cámaras fotográficas y/o cámaras trampa.",
+      "Kits de identificación de especies (guías de campo).",
+      "Equipos para la medición ambiental.",
+      "Software para el análisis de datos.",
+      "Base de datos digital.",
+    ],
+  },
+  {
+    titulo: "Financiamiento",
+    items: [
+      "Fondos para salarios del personal.",
+      "Presupuesto para equipos y materiales.",
+      "Recursos para divulgación y materiales educativos.",
+    ],
+  },
+  {
+    titulo: "Infraestructura",
+    items: [
+      "Reserva Natural La Esmeralda para actividades de campo.",
+      "Espacio para el procesamiento de muestras.",
+    ],
+  },
+  {
+    titulo: "Colaboraciones",
+    items: [
+      "Alianzas con universidades o instituciones de investigación.",
+      "Apoyo de organizaciones ambientales.",
+    ],
+  },
+  {
+    titulo: "Materiales educativos",
+    items: ["Folletos y carteles informativos sobre la conservación."],
+  },
 ];
 ---
 
-<BaseLayout
+<PaginaDetalle
   title="La Esmeralda Reserva Natural | Herpetos"
   description="Río Opia: Un Refugio para la Herpetofauna. Inventario y caracterización de anfibios y reptiles en la Reserva Natural La Esmeralda."
-  preloadImage="/images/conservacion/herpetos/rio_caiman.avif"
+  programa="Conservación e investigación"
+  programaHref="/conservacion_investigacion/"
+  heroTitulo="Río Opia: un refugio para la"
+  heroAcento="herpetofauna"
+  heroSubtitulo="Reserva Natural La Esmeralda, Piedras, Tolima"
+  heroImagen="/images/conservacion/herpetos/rio_caiman.avif"
+  heroAlt="Caimán asomando en el río Opia, dentro de la reserva"
+  ficha={[
+    { etiqueta: "Proyecto", valor: "Inventario y caracterización de herpetofauna" },
+    { etiqueta: "Ecosistema", valor: "Bosque seco tropical · corredor del río Opia" },
+    { etiqueta: "Duración estimada", valor: "9 meses en 5 fases" },
+    { etiqueta: "Meta", valor: "Al menos 50 especies catalogadas" },
+  ]}
+  galeria={galeria}
+  ctaTitulo="Investiga con"
+  ctaAcento="nosotros"
+  ctaTexto="Biólogos, estudiantes y voluntarios: el inventario de herpetofauna necesita manos y ojos en el campo."
 >
-  <Header />
+  <section>
+    <h2>Nuestro objetivo</h2>
+    <p class="destacado">
+      Realizar un inventario exhaustivo y la caracterización taxonómica de la
+      <strong>herpetofauna</strong> (anfibios y reptiles) en la Reserva Natural
+      La Esmeralda, situada en <strong>Piedras, Tolima</strong>. Nuestro equipo
+      se dedica a preservar y entender la biodiversidad en este ecosistema
+      vital.
+    </p>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-screen"
-      style="background-image: url('/images/conservacion/herpetos/rio_caiman.avif')"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white px-4">
-          <h1 class="text-5xl font-bold">
-            Río Opia: Un Refugio para la Herpetofauna
-          </h1>
-          <h2 class="text-3xl mt-4">
-            Reserva Natural La Esmeralda, Piedras, Tolima
-          </h2>
-        </div>
-      </div>
-    </section>
+  <section>
+    <h2>Justificación</h2>
+    <p>
+      El departamento del Tolima presenta una rica diversidad de ecosistemas y
+      hábitats que albergan una amplia variedad de herpetos. Sin embargo, estos
+      grupos están amenazados por factores como la pérdida de hábitat, especies
+      invasoras, contaminación, tráfico ilegal, cambio climático y enfermedades
+      emergentes.
+    </p>
+    <p>
+      La Reserva Natural La Esmeralda está ubicada en un ecosistema crítico —el
+      bosque seco tropical— que aún tiene un potencial desconocido, a falta de
+      labores investigativas en el sector, para la conservación e identificación
+      de su biodiversidad de anfibios y reptiles.
+    </p>
+  </section>
 
-    <!-- Sección: Objetivo del Proyecto -->
-    <section class="relative py-20 bg-cover bg-center bg-fixed">
-      <div class="relative container mx-auto px-6 lg:px-8 text-center">
-        <h2 class="text-5xl font-extrabold text-esmeralda drop-shadow-lg mb-6">
-          Nuestro Objetivo
-        </h2>
-
-        <p
-          class="mt-6 text-xl leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-black"
-        >
-          Realizar un inventario exhaustivo y la caracterización taxonómica de
-          la <strong>herpetofauna</strong> (anfibios y reptiles) en la <span
-            class="underline decoration-esmeralda"
-            >Reserva Natural La Esmeralda</span
-          >, situada en <strong>Piedras, Tolima</strong>. Nuestro equipo se
-          dedica a preservar y entender la biodiversidad en este ecosistema
-          vital.
-        </p>
-
-        <div class="mt-12">
-          <Carousel images={carouselImages} alt="Herpetos" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección: Justificación del Proyecto -->
-    <section
-      style="background-image: url('/images/conservacion/herpetos/bosque_secotropical.avif'); background-size: cover; background-attachment: fixed;"
-    >
-      <div class="bg-black/60 py-12">
-        <div class="container mx-auto px-4 text-center text-white">
-          <h2 class="text-3xl font-bold">Justificación del Proyecto</h2>
-          <p class="mt-4 text-lg max-w-4xl mx-auto">
-            El departamento del Tolima presenta una rica diversidad de
-            ecosistemas y hábitats que albergan una amplia variedad de herpetos.
-            Sin embargo, estos grupos están amenazados por factores como la
-            pérdida de hábitat, especies invasoras, contaminación, tráfico
-            ilegal, cambio climático y enfermedades emergentes. La Reserva
-            Natural La Esmeralda está ubicada en un ecosistema crítico (bosque
-            seco tropical) que aún tiene un desconocido potencial, a falta de
-            labores investigativas en el sector, para la conservación e
-            identificación de su Biodiversidad de anfibios y reptiles.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección: Metas del Proyecto -->
-    <section
-      class="bg-gradient-to-r from-green-200 via-white to-green-200 py-16"
-    >
-      <div class="container mx-auto px-6 lg:px-8">
-        <h2 class="text-4xl font-extrabold text-center text-esmeralda mb-12">
-          Metas del Proyecto
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <!-- Meta 1 -->
-          <div
-            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-          >
-            <div class="flex justify-center mb-6">
-              <div class="bg-esmeralda rounded-full p-4">
-                <span class="text-white text-4xl">🦎</span>
-              </div>
-            </div>
-            <p class="text-lg text-gray-700">
-              Identificar en campo y catalogar las especies de anfibios y
-              reptiles presentes en la Reserva Natural La Esmeralda.
-            </p>
+  <section>
+    <h2>Metas del proyecto</h2>
+    <div class="prosa-cajas">
+      {
+        metas.map((m, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">Meta {i + 1}</span>
+            <p>{m}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <!-- Meta 2 -->
-          <div
-            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-          >
-            <div class="flex justify-center mb-6">
-              <div class="bg-esmeralda rounded-full p-4">
-                <span class="text-white text-4xl">🌱</span>
-              </div>
-            </div>
-            <p class="text-lg text-gray-700">
-              Evaluar el estado de conservación de estas especies en el contexto
-              de las amenazas que enfrentan.
-            </p>
+  <section>
+    <h2>Resultados esperados</h2>
+    <div class="prosa-cajas">
+      {
+        resultados.map((r, i) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{r.titulo}</h3>
+            <p>{r.texto}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <!-- Meta 3 -->
-          <div
-            class="bg-white p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-          >
-            <div class="flex justify-center mb-6">
-              <div class="bg-esmeralda rounded-full p-4">
-                <span class="text-white text-4xl">📚</span>
-              </div>
-            </div>
-            <p class="text-lg text-gray-700">
-              Contribuir al conocimiento científico sobre la herpetofauna del
-              Tolima y promover acciones de conservación en la región, con la
-              creación de un folleto informativo.
-            </p>
+  <section>
+    <h2>Tiempo estimado</h2>
+    <div class="prosa-cajas">
+      {
+        fases.map((f) => (
+          <div class="prosa-caja">
+            <span class="prosa-caja-etiqueta">{f.fase}</span>
+            <h3>{f.texto}</h3>
+            <p>{f.tiempo}</p>
           </div>
-        </div>
-      </div>
-    </section>
+        ))
+      }
+    </div>
+    <span class="prosa-total">Total estimado: <strong>9 meses</strong></span>
+  </section>
 
-    <!-- Sección: Resultados Esperados -->
-    <section class="relative py-16 text-white">
-      <div class="absolute inset-0">
-        <img
-          width="1200"
-          height="800"
-          loading="lazy"
-          decoding="async"
-          src="/images/conservacion/herpetos/fondo_seccion_resultados_1.avif"
-          alt="Background Forest"
-          class="object-cover w-full h-full"
-        />
-        <div class="absolute inset-0 bg-black opacity-60"></div>
-      </div>
-
-      <div class="relative container mx-auto px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-extrabold mb-12">Resultados Esperados</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda"
-                >1. Inventario Completo de Especies:</span
-              >
-              Identificación y catalogación de al menos 50 especies de anfibios y
-              reptiles.
-            </p>
-          </div>
-
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda"
-                >2. Evaluación del Estado de Conservación:</span
-              >
-              Evaluación del estado de conservación de las especies identificadas.
-            </p>
-          </div>
-
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda"
-                >3. Base de Datos Digital:</span
-              >
-              Creación de una base de datos digital para la gestión de la información
-              obtenida.
-            </p>
-          </div>
-
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda"
-                >4. Publicación Científica:</span
-              >
-              Elaboración y envío de un manuscrito para su publicación en una revista
-              científica.
-            </p>
-          </div>
-
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda"
-                >5. Sensibilización Ambiental:</span
-              >
-              Programas de sensibilización y educación ambiental dirigidos a la comunidad
-              local.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tiempo Estimado -->
-      <div class="relative container mx-auto px-6 lg:px-8 text-center mt-12">
-        <h2 class="text-4xl font-extrabold mb-12">Tiempo Estimado</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 1:</span> Recolección de
-              Datos (3 meses)
-            </p>
-          </div>
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 2:</span> Análisis y Evaluación
-              (2 meses)
-            </p>
-          </div>
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 3:</span> Creación de Base
-              de Datos (1 mes)
-            </p>
-          </div>
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 4:</span> Redacción del
-              Manuscrito (2 meses)
-            </p>
-          </div>
-          <div
-            class="bg-gray-900 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-          >
-            <p class="text-lg">
-              <span class="font-bold text-esmeralda">Fase 5:</span> Sensibilización
-              (1 mes)
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative container mx-auto px-6 lg:px-8 text-center mt-12">
-        <h2 class="text-3xl font-bold text-esmeralda">
-          Total Estimado: 9 meses
-        </h2>
-      </div>
-    </section>
-
-    <!-- Sección: Recursos Necesarios -->
-    <section class="bg-gray-100 py-12">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-esmeralda mb-8">
-          Recursos Necesarios
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Recurso Humano -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Recursos Humanos
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>Biólogos con experiencia en herpetología.</li>
-              <li>Técnicos de campo para la recolección de datos.</li>
-              <li>Voluntarios o estudiantes para apoyo en investigaciones.</li>
+  <section>
+    <h2>Recursos necesarios</h2>
+    <div class="prosa-cajas">
+      {
+        recursos.map((r) => (
+          <div class="prosa-caja">
+            <h3>{r.titulo}</h3>
+            <ul>
+              {r.items.map((i) => (
+                <li>{i}</li>
+              ))}
             </ul>
           </div>
-
-          <!-- Equipos y Materiales -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Equipos y Materiales
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>Redes de captura para anfibios y reptiles.</li>
-              <li>Cámaras fotográficas y/o cámaras trampa.</li>
-              <li>Kits de identificación de especies (guías de campo).</li>
-              <li>Equipos para la medición ambiental.</li>
-              <li>Software para el análisis de datos.</li>
-              <li>Base de datos digital.</li>
-            </ul>
-          </div>
-
-          <!-- Financiamiento -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Financiamiento
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>Fondos para salarios del personal.</li>
-              <li>Presupuesto para equipos y materiales.</li>
-              <li>Recursos para divulgación y materiales educativos.</li>
-            </ul>
-          </div>
-
-          <!-- Infraestructura -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Infraestructura
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>Reserva Natural La Esmeralda para actividades de campo.</li>
-              <li>Espacio para el procesamiento de muestras.</li>
-            </ul>
-          </div>
-
-          <!-- Colaboraciones -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Colaboraciones
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>
-                Alianzas con universidades o instituciones de investigación.
-              </li>
-              <li>Apoyo de organizaciones ambientales.</li>
-            </ul>
-          </div>
-
-          <!-- Materiales Educativos -->
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 class="text-2xl font-semibold text-center mb-4">
-              Materiales Educativos
-            </h3>
-            <ul class="list-disc list-inside">
-              <li>Folletos y carteles informativos sobre la conservación.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
+        ))
+      }
+    </div>
+  </section>
+</PaginaDetalle>

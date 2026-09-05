@@ -1,0 +1,133 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+interface Dato {
+  etiqueta: string;
+  valor: string;
+}
+
+interface Imagen {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  /** Programa al que pertenece la pagina, con su enlace. */
+  programa: string;
+  programaHref: string;
+  heroTitulo: string;
+  heroAcento?: string;
+  heroSubtitulo?: string;
+  heroImagen: string;
+  heroAlt: string;
+  heroPosicion?: string;
+  /** Ficha lateral: pares etiqueta/valor. */
+  ficha?: Dato[];
+  galeriaTitulo?: string;
+  galeria?: Imagen[];
+  ctaTitulo?: string;
+  ctaAcento?: string;
+  ctaTexto?: string;
+}
+
+const {
+  title,
+  description,
+  programa,
+  programaHref,
+  heroTitulo,
+  heroAcento,
+  heroSubtitulo,
+  heroImagen,
+  heroAlt,
+  heroPosicion = "50% 50%",
+  ficha = [],
+  galeriaTitulo = "En imágenes",
+  galeria = [],
+  ctaTitulo = "Vincúlate a este",
+  ctaAcento = "proyecto",
+  ctaTexto = "Como voluntario, investigador o padrino: hay muchas formas de sostener el trabajo de la reserva.",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} preloadImage={heroImagen} ogImage={heroImagen}>
+  <Header />
+
+  <main>
+    <Hero
+      imagen={heroImagen}
+      alt={heroAlt}
+      posicion={heroPosicion}
+      eyebrow={programa}
+      titulo={heroTitulo}
+      acento={heroAcento}
+      lead={heroSubtitulo}
+      tamano="compacto"
+    />
+
+    <section class="banda-papel">
+      <div class="wrap grid12 detalle">
+        <aside class="detalle-ficha">
+          <div class="ficha">
+            <a href={programaHref} class="ficha-programa">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+              {programa}
+            </a>
+            {
+              ficha.length > 0 && (
+                <dl class="ficha-datos">
+                  {ficha.map((d) => (
+                    <div class="ficha-dato">
+                      <dt>{d.etiqueta}</dt>
+                      <dd>{d.valor}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )
+            }
+            <slot name="ficha" />
+            <a href="/contactanos/" class="arrow-link ficha-cta">
+              Quiero participar
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+        </aside>
+
+        <article class="prosa">
+          <slot />
+        </article>
+      </div>
+    </section>
+
+    {
+      galeria.length > 0 && (
+        <section class="banda-niebla">
+          <div class="wrap galeria-envoltura">
+            <div class="galeria-cabecera reveal">
+              <span class="eyebrow">{galeriaTitulo}</span>
+            </div>
+            <div class="galeria-rejilla reveal">
+              {galeria.map((g) => (
+                <div class="tile galeria-pieza">
+                  <img src={g.src} alt={g.alt} loading="lazy" decoding="async" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <slot name="extra" />
+
+    <CTABanda titulo={ctaTitulo} acento={ctaAcento} texto={ctaTexto} />
+  </main>
+
+  <Footer />
+</BaseLayout>
