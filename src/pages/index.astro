@@ -62,9 +62,15 @@ import FAQSection from "../components/sections/FAQSection.astro";
           <!-- Video Promocional -->
           <div class="max-w-xl mx-auto">
             <div class="relative rounded-lg overflow-hidden shadow-2xl">
-              <video controls poster="/poster.avif" class="w-full">
+              <video
+                controls
+                preload="metadata"
+                poster="/poster.avif"
+                width="1280"
+                height="720"
+                class="w-full h-auto"
+              >
                 <source src="/videos/reserva_promo.mp4" type="video/mp4" />
-                <source src="/videos/reserva_promo.webm" type="video/webm" />
                 Tu navegador no soporta video HTML5.
               </video>
             </div>
