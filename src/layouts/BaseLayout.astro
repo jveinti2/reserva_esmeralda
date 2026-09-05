@@ -24,12 +24,20 @@ const {
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
 
-    <!-- Google Fonts - Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Tipografia autohospedada: sin peticiones a terceros -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/manrope-latin-var.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/fraunces-latin-var.woff2"
+      crossorigin
     />
   </head>
 

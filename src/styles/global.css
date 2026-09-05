@@ -1,57 +1,353 @@
 @import "tailwindcss";
 
-/* Theme definition for Tailwind v4 */
+/* ============================================================
+   TIPOGRAFIA — autohospedada, sin peticiones a terceros.
+   Variables, subset latin (cubre todos los acentos del castellano).
+   ============================================================ */
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin-var.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-var.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ============================================================
+   SISTEMA DE DISENO — La Esmeralda Reserva Natural
+   Direccion: editorial naturalista / cuaderno de campo.
+   Dos estaciones del bosque seco: el verde de la lluvia y el
+   ocre de la sequia. Todo el color sale de esa dualidad.
+   ============================================================ */
+
 @theme {
-  --color-esmeralda-50: #f0fdf4;
-  --color-esmeralda-100: #dcfce7;
-  --color-esmeralda-200: #bbf7d0;
-  --color-esmeralda-300: #86efac;
-  --color-esmeralda-400: #4ade80;
-  --color-esmeralda-500: #2c8936;
-  --color-esmeralda-600: #257a2e;
-  --color-esmeralda-700: #1e6426;
-  --color-esmeralda-800: #15461a;
-  --color-esmeralda-900: #0f3814;
-  --color-esmeralda: #2c8936;
+  /* --- Tipografia --------------------------------------- */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* --- Verde esmeralda (marca, sin cambios de identidad) -- */
+  --color-esmeralda-50: oklch(0.975 0.018 148);
+  --color-esmeralda-100: oklch(0.945 0.04 148);
+  --color-esmeralda-200: oklch(0.9 0.075 148);
+  --color-esmeralda-300: oklch(0.83 0.11 147);
+  --color-esmeralda-400: oklch(0.71 0.14 147);
+  --color-esmeralda-500: oklch(0.548 0.138 146); /* = #2c8936 */
+  --color-esmeralda-600: oklch(0.5 0.128 146);
+  --color-esmeralda-700: oklch(0.435 0.112 147);
+  --color-esmeralda-800: oklch(0.35 0.09 148);
+  --color-esmeralda-900: oklch(0.29 0.072 149);
+  --color-esmeralda: oklch(0.548 0.138 146);
+
+  /* Verde legible como texto sobre papel (7:1 sobre --color-arena) */
+  --color-esmeralda-ink: oklch(0.42 0.108 147);
+
+  /* --- Selva: tinta profunda, superficies oscuras --------- */
+  --color-selva-950: oklch(0.19 0.028 152);
+  --color-selva-900: oklch(0.235 0.036 152);
+  --color-selva-800: oklch(0.3 0.045 151);
+  --color-selva-700: oklch(0.38 0.05 150);
+
+  /* --- Estacion seca: el acento -------------------------- */
+  --color-ocre-200: oklch(0.93 0.055 82);
+  --color-ocre-300: oklch(0.87 0.09 82);
+  --color-ocre-400: oklch(0.82 0.125 80);
+  --color-ocre-500: oklch(0.75 0.135 76);
+  --color-ocre-600: oklch(0.66 0.125 68);
+  --color-ocre: oklch(0.79 0.13 78);
+
+  /* --- Papel y neutros, todos tintados hacia el verde ----- */
+  --color-arena: oklch(0.977 0.008 96);
+  --color-arena-100: oklch(0.955 0.012 94);
+  --color-arena-200: oklch(0.925 0.014 100);
+  --color-hueso: oklch(0.993 0.004 100);
+
+  --color-tinta: oklch(0.28 0.02 152);
+  --color-tinta-suave: oklch(0.47 0.018 152);
+  --color-tinta-tenue: oklch(0.62 0.014 152);
+  --color-linea: oklch(0.885 0.012 130);
+
+  /* --- Movimiento ---------------------------------------- */
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-entrada: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Sombras: verdes, no grises ------------------------ */
+  --shadow-hoja: 0 1px 2px oklch(0.29 0.072 149 / 0.05),
+    0 12px 32px -12px oklch(0.29 0.072 149 / 0.16);
+  --shadow-hoja-lg: 0 2px 4px oklch(0.29 0.072 149 / 0.06),
+    0 28px 60px -20px oklch(0.29 0.072 149 / 0.28);
 }
 
-/* Custom utilities */
-.text-shadow-custom {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+/* ============================================================
+   BASE
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-arena);
+    color: var(--color-tinta);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-esmeralda-200);
+    color: var(--color-selva-900);
+  }
+
+  /* Foco visible y consistente en todo el sitio */
+  :where(a, button, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-esmeralda-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-arena-200);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-esmeralda-600);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-esmeralda-700);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-/* Esmeralda brand buttons */
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+
+/* --- Botones ------------------------------------------- */
 .btn-esmeralda {
-  @apply bg-esmeralda text-white px-5 py-2 rounded-full shadow-md hover:bg-esmeralda-600 transition-all duration-300;
+  @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full
+         bg-esmeralda px-6 py-3 font-semibold text-white
+         shadow-hoja transition duration-300 ease-out
+         hover:bg-esmeralda-600 hover:shadow-hoja-lg;
 }
 
 .btn-esmeralda-outline {
-  @apply border-2 border-esmeralda text-esmeralda px-5 py-2 rounded-full hover:bg-esmeralda hover:text-white transition-all duration-300;
+  @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full
+         border-2 border-esmeralda px-6 py-3 font-semibold text-esmeralda-ink
+         transition duration-300 ease-out hover:bg-esmeralda hover:text-white;
 }
 
-/* Wave divider compatibility */
+/* Boton solido de estacion seca — el CTA principal sobre fondos oscuros */
+.btn-ocre {
+  @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full
+         bg-ocre px-7 py-3.5 font-semibold text-selva-950
+         transition duration-300 ease-out hover:bg-ocre-400;
+}
+
+/* Boton fantasma sobre imagen */
+.btn-fantasma {
+  @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full
+         border border-white/45 bg-white/10 px-7 py-3.5 font-semibold text-white
+         backdrop-blur-sm transition duration-300 ease-out
+         hover:border-white/80 hover:bg-white/20;
+}
+
+/* --- Etiqueta de seccion (eyebrow) ---------------------- */
+.eyebrow {
+  @apply inline-flex items-center gap-2.5 font-sans text-xs font-semibold
+         uppercase tracking-[0.18em] text-esmeralda-ink;
+}
+
+.eyebrow::before {
+  content: "";
+  @apply block h-px w-8 bg-ocre-500;
+}
+
+.eyebrow-claro {
+  @apply text-ocre-300;
+}
+
+/* --- Enlace con flecha que se desliza ------------------- */
+.enlace-flecha {
+  @apply inline-flex items-center gap-2 font-semibold text-esmeralda-ink
+         transition-colors hover:text-esmeralda-700;
+}
+
+.enlace-flecha svg {
+  @apply transition-transform duration-300 ease-out;
+}
+
+.enlace-flecha:hover svg {
+  transform: translateX(0.3rem);
+}
+
+/* --- Numero de estacion (01, 02, 03) -------------------- */
+.estacion {
+  @apply font-display text-sm font-semibold tabular-nums text-ocre-600;
+}
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+
+.text-shadow-custom {
+  text-shadow: 0 2px 12px oklch(0.19 0.028 152 / 0.55);
+}
+
 .wave-divider {
   @apply w-full overflow-hidden;
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+/* Velo en capas sobre fotografia: oscurece abajo, respeta el cielo */
+.velo-foto {
+  background:
+    linear-gradient(
+      to top,
+      oklch(0.19 0.028 152 / 0.92) 0%,
+      oklch(0.19 0.028 152 / 0.62) 32%,
+      oklch(0.19 0.028 152 / 0.18) 62%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(0.19 0.028 152 / 0.45) 0%,
+      transparent 30%
+    );
 }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 10px;
+.velo-tarjeta {
+  background: linear-gradient(
+    to top,
+    oklch(0.19 0.028 152 / 0.9) 0%,
+    oklch(0.19 0.028 152 / 0.45) 45%,
+    transparent 85%
+  );
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+/* Grano sutil: le quita el plano digital a los fondos oscuros */
+.grano::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-esmeralda rounded-full;
+/* Regla fina de seccion */
+.regla {
+  @apply h-px w-full bg-linea;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-esmeralda-700;
+/* --- Revelado al hacer scroll --------------------------- */
+/* Solo se oculta si hay JS (clase .js en <html>), para que el
+   contenido siga visible si el script falla. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.8s var(--ease-entrada),
+      transform 0.8s var(--ease-entrada);
+    transition-delay: var(--d, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Marquesina infinita -------------------------------- */
+.marquesina {
+  @apply relative flex overflow-hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.marquesina__pista {
+  @apply flex shrink-0 items-center;
+  animation: desplazar var(--duracion, 48s) linear infinite;
+}
+
+.marquesina:hover .marquesina__pista {
+  animation-play-state: paused;
+}
+
+@keyframes desplazar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquesina {
+    overflow-x: auto;
+  }
+  .marquesina__pista {
+    animation: none;
+  }
+}
+
+/* --- Acordeon nativo ------------------------------------ */
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-icono {
+  transform: rotate(45deg);
 }
