@@ -1,411 +1,346 @@
 ---
-// Header component with navigation
+// Marco superior: transparente sobre el hero, apenas tenido al hacer scroll.
+// El estado lo pone JS (clase .is-scrolled) para que funcione igual en todos
+// los navegadores, no solo en los que soportan scroll-driven animations.
+
+interface Props {
+  /** Ruta actual, para marcar el enlace activo. Por defecto la de la pagina. */
+  actual?: string;
+}
+
+const { actual = Astro.url.pathname } = Astro.props;
+
+const programas = [
+  {
+    titulo: "Conservación e investigación",
+    href: "/conservacion_investigacion/",
+    hijos: [
+      { texto: "Herpetos", href: "/conservacion_investigacion/herpetos/" },
+      { texto: "Arácnidos", href: "/conservacion_investigacion/aracnidos/" },
+      { texto: "Nutria y ostras", href: "/conservacion_investigacion/nutria/" },
+    ],
+  },
+  {
+    titulo: "Educación ambiental",
+    href: "/educacion_ambiental/",
+    hijos: [
+      { texto: "Semillero Bio Arte", href: "/educacion_ambiental/semillero_arte_ambiental/" },
+      { texto: "Semillero Avistadores", href: "/educacion_ambiental/semillero_aves/" },
+      { texto: "Semillero Sembradores", href: "/educacion_ambiental/semillero_sembradores/" },
+    ],
+  },
+  {
+    titulo: "Emprendimientos verdes",
+    href: "/emprendimientos/",
+    hijos: [
+      { texto: "Cerveza", href: "/emprendimientos/cerveza/" },
+      { texto: "Yogurt", href: "/emprendimientos/yogurt/" },
+      { texto: "Mermelada", href: "/emprendimientos/mermelada/" },
+    ],
+  },
+];
+
+const enlaces = [
+  { texto: "Inicio", href: "/" },
+  { texto: "La reserva", href: "/reserva/" },
+  { texto: "Vivencias", href: "/servicios/" },
+  { texto: "Galería", href: "/galeria/" },
+  { texto: "Contáctanos", href: "/contactanos/" },
+];
+
+const esActual = (href: string) => actual === href;
+const enProgramas = programas.some(
+  (p) => actual.startsWith(p.href) || p.hijos.some((h) => actual === h.href),
+);
 ---
 
-<header>
-  <nav class="bg-white border-b border-gray-200 px-4 lg:px-6 py-2">
-    <div class="flex justify-between items-center mx-auto max-w-screen-xl">
-      <!-- Logo a la izquierda -->
-      <a href="/" class="flex items-center">
-        <img
-          src="/logo-sin-bg.avif"
-          class="h-10 sm:h-14 w-auto"
-          width="600"
-          height="228"
-          fetchpriority="high"
-          decoding="async"
-          alt="La Esmeralda Reserva Natural Logo"
-        />
-      </a>
+<header class="site-header" id="site-header">
+  <div class="wrap header-barra">
+    <a href="/" class="header-marca" aria-label="La Esmeralda Reserva Natural">
+      <img
+        class="header-logo header-logo-claro"
+        src="/logo-sin-bg-blanco.avif"
+        alt=""
+        width="600"
+        height="228"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <img
+        class="header-logo header-logo-oscuro"
+        src="/logo-sin-bg.avif"
+        alt="La Esmeralda Reserva Natural"
+        width="600"
+        height="228"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </a>
 
-      <!-- Hamburger button para mobile -->
-      <button
-        id="mobile-menu-button"
-        type="button"
-        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-      >
-        <span class="sr-only">Abrir menú</span>
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </button>
+    <nav class="nav-escritorio" aria-label="Principal">
+      <a href="/" class:list={["navlink", { activo: esActual("/") }]}>Inicio</a>
+      <a href="/reserva/" class:list={["navlink", { activo: esActual("/reserva/") }]}>La reserva</a>
 
-      <!-- Menu - alineado a la derecha -->
-      <div class="hidden lg:flex lg:items-center lg:ml-auto" id="mobile-menu">
-        <ul
-          class="flex flex-col mt-4 font-medium lg:flex-row lg:gap-1 lg:mt-0 lg:items-center"
+      <div class="mega" id="mega">
+        <button
+          type="button"
+          id="mega-btn"
+          class:list={["navlink", { activo: enProgramas }]}
+          aria-expanded="false"
+          aria-controls="mega-panel"
         >
-          <!-- Inicio -->
-          <li>
-            <a href="/" class="nav-button"
-              ><span class="nav-button-inner">Inicio</span></a
-            >
-          </li>
+          Programas
+          <svg
+            id="mega-flecha"
+            width="10"
+            height="6"
+            viewBox="0 0 10 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="m1 1 4 4 4-4"></path></svg
+          >
+        </button>
 
-          <!-- La reserva -->
-          <li>
-            <a href="/reserva/" class="nav-button"
-              ><span class="nav-button-inner">La reserva</span></a
-            >
-          </li>
-
-          <!-- Vivencias -->
-          <li>
-            <a href="/servicios/" class="nav-button"
-              ><span class="nav-button-inner">Vivencias</span></a
-            >
-          </li>
-
-          <!-- Programas Dropdown -->
-          <li class="relative" id="programas-dropdown">
-            <button id="programas-btn" class="nav-button">
-              <span class="nav-button-inner flex items-center gap-1">
-                Programas
-                <svg
-                  class="w-2.5 h-2.5 transition-transform duration-200"
-                  id="programas-arrow"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"></path>
-                </svg>
-              </span>
-            </button>
-
-            <!-- Dropdown menu principal -->
-            <div
-              id="programas-menu"
-              class="hidden absolute left-0 top-full mt-1 z-50"
-            >
-              <div
-                class="bg-white rounded-lg shadow-lg border border-gray-200 w-64 py-2"
-              >
-                <!-- Conservacion e Investigacion -->
-                <div class="submenu-item relative">
-                  <button
-                    class="submenu-btn w-full flex items-center justify-between px-4 py-3 hover:bg-lime-50 text-gray-700 text-left"
-                    data-submenu="sub-conservacion"
-                  >
-                    <span>Conservación e Investigación</span>
+        <div class="mega-panel" id="mega-panel" hidden>
+          <div class="mega-grid">
+            {
+              programas.map((p) => (
+                <div class="mega-col">
+                  <a href={p.href} class="mega-titulo">
+                    {p.titulo}
                     <svg
-                      class="w-3 h-3 text-gray-400 transition-transform duration-200"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
                       fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"></path>
-                    </svg>
-                  </button>
-                  <div
-                    id="sub-conservacion"
-                    class="submenu hidden absolute left-full top-0 ml-1"
-                  >
-                    <div
-                      class="bg-white rounded-lg shadow-lg border border-gray-200 w-48 py-2"
-                    >
-                      <a
-                        href="/conservacion_investigacion/herpetos/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Herpetos</a
-                      >
-                      <a
-                        href="/conservacion_investigacion/aracnidos/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Arácnidos</a
-                      >
-                      <a
-                        href="/conservacion_investigacion/nutria/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Nutria y ostras</a
-                      >
-                    </div>
-                  </div>
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                  <ul>
+                    {p.hijos.map((h) => (
+                      <li>
+                        <a href={h.href} class="mega-hijo">
+                          {h.texto}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
 
-                <!-- Educacion Ambiental -->
-                <div class="submenu-item relative">
-                  <button
-                    class="submenu-btn w-full flex items-center justify-between px-4 py-3 hover:bg-lime-50 text-gray-700 text-left"
-                    data-submenu="sub-educacion"
-                  >
-                    <span>Educación Ambiental</span>
-                    <svg
-                      class="w-3 h-3 text-gray-400 transition-transform duration-200"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"></path>
-                    </svg>
-                  </button>
-                  <div
-                    id="sub-educacion"
-                    class="submenu hidden absolute left-full top-0 ml-1"
-                  >
-                    <div
-                      class="bg-white rounded-lg shadow-lg border border-gray-200 w-52 py-2"
-                    >
-                      <a
-                        href="/educacion_ambiental/semillero_arte_ambiental/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Semillero Bio Arte</a
-                      >
-                      <a
-                        href="/educacion_ambiental/semillero_aves/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Semillero Avistadores</a
-                      >
-                      <a
-                        href="/educacion_ambiental/semillero_sembradores/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Semillero Sembradores</a
-                      >
-                    </div>
-                  </div>
-                </div>
+      <a href="/servicios/" class:list={["navlink", { activo: esActual("/servicios/") }]}>Vivencias</a>
+      <a href="/galeria/" class:list={["navlink", { activo: esActual("/galeria/") }]}>Galería</a>
+      <a href="/contactanos/" class:list={["navlink", { activo: esActual("/contactanos/") }]}>Contáctanos</a>
+    </nav>
 
-                <!-- Emprendimientos Verdes -->
-                <div class="submenu-item relative">
-                  <button
-                    class="submenu-btn w-full flex items-center justify-between px-4 py-3 hover:bg-lime-50 text-gray-700 text-left"
-                    data-submenu="sub-emprendimientos"
-                  >
-                    <span>Emprendimientos verdes</span>
-                    <svg
-                      class="w-3 h-3 text-gray-400 transition-transform duration-200"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"></path>
-                    </svg>
-                  </button>
-                  <div
-                    id="sub-emprendimientos"
-                    class="submenu hidden absolute left-full top-0 ml-1"
-                  >
-                    <div
-                      class="bg-white rounded-lg shadow-lg border border-gray-200 w-40 py-2"
-                    >
-                      <a
-                        href="/emprendimientos/cerveza/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Cerveza</a
-                      >
-                      <a
-                        href="/emprendimientos/yogurt/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Yogurt</a
-                      >
-                      <a
-                        href="/emprendimientos/mermelada/"
-                        class="block px-4 py-2 hover:bg-lime-50 text-gray-700"
-                        >Mermelada</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+    <a href="/vinculate/" class="btn btn-lima cta-vinculate">
+      Vincúlate
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+      >
+    </a>
 
-          <!-- Galeria -->
-          <li>
-            <a href="/galeria/" class="nav-button"
-              ><span class="nav-button-inner">Galería</span></a
-            >
-          </li>
+    <button
+      type="button"
+      id="menu-btn"
+      class="hamburguesa"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="menu-movil"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"></path></svg
+      >
+    </button>
+  </div>
+</header>
 
-          <!-- Vinculate -->
-          <li>
-            <a href="/vinculate/" class="nav-button"
-              ><span class="nav-button-inner">Vincúlate</span></a
-            >
-          </li>
+<!-- Panel movil a pantalla completa -->
+<div class="menu-movil" id="menu-movil" hidden>
+  <div class="menu-cabecera wrap">
+    <a href="/" aria-label="La Esmeralda Reserva Natural">
+      <img src="/logo-sin-bg-blanco.avif" alt="" width="600" height="228" loading="lazy" decoding="async" />
+    </a>
+    <button type="button" id="menu-cerrar" class="menu-cerrar-btn" aria-label="Cerrar menú">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg
+      >
+    </button>
+  </div>
 
-          <!-- Contactanos -->
-          <li>
-            <a href="/contactanos/" class="nav-button"
-              ><span class="nav-button-inner">Contáctanos</span></a
-            >
-          </li>
-        </ul>
+  <nav class="menu-cuerpo wrap" aria-label="Menú móvil">
+    {enlaces.map((e) => <a href={e.href} class="menu-enlace">{e.texto}</a>)}
+
+    {
+      programas.map((p) => (
+        <div class="menu-grupo">
+          <a href={p.href} class="menu-grupo-titulo">
+            {p.titulo}
+          </a>
+          <div class="menu-grupo-hijos">
+            {p.hijos.map((h) => (
+              <a href={h.href} class="menu-hijo">
+                {h.texto}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <a href="/vinculate/" class="btn btn-lima menu-cta">
+      Vincúlate
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+      >
+    </a>
+
+    <div class="menu-pie">
+      <a href="tel:+573208096472" class="menu-contacto">(+57) 320 809 6472</a>
+      <a href="mailto:info@esmeraldareservanatural.com" class="menu-contacto"
+        >info@esmeraldareservanatural.com</a
+      >
+      <div class="menu-redes">
+        <a href="https://www.facebook.com/ReservalaesmeraldaenDoima" target="_blank" rel="noopener noreferrer" class="social" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.4H7.4V14h2.8v8h3.3z"></path></svg>
+        </a>
+        <a href="https://www.instagram.com/laesmeraldareservanatural/" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        </a>
+        <a href="https://www.youtube.com/@reservanaturallaesmeralda7224" target="_blank" rel="noopener noreferrer" class="social" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a2.9 2.9 0 0 0-2-2C19.2 4.7 12 4.7 12 4.7s-7.2 0-9 .5a2.9 2.9 0 0 0-2 2C.5 9 .5 12 .5 12s0 3 .5 4.8a2.9 2.9 0 0 0 2 2c1.8.5 9 .5 9 .5s7.2 0 9-.5a2.9 2.9 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM9.7 15.1V8.9l6 3.1-6 3.1z"></path></svg>
+        </a>
       </div>
     </div>
   </nav>
-</header>
+</div>
 
-<style>
-  .nav-button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #111827;
-    border-radius: 9999px;
-    background: linear-gradient(to bottom right, white, #bef264);
-    cursor: pointer;
-    border: none;
-  }
-
-  .nav-button:hover {
-    background: linear-gradient(to bottom right, #f8fafc, #bef264);
-  }
-
-  .nav-button-inner {
-    position: relative;
-    padding: 0.375rem 1.25rem;
-    transition: all 75ms ease-in;
-    background-color: white;
-    color: #111827;
-    border-radius: 9999px;
-  }
-
-  .nav-button:hover .nav-button-inner {
-    background-color: transparent;
-  }
-
-  .submenu-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 0.875rem;
-  }
-</style>
 
 <script>
   function initHeader() {
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const header = document.getElementById("site-header");
+    const mega = document.getElementById("mega");
+    const megaBtn = document.getElementById("mega-btn");
+    const megaPanel = document.getElementById("mega-panel");
+    const menuBtn = document.getElementById("menu-btn");
+    const menuCerrar = document.getElementById("menu-cerrar");
+    const menuMovil = document.getElementById("menu-movil");
 
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
+    // --- Tenido al hacer scroll -------------------------------
+    if (header) {
+      let ticking = false;
+      const pintar = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+      };
+      const alScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          pintar();
+        });
+      };
+      window.addEventListener("scroll", alScroll, { passive: true });
+      pintar();
     }
 
-    // Programas dropdown
-    const programasBtn = document.getElementById("programas-btn");
-    const programasMenu = document.getElementById("programas-menu");
-    const programasDropdown = document.getElementById("programas-dropdown");
-    const programasArrow = document.getElementById("programas-arrow");
+    // --- Megamenu de programas --------------------------------
+    let cerrarLento: ReturnType<typeof setTimeout> | null = null;
 
-    let closeTimeout: ReturnType<typeof setTimeout> | null = null;
-
-    function clearCloseTimeout() {
-      if (closeTimeout) {
-        clearTimeout(closeTimeout);
-        closeTimeout = null;
-      }
+    function abrirMega(abierto: boolean) {
+      if (!mega || !megaBtn || !megaPanel) return;
+      mega.classList.toggle("abierto", abierto);
+      megaBtn.setAttribute("aria-expanded", String(abierto));
+      if (abierto) megaPanel.removeAttribute("hidden");
+      else megaPanel.setAttribute("hidden", "");
     }
 
-    function closeAllMenus() {
-      programasMenu?.classList.add("hidden");
-      programasArrow?.style.setProperty("transform", "rotate(0deg)");
-      document.querySelectorAll(".submenu").forEach((sub) => {
-        sub.classList.add("hidden");
-      });
-    }
-
-    function scheduleClose() {
-      clearCloseTimeout();
-      closeTimeout = setTimeout(() => {
-        closeAllMenus();
-      }, 150);
-    }
-
-    if (programasBtn && programasMenu && programasDropdown) {
-      // Click en boton Programas
-      programasBtn.addEventListener("click", (e) => {
+    if (mega && megaBtn && megaPanel) {
+      megaBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        clearCloseTimeout();
-        const isHidden = programasMenu.classList.contains("hidden");
-        if (isHidden) {
-          programasMenu.classList.remove("hidden");
-          programasArrow?.style.setProperty("transform", "rotate(180deg)");
-        } else {
-          closeAllMenus();
-        }
+        const abierto = megaBtn.getAttribute("aria-expanded") === "true";
+        // Con raton el hover ya lo abrio: el click no debe cerrarlo de vuelta.
+        if (abierto && mega.matches(":hover")) return;
+        abrirMega(!abierto);
       });
 
-      // Mantener abierto mientras el mouse este en el dropdown
-      programasDropdown.addEventListener("mouseenter", clearCloseTimeout);
-      programasDropdown.addEventListener("mouseleave", scheduleClose);
+      // Al salir del panel con el teclado, se cierra
+      mega.addEventListener("focusout", () => {
+        setTimeout(() => {
+          if (!mega.contains(document.activeElement)) abrirMega(false);
+        }, 0);
+      });
+
+      mega.addEventListener("mouseenter", () => {
+        if (cerrarLento) clearTimeout(cerrarLento);
+        if (window.matchMedia("(hover: hover)").matches) abrirMega(true);
+      });
+
+      mega.addEventListener("mouseleave", () => {
+        if (cerrarLento) clearTimeout(cerrarLento);
+        cerrarLento = setTimeout(() => abrirMega(false), 150);
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!mega.contains(e.target as Node)) abrirMega(false);
+      });
     }
 
-    // Submenus - click para abrir
-    const submenuBtns = document.querySelectorAll(".submenu-btn");
+    // --- Panel movil ------------------------------------------
+    function abrirMenu(abierto: boolean) {
+      if (!menuMovil || !menuBtn) return;
+      if (abierto) menuMovil.removeAttribute("hidden");
+      else menuMovil.setAttribute("hidden", "");
+      menuBtn.setAttribute("aria-expanded", String(abierto));
+      document.documentElement.style.overflow = abierto ? "hidden" : "";
+      if (abierto) menuCerrar?.focus();
+    }
 
-    submenuBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        clearCloseTimeout();
+    menuBtn?.addEventListener("click", () => abrirMenu(true));
+    menuCerrar?.addEventListener("click", () => abrirMenu(false));
 
-        const submenuId = btn.getAttribute("data-submenu");
-        const submenu = document.getElementById(submenuId || "");
-
-        if (submenu) {
-          const isHidden = submenu.classList.contains("hidden");
-
-          // Cerrar otros submenus
-          document.querySelectorAll(".submenu").forEach((sub) => {
-            sub.classList.add("hidden");
-          });
-
-          // Toggle el submenu actual
-          if (isHidden) {
-            submenu.classList.remove("hidden");
-          }
-        }
-      });
-    });
-
-    // Los submenus tambien cancelan el cierre
-    document.querySelectorAll(".submenu").forEach((submenu) => {
-      submenu.addEventListener("mouseenter", clearCloseTimeout);
-      submenu.addEventListener("mouseleave", scheduleClose);
-    });
-
-    // Cerrar al hacer click fuera
-    document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
-      if (programasDropdown && !programasDropdown.contains(target)) {
-        closeAllMenus();
-      }
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      abrirMega(false);
+      if (menuMovil && !menuMovil.hasAttribute("hidden")) abrirMenu(false);
     });
   }
 
-  // Inicializar
   initHeader();
-
-  // Re-inicializar despues de navegacion
   document.addEventListener("astro:page-load", initHeader);
 </script>

@@ -7,13 +7,20 @@ interface Props {
   /** Imagen LCP de la pagina. Se precarga porque los fondos CSS
       son invisibles para el preload scanner del navegador. */
   preloadImage?: string;
+  /** Imagen para compartir en redes. Ruta absoluta dentro de public/. */
+  ogImage?: string;
 }
 
 const {
   title = 'La Esmeralda Reserva Natural - Hogar de las ostras de agua dulce',
   description = 'La Reserva Natural La Esmeralda es un oasis de naturaleza en el corazón del Tolima. Descubre nuestro hogar legendario de las ostras de agua dulce, la fauna y la flora silvestre, y ayúdanos a continuar en la misión de la conservación natural.',
   preloadImage,
+  ogImage = '/banner_2.avif',
 } = Astro.props;
+
+const SITIO = 'https://www.esmeraldareservanatural.com';
+const urlCanonica = new URL(Astro.url.pathname, SITIO).href;
+const urlImagen = new URL(ogImage, SITIO).href;
 ---
 
 <!doctype html>
@@ -22,11 +29,26 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" href="/icono2.ico" type="image/x-icon" />
+    <meta name="theme-color" content="#0f2f16" />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={urlCanonica} />
+
+    <!-- Redes sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="La Esmeralda Reserva Natural" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={urlCanonica} />
+    <meta property="og:image" content={urlImagen} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={urlImagen} />
 
     {
       preloadImage && (
@@ -46,7 +68,7 @@ const {
       rel="preload"
       as="font"
       type="font/woff2"
-      href="/fonts/fraunces-latin-var.woff2"
+      href="/fonts/fraunces-italic-latin-var.woff2"
       crossorigin
     />
   </head>

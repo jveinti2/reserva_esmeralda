@@ -3,41 +3,28 @@ interface Props {
   id: string;
   question: string;
   answer: string;
+  /** Se conservan por compatibilidad: el borde ahora sale de :last-child. */
   isFirst?: boolean;
   isLast?: boolean;
 }
 
-const { id, question, answer, isFirst = false, isLast = false } = Astro.props;
-
-const roundedClass = isFirst ? 'rounded-t-lg' : isLast ? 'rounded-b-lg' : '';
+const { id, question, answer } = Astro.props;
 ---
 
-<details
-  class={`faq-item border border-esmeralda ${roundedClass}`}
-  name="faq"
-  id={`accordion-${id}`}
->
-  <summary
-    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 cursor-pointer hover:bg-esmeralda hover:text-white transition-colors duration-200"
-  >
+<details class="faq-item" name="faq" id={`accordion-${id}`}>
+  <summary>
     <span>{question}</span>
-    <svg
-      class="faq-icono w-3 h-3 shrink-0 transition-transform duration-200"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 10 10"
-    >
-      <path
+    <span class="faq-icono" aria-hidden="true">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
         stroke-width="2"
-        d="M5 1v8M1 5h8"
-      />
-    </svg>
+        stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg
+      >
+    </span>
   </summary>
-  <div class="p-5 border-t border-esmeralda">
-    <div class="text-gray-700" set:html={answer} />
-  </div>
+  <div class="faq-respuesta" set:html={answer} />
 </details>

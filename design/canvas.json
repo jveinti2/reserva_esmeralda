@@ -1,0 +1,51 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 9400,
+      "title": "Landing · escritorio",
+      "print": "flow",
+      "expand": "fill"
+    },
+    {
+      "file": "Movil.dc.html",
+      "x": 1600,
+      "y": 0,
+      "w": 390,
+      "h": 8300,
+      "title": "Móvil · 390 px",
+      "print": "flow",
+      "expand": "fill"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "nota-direccion",
+      "x": -340,
+      "y": 0,
+      "w": 290,
+      "text": "Glow-up, misma marca.\n\nSe conserva: esmeralda #2c8936, lima #a3e635, el logo, los textos del sitio y el orden de las secciones.\n\nLo nuevo:\n· Header de 68 px, transparente sobre el hero; al hacer scroll apenas se tiñe (42 % blanco, desenfoque de 3 px) y el logo pasa a la versión oscura.\n· Hero a pantalla completa: barranquero, titular grande, tarjeta de video y franja de cifras en cristal.\n· Manrope (titulares y texto) + Fraunces itálica solo para acentos. Ya están autohospedadas en la rama perf.\n· Programas en bento con imagen a sangre.\n· Experiencias como lista editorial con la columna izquierda fija.\n· Testimonios: la sección se queda fija y, al seguir bajando, va cambiando la voz (4 testimonios en unas 3 pantallas de scroll). Se ve así al abrir el artboard como página; en la vista de lienzo, donde la página no se desplaza, los cuatro quedan apilados.\n· Aliados en marquesina de dos filas.\n· CTA con la lagartija; footer con ubicación y wordmark gigante."
+    },
+    {
+      "id": "nota-movimiento",
+      "x": -340,
+      "y": 560,
+      "w": 290,
+      "text": "Movimiento (lente «polish», sin librerías; solo los testimonios usan unas líneas de JS):\n· Ken Burns de 18 s en el hero.\n· Entrada escalonada del titular al cargar.\n· Revelado por sección al hacer scroll (scroll-driven animations; en navegadores sin soporte el contenido simplemente se ve).\n· Marquesinas en bucle; se pausan al pasar el cursor.\n· Respeta prefers-reduced-motion.\n\nEn el lienzo el header sólido y el revelado se ven al desplazar la página."
+    },
+    {
+      "id": "nota-datos",
+      "x": -340,
+      "y": 960,
+      "w": 290,
+      "text": "Datos corregidos respecto al index actual:\n· Dirección: Doima, Piedras (el index decía Vereda Cay, Venadillo).\n· Teléfono: (+57) 320 809 6472, el del footer.\n\nPor confirmar: «A 20 minutos de Ibagué» (contactanos) contra «40 minutos» (testimonio de Cecilia Leal). En el testimonio quedó «tan cerca de Ibagué» para no contradecir."
+    }
+  ],
+  "launch": {
+    "view": "focused",
+    "file": "Main.dc.html"
+  }
+}
