@@ -2,599 +2,372 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
+import Hero from "../../components/sections/Hero.astro";
+import Encabezado from "../../components/sections/Encabezado.astro";
+import Cifras from "../../components/sections/Cifras.astro";
+import CTABanda from "../../components/sections/CTABanda.astro";
+
+const despertares = [
+  {
+    titulo: "Despertar del papel",
+    subtitulo: "Mapa del inicio",
+    texto:
+      "Reconoces tu papel: caminas como actor de reparto en una obra donde la naturaleza es protagonista.",
+    imagen: "/sendero/mapa.avif",
+    alt: "Mapa del Sendero Interpretativo Alas y Naturaleza - Reserva Natural La Esmeralda",
+  },
+  {
+    titulo: "Despertar del asombro",
+    subtitulo: "El bosque que respira vida",
+    texto:
+      "Cada lombriz, cada árbol caído y cada guacharaca revela que lo pequeño sostiene lo inmenso. Lombricultivo, heliconias, árboles caídos y guacharacas: resiliencia y equilibrio del bosque seco tropical.",
+    imagen: "/sendero/h_1.avif",
+    alt: "Hablador: El bosque que respira vida - Lombricultivo, heliconias, árboles caídos y guacharacas",
+  },
+  {
+    titulo: "Despertar de la gratitud",
+    subtitulo: "Humedales: fábricas de vida",
+    texto:
+      "Cada gota es vida compartida y refugio de especies que dependen del agua. Ecosistemas de agua, regulación hídrica, anfibios, artrópodos y el árbol de cacao.",
+    imagen: "/sendero/h_2.avif",
+    alt: "Hablador: Humedales, fábricas de vida - Ecosistemas de agua, anfibios, artrópodos y cacao",
+  },
+  {
+    titulo: "Despertar del respeto",
+    subtitulo: "Donde nace el agua y canta el amor",
+    texto:
+      "Nacimientos de agua, reptiles y el ave emblemática Chiroxiphia lanceolata. Fauna del Río Opia, aves guardianas del corredor biológico e investigación al alcance de todos.",
+    imagen: "/sendero/h_3.avif",
+    alt: "Hablador: Donde nace el agua y canta el amor - Fauna del Río Opia, aves y reptiles",
+  },
+  {
+    titulo: "Unión Macondiana",
+    subtitulo: "Tradición, polinizadores y ancestros",
+    texto:
+      "Humanidad y naturaleza comparten un mismo libreto donde todos tenemos un gran papel por interpretar. Raíces de historia campesina, kumquat, abejas nativas y el caucho ancestral del bosque.",
+    imagen: "/sendero/h_4.avif",
+    alt: "Hablador: Unión Macondiana - Tradición, polinizadores, kumquat y el caucho ancestral",
+  },
+];
+
+// Los iconos son SVG en linea: el diseño no lleva emojis y no queremos
+// depender de la fuente de emoji del sistema.
+const practica = [
+  {
+    etiqueta: "Duración",
+    valor: "Una (1) hora",
+    icono: "reloj",
+  },
+  {
+    etiqueta: "Nivel",
+    valor: "Fácil, recomendado para 7+",
+    icono: "bota",
+  },
+  {
+    etiqueta: "Horarios",
+    valor:
+      "Dos bloques: de 7 a 9 a. m. y de 8 a 10 a. m. Consulta disponibilidad con el administrador.",
+    icono: "calendario",
+  },
+  {
+    etiqueta: "Valor",
+    valor: "$50.000 por persona",
+    icono: "moneda",
+  },
+  {
+    etiqueta: "Grupo",
+    valor: "Máximo 5 personas por recorrido",
+    icono: "personas",
+  },
+  {
+    etiqueta: "Incluye",
+    valor:
+      "Orientador local con interpretación ambiental, acceso a la reserva y desayuno campesino.",
+    icono: "tilde",
+  },
+];
+
+const voces = [
+  {
+    cita: "Sentí que caminaba dentro de una historia viva. Cada punto de la reserva me mostró algo que nunca había visto con tanto detalle.",
+    nombre: "Olga",
+    rol: "Visitante",
+  },
+  {
+    cita: "Los árboles, la zona de protección y los puntos de interés hacen que uno se detenga, piense y escuche al bosque. Es un recorrido que toca la conciencia.",
+    nombre: "Walter",
+    rol: "Estudiante universitario",
+  },
+  {
+    cita: "Me llevé paz y mucho aprendizaje. Recomiendo venir con el corazón abierto, porque es una experiencia que en verdad enseña a cuidar.",
+    nombre: "Marta",
+    rol: "Visitante",
+  },
+];
 ---
 
 <BaseLayout
   title="Sendero Interpretativo Alas y Naturaleza | La Esmeralda Reserva Natural"
   description="Recorre el Sendero Interpretativo Alas y Naturaleza, un camino de sensibilización y reconexión con la Madre Tierra en el corazón del bosque seco tropical."
-  preloadImage="/banner_2.avif"
+  preloadImage="/images/aventura-banner.avif"
+  ogImage="/images/aventura-banner.avif"
 >
   <Header />
 
   <main>
-    <!-- Hero Section -->
-    <div class="mb-10">
-      <div class="bg-[url('/banner_2.avif')] bg-cover bg-center min-h-[60vh] flex items-center">
-        <div class="text-center container m-auto space-y-14 py-20">
-          <div class="text-center pt-10">
-            <h1 style="text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9)">
-              <span
-                class="font-bold text-3xl md:text-4xl lg:text-5xl mb-3 pt-3 drop-shadow-lg shadow-black text-white"
-              >
-                Alas y Naturaleza
-              </span>
-              <br />
-              <span
-                class="font-bold text-lime-500 text-4xl md:text-5xl lg:text-7xl"
-              >
-                El sendero que despierta tu conciencia
-              </span>
-            </h1>
-          </div>
-          <div>
-            <p
-              style="text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9)"
-              class="text-white text-xl md:text-2xl px-5"
-            >
-              Un camino de sensibilización y reconexión con la Madre Tierra,<br
-              />estamos en el corazón del bosque seco tropical.
-            </p>
-          </div>
-          <div class="grid place-items-center pb-10">
-            <a
-              href="/contactanos/"
-              class="inline-flex items-center text-white bg-esmeralda py-3 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl hover:bg-esmeralda-600 transition-all"
-            >
-              ¡Agenda tu recorrido ahora!
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-                ></path>
-                <path
-                  d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
+    <Hero
+      imagen="/images/aventura-banner.avif"
+      alt="Entrada al sendero interpretativo de la Reserva Natural La Esmeralda"
+      ancho={1200}
+      alto={615}
+      posicion="50% 55%"
+      eyebrow="Alas y Naturaleza"
+      titulo="El sendero que despierta"
+      acento="tu conciencia"
+      lead="Un camino de sensibilización y reconexión con la Madre Tierra, en el corazón del bosque seco tropical."
+      tamano="compacto"
+    >
+      <Fragment slot="acciones">
+        <a href="/contactanos/" class="btn btn-lima">
+          Agenda tu recorrido
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="/sendero/rv-gratis/" class="btn btn-ghost">Verlo en 360°</a>
+      </Fragment>
+
+      <Fragment slot="pie">
+        <Cifras
+          cifras={[
+            { valor: "2,5", unidad: " km", texto: "de recorrido" },
+            { valor: "5", texto: "puntos de interés" },
+            { valor: "1", unidad: " h", texto: "de duración" },
+            { valor: "5", texto: "personas por grupo", destacada: true },
+          ]}
+        />
+      </Fragment>
+    </Hero>
+
+    <section class="banda-papel">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Qué vas a caminar"
+          titulo="Un recorrido donde tu maestra es la"
+          acento="naturaleza"
+          lead="El Sendero Alas y Naturaleza te invita a recorrer cinco puntos de interés que despiertan sentidos, generan conciencia y muestran que el verdadero protagonista es la vida silvestre. Aquí caminas como invitado en un oasis seguro y propio para la biodiversidad."
+          doble
+          clase="reveal"
+        />
       </div>
-    </div>
+    </section>
 
-    <!-- Introducción -->
-    <div class="container m-auto my-20">
-      <div class="text-center lg:mx-auto lg:max-w-4xl px-4">
-        <h2
-          class="font-bold text-3xl md:text-4xl leading-tight mb-6 drop-shadow-xl shadow-black text-esmeralda"
-        >
-          Un recorrido donde tu maestra es la naturaleza
-        </h2>
-        <p class="text-lg text-gray-600 mb-3">
-          El Sendero Alas y Naturaleza te invita a recorrer cinco puntos de
-          interés que despiertan sentidos, generan conciencia y muestran que el
-          verdadero protagonista es la vida silvestre. Aquí caminas como invitado
-          en un oasis seguro y propio para la biodiversidad.
-        </p>
-      </div>
-    </div>
+    <section class="banda-oscura">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Punto a punto"
+          titulo="Los cinco"
+          acento="despertares"
+          lead="Cada parada tiene su hablador en el camino. Toca la imagen para leerlo completo."
+          doble
+          claro
+          clase="reveal"
+        />
 
-    <!-- Los 5 Despertares -->
-    <div class="bg-esmeralda py-16">
-      <!-- Wave Divider Top -->
-      <div class="overflow-hidden">
-        <svg
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 120"
-          xmlns="http://www.w3.org/2000/svg"
-          style="fill: #ffffff; width: 400%; height: 25px; transform: scaleX(-1)"
-        >
-          <path
-            d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z"
-            opacity=".25"></path>
-          <path
-            d="M0 0v15.81c13 21.11 27.64 41.05 47.69 56.24C99.41 111.27 165 111 224.58 91.58c31.15-10.15 60.09-26.07 89.67-39.8 40.92-19 84.73-46 130.83-49.67 36.26-2.85 70.9 9.42 98.6 31.56 31.77 25.39 62.32 62 103.63 73 40.44 10.79 81.35-6.69 119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0z"
-            opacity=".5"></path>
-          <path
-            d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z"
-          ></path>
-        </svg>
-      </div>
-
-      <div class="container m-auto px-4">
-        <h2
-          class="text-center font-bold text-white text-3xl md:text-4xl leading-tight mb-12 drop-shadow-xl shadow-black"
-        >
-          Los 5 Despertares
-        </h2>
-
-        <div class="lg:mx-auto lg:max-w-6xl space-y-12">
-          <!-- Despertar 1 -->
-          <div
-            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
-          >
-            <div class="p-6">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="text-5xl">📍</div>
-                <div>
-                  <h3 class="text-2xl font-bold text-esmeralda">
-                    Punto de interés #1 - Despertar del papel
-                  </h3>
-                  <p class="text-gray-600 font-medium">Mapa del inicio</p>
+        <ol class="despertares">
+          {
+            despertares.map((d, i) => (
+              <li class="despertar reveal">
+                <button
+                  type="button"
+                  class="tile despertar-img"
+                  data-abre-foto={i}
+                  aria-label={`Ampliar: ${d.alt}`}
+                >
+                  <img src={d.imagen} alt={d.alt} width="1152" height="1440" loading="lazy" decoding="async" />
+                  <span class="despertar-lupa">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6M11 8v6M8 11h6" /></svg>
+                  </span>
+                </button>
+                <div class="despertar-cuerpo">
+                  <span class="despertar-n acento">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{d.titulo}</h3>
+                  <span class="chip chip-lima autoalinear">{d.subtitulo}</span>
+                  <p>{d.texto}</p>
                 </div>
-              </div>
-              <p class="text-gray-700">
-                Reconoces tu papel: caminas como actor de reparto en una obra donde
-                la naturaleza es protagonista.
-              </p>
-            </div>
-            <img
-          width="1152"
-          height="1440"
-              src="/sendero/mapa.avif"
-              alt="Mapa del Sendero Interpretativo Alas y Naturaleza - Reserva Natural La Esmeralda"
-              class="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
+              </li>
+            ))
+          }
+        </ol>
 
-          <!-- Despertar 2 -->
-          <div
-            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
-          >
-            <div class="p-6">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="text-5xl">🌳</div>
-                <div>
-                  <h3 class="text-2xl font-bold text-esmeralda">
-                    Punto de interés #2 - Despertar del asombro
-                  </h3>
-                  <p class="text-gray-600 font-medium">
-                    El bosque que respira vida
-                  </p>
-                </div>
-              </div>
-              <p class="text-gray-700">
-                Cada lombriz, cada árbol caído y cada guacharaca revela que lo
-                pequeño sostiene lo inmenso. Lombricultivo, heliconias, árboles
-                caídos y guacharacas: resiliencia y equilibrio del bosque seco
-                tropical.
-              </p>
-            </div>
-            <img
-          width="1152"
-          height="1440"
-              src="/sendero/h_1.avif"
-              alt="Hablador: El bosque que respira vida - Lombricultivo, heliconias, árboles caídos y guacharacas"
-              class="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Despertar 3 -->
-          <div
-            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
-          >
-            <div class="p-6">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="text-5xl">💧</div>
-                <div>
-                  <h3 class="text-2xl font-bold text-esmeralda">
-                    Punto de interés #3 - Despertar de la gratitud
-                  </h3>
-                  <p class="text-gray-600 font-medium">
-                    Humedales: fábricas de vida
-                  </p>
-                </div>
-              </div>
-              <p class="text-gray-700">
-                Cada gota es vida compartida y refugio de especies que dependen
-                del agua. Ecosistemas de agua, regulación hídrica, anfibios,
-                artrópodos y el árbol de cacao.
-              </p>
-            </div>
-            <img
-          width="1152"
-          height="1440"
-              src="/sendero/h_2.avif"
-              alt="Hablador: Humedales, fábricas de vida - Ecosistemas de agua, anfibios, artrópodos y cacao"
-              class="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Despertar 4 -->
-          <div
-            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
-          >
-            <div class="p-6">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="text-5xl">🐦</div>
-                <div>
-                  <h3 class="text-2xl font-bold text-esmeralda">
-                    Punto de interés #4 - Despertar del respeto
-                  </h3>
-                  <p class="text-gray-600 font-medium">
-                    Donde nace el agua y canta el amor
-                  </p>
-                </div>
-              </div>
-              <p class="text-gray-700">
-                Nacimientos de agua, reptiles y el ave emblemática Chiroxiphia
-                lanceolata. Fauna del Río Opia, aves guardianas del corredor
-                biológico e investigación al alcance de todos.
-              </p>
-            </div>
-            <img
-          width="1152"
-          height="1440"
-              src="/sendero/h_3.avif"
-              alt="Hablador: Donde nace el agua y canta el amor - Fauna del Río Opia, aves y reptiles"
-              class="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Despertar 5 -->
-          <div
-            class="mx-3 md:mx-0 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
-          >
-            <div class="p-6">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="text-5xl">🐝</div>
-                <div>
-                  <h3 class="text-2xl font-bold text-esmeralda">
-                    Punto de interés #5 - Unión Macondiana
-                  </h3>
-                  <p class="text-gray-600 font-medium">
-                    Tradición, polinizadores y ancestros
-                  </p>
-                </div>
-              </div>
-              <p class="text-gray-700">
-                Humanidad y naturaleza comparten un mismo libreto donde todos
-                tenemos un gran papel por interpretar. Raíces de historia campesina,
-                kumquat, abejas nativas y el caucho ancestral del bosque.
-              </p>
-            </div>
-            <img
-          width="1152"
-          height="1440"
-              src="/sendero/h_4.avif"
-              alt="Hablador: Unión Macondiana - Tradición, polinizadores, kumquat y el caucho ancestral"
-              class="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div class="text-center mt-12">
-          <a
-            href="/contactanos/"
-            class="inline-flex items-center text-white bg-white/20 hover:bg-white/30 py-3 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all"
-          >
+        <div class="despertares-cta reveal">
+          <a href="/contactanos/" class="btn btn-lima">
             Quiero vivir esta experiencia
-            <svg
-              class="w-5 h-5 ml-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-              ></path>
-              <path
-                d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-              ></path>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
         </div>
       </div>
+    </section>
 
-      <!-- Wave Divider Bottom -->
-      <div class="overflow-hidden mt-16">
-        <svg
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 120"
-          xmlns="http://www.w3.org/2000/svg"
-          style="fill: #ffffff; width: 400%; height: 25px;"
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-          ></path>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Una promesa -->
-    <div class="container m-auto my-20">
-      <div class="lg:mx-auto lg:max-w-5xl px-4">
-        <h2
-          class="text-center font-bold text-3xl md:text-4xl leading-tight mb-8 text-esmeralda"
-        >
-          Una promesa
-        </h2>
-        <div
-          class="mx-3 md:mx-0 p-6 bg-white border border-gray-200 rounded-lg shadow-md"
-        >
-          <p class="text-lg text-gray-700 leading-relaxed">
+    <section class="banda-papel">
+      <div class="wrap">
+        <blockquote class="promesa reveal">
+          <span class="eyebrow">Una promesa</span>
+          <p>
             Al terminar el recorrido, te reconoces más consciente, más conectado
             y con un compromiso de respeto renovado hacia la biodiversidad. Aquí
             la Reserva es un oasis seguro para la vida silvestre, y tu papel es
             apoyar, acompañar, aprender y dejarte inspirar.
           </p>
-        </div>
+        </blockquote>
       </div>
-    </div>
+    </section>
 
-    <!-- Información práctica -->
-    <div class="bg-gray-50 py-16">
-      <div class="container m-auto px-4">
-        <div class="lg:mx-auto lg:max-w-4xl">
-          <h2
-            class="text-center font-bold text-3xl md:text-4xl leading-tight mb-8 text-esmeralda"
-          >
-            Información práctica
-          </h2>
+    <section class="banda-niebla">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Antes de venir"
+          titulo="Información"
+          acento="práctica"
+          lead="Todo lo que necesitas saber para agendar. Si tienes dudas, escríbenos y lo resolvemos."
+          doble
+          clase="reveal"
+        />
 
-          <div class="bg-white p-8 rounded-lg shadow-md">
-            <div class="grid md:grid-cols-2 gap-6">
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">⏱️</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Duración</h3>
-                  <p class="text-gray-700">Una (1) hora</p>
-                </div>
+        <div class="visita-datos reveal">
+          {
+            practica.map((p) => (
+              <div class="dato-visita">
+                <span class="dato-visita-ico">
+                  {p.icono === "reloj" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                  )}
+                  {p.icono === "bota" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v9l-1.6 4.2A2 2 0 0 0 6.3 19H19a2 2 0 0 0 2-2v-1a4 4 0 0 0-2.6-3.7L14 10.5V3z" /><path d="M6 12h4" /></svg>
+                  )}
+                  {p.icono === "calendario" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 11h18" /></svg>
+                  )}
+                  {p.icono === "moneda" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M15 9H10.5a2 2 0 0 0 0 4h3a2 2 0 0 1 0 4H9M12 7v10" /></svg>
+                  )}
+                  {p.icono === "personas" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3 19a6 6 0 0 1 12 0" /><path d="M16.5 5.5a3.2 3.2 0 0 1 0 6M18 19a6 6 0 0 0-2-4.5" /></svg>
+                  )}
+                  {p.icono === "tilde" && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="m8.5 12.5 2.5 2.5 4.5-5" /></svg>
+                  )}
+                </span>
+                <span class="dato-visita-texto">
+                  <span class="dato-visita-etiqueta">{p.etiqueta}</span>
+                  <span class="dato-visita-valor">{p.valor}</span>
+                </span>
               </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">🥾</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Nivel</h3>
-                  <p class="text-gray-700">Fácil, recomendado para 7+</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">🕐</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Horarios</h3>
-                  <p class="text-gray-700">
-                    Disponibilidad de dos bloques<br />
-                    Bloque 1: Inicio 7am a Finalización 9am<br />
-                    Bloque 2: Inicio 8am a Finalización 10am<br />
-                    Consultar disponibilidad con administrador
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">💰</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Valor</h3>
-                  <p class="text-gray-700">$50.000 por persona</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">👥</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Importante</h3>
-                  <p class="text-gray-700">
-                    El recorrido se realiza con un grupo máximo de 5 personas.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-3xl">✅</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Incluye</h3>
-                  <p class="text-gray-700">
-                    Orientador local con interpretación ambiental, acceso a la
-                    reserva y desayuno campesino.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="text-center mt-8">
-            <a
-              href="/contactanos/"
-              class="inline-flex items-center text-white bg-esmeralda hover:bg-esmeralda-600 py-3 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all"
-            >
-              ¡Agenda tu recorrido ahora!
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-                ></path>
-                <path
-                  d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonios -->
-    <div class="container m-auto my-20">
-      <div class="lg:mx-auto lg:max-w-5xl px-4">
-        <h2
-          class="text-center font-bold text-3xl md:text-4xl leading-tight mb-4 text-esmeralda"
-        >
-          Voces que inspiran
-        </h2>
-        <p class="text-center text-lg text-gray-600 mb-10">
-          Lo que dicen quienes ya vivieron el sendero
-        </p>
-
-        <div class="space-y-6">
-          <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
-            <div class="flex items-start gap-4">
-              <div class="text-4xl">💬</div>
-              <div>
-                <p class="text-gray-700 italic mb-3">
-                  "Sentí que caminaba dentro de una historia viva. Cada punto de
-                  la reserva me mostró algo que nunca había visto con tanto
-                  detalle."
-                </p>
-                <p class="font-semibold text-gray-900">— Olga, visitante</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
-            <div class="flex items-start gap-4">
-              <div class="text-4xl">💬</div>
-              <div>
-                <p class="text-gray-700 italic mb-3">
-                  "Los árboles, la zona de protección y los puntos de interés
-                  hacen que uno se detenga, piense y escuche al bosque. Es un
-                  recorrido que toca la conciencia."
-                </p>
-                <p class="font-semibold text-gray-900">
-                  — Walter, estudiante universitario
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
-            <div class="flex items-start gap-4">
-              <div class="text-4xl">💬</div>
-              <div>
-                <p class="text-gray-700 italic mb-3">
-                  "Me llevé paz y mucho aprendizaje. Recomiendo venir con el
-                  corazón abierto, porque es una experiencia que en verdad enseña
-                  a cuidar."
-                </p>
-                <p class="font-semibold text-gray-900">— Marta, visitante</p>
-              </div>
-            </div>
-          </div>
+            ))
+          }
         </div>
 
-        <div class="text-center mt-10">
-          <a
-            href="/contactanos/"
-            class="inline-flex items-center text-white bg-esmeralda hover:bg-esmeralda-600 py-3 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all"
-          >
-            Agendar mi visita
-            <svg
-              class="w-5 h-5 ml-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-              ></path>
-              <path
-                d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-              ></path>
-            </svg>
+        <div class="despertares-cta reveal">
+          <a href="/contactanos/" class="btn btn-esm">
+            Agenda tu recorrido
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Ubicación y Contacto -->
-    <div class="bg-gray-50 py-16">
-      <div class="container m-auto px-4">
-        <div class="lg:mx-auto lg:max-w-5xl">
-          <h2
-            class="text-center font-bold text-3xl md:text-4xl leading-tight mb-8 text-esmeralda"
-          >
-            Ubicación y Contacto
-          </h2>
-
-          <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <div class="text-2xl">📍</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Ubicación</h3>
-                  <p class="text-gray-700">
-                    A 45 minutos de Ibagué, en Doima – Piedras, Tolima
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-2xl">📧</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Correo</h3>
-                  <a
-                    href="mailto:info@esmeraldareservanatural.com"
-                    class="text-blue-600 hover:underline"
-                  >
-                    info@esmeraldareservanatural.com
-                  </a>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="text-2xl">📞</div>
-                <div>
-                  <h3 class="font-bold text-lg mb-1">Teléfono</h3>
-                  <a
-                    href="tel:+573208096472"
-                    class="text-blue-600 hover:underline"
-                  >
-                    (+57) 320 809 6472
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <iframe
-              class="w-full h-96 rounded-lg shadow-md"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.919315965023!2d-74.98013618552636!3d4.4261321452102464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e38cdb01f199d5b%3A0x9a7b95a195fa8778!2sReserva%20Natural%20La%20Esmeralda%20Doima!5e0!3m2!1ses-419!2sco!4v1675908202324!5m2!1ses-419!2sco"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-          <div class="text-center">
-            <a
-              href="/contactanos/"
-              class="inline-flex items-center text-white bg-esmeralda hover:bg-esmeralda-600 py-3 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all"
-            >
-              Agendar mi visita
-              <svg
-                class="w-5 h-5 ml-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-                ></path>
-                <path
-                  d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-                ></path>
-              </svg>
-            </a>
-          </div>
+    <section class="banda-papel">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Voces que inspiran"
+          titulo="Lo que dicen quienes ya"
+          acento="lo caminaron"
+          doble
+          clase="reveal"
+        />
+        <div class="voces reveal">
+          {
+            voces.map((v) => (
+              <figure class="voz">
+                <span class="voz-comilla acento" aria-hidden="true">&#8220;</span>
+                <blockquote>{v.cita}</blockquote>
+                <figcaption>
+                  <span class="voz-nombre">{v.nombre}</span>
+                  <span class="voz-rol">{v.rol}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
         </div>
       </div>
-    </div>
+    </section>
+
+    <CTABanda
+      eyebrow="Planea tu visita"
+      titulo="El bosque te espera"
+      acento="a las siete"
+      texto="Escríbenos con la fecha y el número de personas y te confirmamos el bloque disponible."
+      primario={{ texto: "Agendar mi visita", href: "/contactanos/" }}
+      secundario={{ texto: "Ver el recorrido 360°", href: "/sendero/rv-gratis/" }}
+    />
   </main>
 
-  <Footer />
+  <dialog id="lightbox" class="lightbox" aria-label="Hablador ampliado">
+    <button type="button" class="lightbox-cerrar" data-cierra-foto aria-label="Cerrar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav anterior" data-foto-anterior aria-label="Anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav siguiente" data-foto-siguiente aria-label="Siguiente">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
+
+  <Footer mapa={true} />
 </BaseLayout>
+
+<script>
+  // Los habladores llevan texto: se pueden abrir a pantalla completa para
+  // leerlos. Mismo patron que la galeria.
+  function initHabladores() {
+    const dlg = document.getElementById("lightbox") as HTMLDialogElement | null;
+    const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+    const piezas = Array.from(document.querySelectorAll<HTMLElement>("[data-abre-foto]"));
+    if (!dlg || !img || piezas.length === 0) return;
+    if (dlg.dataset.listo === "1") return;
+    dlg.dataset.listo = "1";
+
+    let actual = 0;
+
+    function mostrar(i: number) {
+      actual = (i + piezas.length) % piezas.length;
+      const foto = piezas[actual].querySelector("img");
+      if (!foto || !img) return;
+      img.src = foto.src;
+      img.alt = foto.alt;
+    }
+
+    piezas.forEach((p, i) => {
+      p.addEventListener("click", () => {
+        mostrar(i);
+        dlg.showModal();
+      });
+    });
+
+    dlg.querySelector("[data-cierra-foto]")?.addEventListener("click", () => dlg.close());
+    dlg.querySelector("[data-foto-anterior]")?.addEventListener("click", () => mostrar(actual - 1));
+    dlg.querySelector("[data-foto-siguiente]")?.addEventListener("click", () => mostrar(actual + 1));
+
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    dlg.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") mostrar(actual - 1);
+      if (e.key === "ArrowRight") mostrar(actual + 1);
+    });
+  }
+
+  initHabladores();
+  document.addEventListener("astro:page-load", initHabladores);
+</script>
