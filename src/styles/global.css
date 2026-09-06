@@ -4594,3 +4594,335 @@ a.dato-valor:hover {
     grid-column: 9 / span 4;
   }
 }
+
+/* ============================================================
+   AVES — lamina de avistamiento
+   ============================================================ */
+
+.cifras-aves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--color-linea);
+}
+
+.cifra-ave {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cifra-ave-n {
+  font-size: 44px;
+  line-height: 1;
+  color: var(--color-esmeralda);
+}
+
+.cifra-ave-etiqueta {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-tinta-tenue);
+}
+
+/* --- Aviso de marcado -------------------------------------- */
+.aves-aviso {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 56px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: var(--color-lima-100);
+  color: var(--color-esmeralda-800);
+  font-size: 15px;
+  width: fit-content;
+}
+
+.aves-aviso svg {
+  flex-shrink: 0;
+}
+
+.aves-limpiar {
+  border: 0;
+  background: none;
+  padding: 0;
+  margin-left: 4px;
+  font: inherit;
+  color: var(--color-esmeralda-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* El boton se enseña y se esconde con el atributo hidden; la regla de
+   arriba no lleva capa y ganaria a la de preflight, asi que se declara. */
+.aves-limpiar[hidden] {
+  display: none;
+}
+
+.aves-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.aves-grupo + .aves-grupo {
+  margin-top: 88px;
+}
+
+/* --- Rejilla de especies ----------------------------------- */
+.aves-rejilla {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ave-tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radius-tarjeta);
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease-esm),
+    box-shadow 0.3s var(--ease-esm),
+    transform 0.3s var(--ease-esm);
+}
+
+.ave-tarjeta:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-esmeralda-200);
+  box-shadow: 0 14px 32px rgba(15, 31, 21, 0.08);
+}
+
+/* La casilla real se queda debajo de la tarjeta: sigue siendo enfocable
+   con teclado y no hace falta ningun aria. */
+.ave-marca {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ave-tarjeta:has(.ave-marca:focus-visible) {
+  outline: 2px solid var(--color-esmeralda);
+  outline-offset: 2px;
+}
+
+/* La caja manda sobre la foto: aspect-ratio fija el alto y min-height: 0
+   evita que el tamano minimo automatico del item flex la estire. */
+.ave-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-niebla);
+  padding: 10px;
+}
+
+.ave-foto img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s var(--ease-esm);
+}
+
+.ave-tarjeta:hover .ave-foto img {
+  transform: scale(1.05);
+}
+
+.ave-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px 16px;
+}
+
+.ave-comun {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--color-tinta);
+}
+
+.ave-cientifico {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--color-tinta-tenue);
+}
+
+/* Circulito de la lamina, ahora marcable */
+.ave-tilde {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 31, 21, 0.22);
+  background: rgba(255, 255, 255, 0.9);
+  color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.ave-tarjeta:hover .ave-tilde {
+  border-color: var(--color-esmeralda-200);
+}
+
+.ave-tarjeta:has(.ave-marca:checked) {
+  border-color: var(--color-esmeralda);
+  background: var(--color-esmeralda-50);
+}
+
+.ave-tarjeta:has(.ave-marca:checked) .ave-foto {
+  background: var(--color-lima-100);
+}
+
+.ave-tarjeta:has(.ave-marca:checked) .ave-tilde {
+  background: var(--color-esmeralda);
+  border-color: var(--color-esmeralda);
+  color: #ffffff;
+}
+
+.aves-creditos {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-linea);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-tinta-tenue);
+}
+
+.aves-creditos strong {
+  color: var(--color-tinta-suave);
+  font-weight: 700;
+}
+
+/* --- Las dos caras de la lamina ---------------------------- */
+.laminas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.lamina {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-tile);
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition:
+    border-color 0.3s var(--ease-esm),
+    transform 0.3s var(--ease-esm);
+}
+
+.lamina:hover {
+  transform: translateY(-3px);
+  border-color: rgba(163, 230, 53, 0.5);
+}
+
+.lamina img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lamina-lupa {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(8, 26, 13, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lamina:hover .lamina-lupa,
+.lamina:focus-visible .lamina-lupa {
+  opacity: 1;
+}
+
+.lamina-pie {
+  display: block;
+  padding: 14px 18px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: left;
+}
+
+/* Variante de la caja de descarga para la banda oscura */
+.descarga-clara {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.descarga-clara .descarga-texto h2 {
+  color: #ffffff;
+}
+
+.descarga-clara .descarga-texto p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (min-width: 640px) {
+  .aves-rejilla {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .cifras-aves {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .laminas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .aves-rejilla {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .aves-grupo + .aves-grupo {
+    margin-top: 112px;
+  }
+}

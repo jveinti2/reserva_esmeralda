@@ -1,0 +1,377 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import Encabezado from "../components/sections/Encabezado.astro";
+import CTABanda from "../components/sections/CTABanda.astro";
+
+// Listado y fotografias tomados de la lamina "Aves de la Reserva Natural
+// La Esmeralda" (Yuleimy Rodriguez A., 2026). El PDF completo se ofrece en
+// descarga mas abajo; aqui solo se pasa a HTML para poder leerlo y marcarlo.
+// credito: "bahamon" = ° Rafael M. Bahamon · "ebird" = * tomada de eBird.
+const aves = [
+  { slug: "martin-pescador", comun: "Martín pescador", cientifico: "Megaceryle torquata", credito: "ebird", grupo: "residente", w: 213, h: 203 },
+  { slug: "carpintero-olivaceus", comun: "Carpintero olivaceus", cientifico: "Picumnus olivaceus", credito: "ebird", grupo: "residente", w: 146, h: 205 },
+  { slug: "garza-cucharon", comun: "Garza cucharón", cientifico: "Cochlearius cochlearius", credito: "bahamon", grupo: "residente", w: 252, h: 300 },
+  { slug: "halcon-reidor", comun: "Halcón reidor", cientifico: "Herpetotheres cachinnans", credito: "ebird", grupo: "residente", w: 178, h: 162 },
+  { slug: "pico-plata", comun: "Pico plata", cientifico: "Ramphocelus dimidiatus", credito: "ebird", grupo: "residente", w: 218, h: 139 },
+  { slug: "eufonia-piquigruesa", comun: "Eufonia piquigruesa", cientifico: "Euphonia laniirostris", credito: "ebird", grupo: "residente", w: 254, h: 155 },
+  { slug: "colibri-ermitano", comun: "Colibrí ermitaño", cientifico: "Phaethornis striigularis", credito: "ebird", grupo: "residente", w: 227, h: 188 },
+  { slug: "canario", comun: "Canario", cientifico: "Sicalis flaveola", credito: "ebird", grupo: "residente", w: 262, h: 182 },
+  { slug: "gavilan", comun: "Gavilán", cientifico: "Rupornis magnirostris", credito: "ebird", grupo: "residente", w: 112, h: 179 },
+  { slug: "cara-cara", comun: "Cara cara", cientifico: "Milvago chimachima", credito: "ebird", grupo: "residente", w: 191, h: 179 },
+  { slug: "azulejo", comun: "Azulejo", cientifico: "Thraupis episcopus", credito: "ebird", grupo: "residente", w: 225, h: 197 },
+  { slug: "bienteveo-pitangua", comun: "Bienteveo pitanguá", cientifico: "Megarynchus pitangua", credito: "ebird", grupo: "residente", w: 190, h: 192 },
+  { slug: "pinzon-piquinaranja", comun: "Pinzón piquinaranja", cientifico: "Arremon aurantiirostris", credito: "ebird", grupo: "residente", w: 206, h: 148 },
+  { slug: "chulo", comun: "Chulo", cientifico: "Coragyps atratus", credito: "ebird", grupo: "residente", w: 242, h: 173 },
+  { slug: "cuco-ardilla", comun: "Cuco ardilla", cientifico: "Piaya cayana", credito: "ebird", grupo: "residente", w: 184, h: 174 },
+  { slug: "semillero", comun: "Semillero", cientifico: "Sporophila schistacea", credito: "bahamon", grupo: "residente", w: 300, h: 199 },
+  { slug: "dacnis-azul", comun: "Dacnis azul", cientifico: "Dacnis cayana", credito: "ebird", grupo: "residente", w: 225, h: 109 },
+  { slug: "soldadito-capirotado", comun: "Soldadito capirotado", cientifico: "Coryphospingus pileatus", credito: "bahamon", grupo: "residente", w: 300, h: 190 },
+  { slug: "chilacoa", comun: "Chilacoa", cientifico: "Aramides cajaneus", credito: "ebird", grupo: "residente", w: 157, h: 171 },
+  { slug: "garrapatero", comun: "Garrapatero", cientifico: "Crotophaga major", credito: "ebird", grupo: "residente", w: 224, h: 150 },
+  { slug: "silbadora", comun: "Silbadora", cientifico: "Syrigma sibilatrix", credito: "bahamon", grupo: "residente", w: 300, h: 169 },
+  { slug: "saltador-rayado", comun: "Saltador rayado", cientifico: "Saltator striatipectus", credito: "ebird", grupo: "residente", w: 153, h: 199 },
+  { slug: "colibri-de-julia", comun: "Colibrí de Julia", cientifico: "Chlorestes julie", credito: "ebird", grupo: "residente", w: 208, h: 146 },
+  { slug: "colibri-de-goudot", comun: "Colibrí de goudot", cientifico: "Chrysuronia goudoti", credito: "bahamon", grupo: "residente", w: 300, h: 258 },
+  { slug: "palomita-azul", comun: "Palomita azul", cientifico: "Claravis pretiosa", credito: "bahamon", grupo: "residente", w: 300, h: 137 },
+  { slug: "jacamar", comun: "Jacamar", cientifico: "Galbula ruficauda", credito: "bahamon", grupo: "residente", w: 300, h: 195 },
+  { slug: "reinita-culiparda", comun: "Reinita culiparda", cientifico: "Myiothlypis fulvicauda", credito: "ebird", grupo: "residente", w: 300, h: 215 },
+  { slug: "reinita-cabecicastana", comun: "Reinita cabecicastaña", cientifico: "Basileuterus delattrii", credito: "", grupo: "residente", w: 217, h: 138 },
+  { slug: "bienteveo-comun", comun: "Bienteveo común", cientifico: "Myiozetetes similis", credito: "ebird", grupo: "residente", w: 186, h: 185 },
+  { slug: "cucarachero-pechihabano", comun: "Cucarachero pechihabano", cientifico: "Cantorchilus leucotis", credito: "ebird", grupo: "residente", w: 204, h: 191 },
+  { slug: "espatula-comun", comun: "Espátula común", cientifico: "Todirostrum cinereum", credito: "bahamon", grupo: "residente", w: 300, h: 289 },
+  { slug: "batara-barrado", comun: "Batará barrado", cientifico: "Thamnophilus doliatus", credito: "ebird", grupo: "residente", w: 217, h: 204 },
+  { slug: "guacharaca", comun: "Guacharaca", cientifico: "Ortalis columbiana", credito: "bahamon", grupo: "endemica", w: 272, h: 151 },
+  { slug: "eufonia-del-magdalena", comun: "Eufonia del magdalena", cientifico: "Euphonia concinna", credito: "bahamon", grupo: "endemica", w: 130, h: 170 },
+  { slug: "barranquero", comun: "Barranquero", cientifico: "Momotus subrufescens", credito: "bahamon", grupo: "endemica", w: 300, h: 187 },
+  { slug: "saltarin-cola-de-lanza", comun: "Saltarín cola de lanza", cientifico: "Chiroxiphia lanceolata", credito: "bahamon", grupo: "endemica", w: 300, h: 142 },
+  { slug: "tangara-roja", comun: "Tángara roja", cientifico: "Piranga rubra", credito: "ebird", grupo: "migratoria", w: 162, h: 162 },
+  { slug: "tangara-escarlata", comun: "Tángara escarlata", cientifico: "Piranga olivacea", credito: "ebird", grupo: "migratoria", w: 171, h: 156 },
+  { slug: "candelita-nortena", comun: "Candelita norteña", cientifico: "Setophaga ruticilla", credito: "ebird", grupo: "migratoria", w: 268, h: 144 },
+];
+
+const grupos = [
+  {
+    id: "residentes",
+    eyebrow: "Todo el año",
+    titulo: "Aves",
+    acento: "residentes",
+    lead: "Viven aquí de forma permanente. Son las que puedes ver en cualquier época del año, caminando el sendero.",
+  },
+  {
+    id: "endemicas",
+    eyebrow: "Solo aquí",
+    titulo: "Aves",
+    acento: "endémicas",
+    lead: "El grupo que la lámina separa del resto: aves del valle del Magdalena y del bosque seco de esta franja del Tolima.",
+  },
+  {
+    id: "migratorias",
+    eyebrow: "De paso",
+    titulo: "Aves",
+    acento: "migratorias",
+    lead: "Bajan desde Norteamérica a pasar el invierno boreal. Solo se registran en temporada, no todo el año.",
+  },
+];
+
+const conteo = (id: string) => aves.filter((a) => a.grupo === id.replace(/s$/, "")).length;
+
+const cifras = [
+  { n: String(aves.length), etiqueta: "Especies registradas" },
+  { n: String(conteo("residentes")), etiqueta: "Residentes" },
+  { n: String(conteo("endemicas")), etiqueta: "Endémicas" },
+  { n: String(conteo("migratorias")), etiqueta: "Migratorias" },
+];
+
+const laminas = [
+  { src: "/images/aves/lamina-1.avif", alt: "Cara A de la lámina: 24 aves residentes de la Reserva Natural La Esmeralda" },
+  { src: "/images/aves/lamina-2.avif", alt: "Cara B de la lámina: aves endémicas, migratorias y residentes de la reserva" },
+];
+
+const PDF = "/docs/aves-reserva-natural-la-esmeralda.pdf";
+---
+
+<BaseLayout
+  title="La Esmeralda Reserva Natural | Aves"
+  description="Guía de las 39 aves registradas en la Reserva Natural La Esmeralda, en Doima, Piedras (Tolima). Consúltala en línea o descarga la lámina en PDF."
+  preloadImage="/banner_2.avif"
+  ogImage="/banner_2.avif"
+>
+  <Header />
+
+  <main>
+    <Hero
+      imagen="/banner_2.avif"
+      alt="Barranquero posado en una rama del bosque seco de la reserva"
+      ancho={1600}
+      alto={1059}
+      posicion="50% 45%"
+      eyebrow="Guía de avistamiento"
+      titulo="Aves de"
+      acento="La Esmeralda"
+      lead="Treinta y nueve especies registradas en el bosque seco tropical de Doima. Márcalas mientras las vas viendo."
+      tamano="compacto"
+    />
+
+    <section class="banda-papel">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="La lámina"
+          titulo="Un inventario para llevar"
+          acento="al sendero"
+          lead="La reserva reunió en una lámina las especies que se han registrado dentro del predio. Aquí la tienes completa, especie por especie, y también en PDF para imprimirla y llevarla al campo."
+          doble
+          clase="reveal"
+        />
+
+        <div class="cifras-aves reveal">
+          {
+            cifras.map((c) => (
+              <div class="cifra-ave">
+                <span class="cifra-ave-n acento">{c.n}</span>
+                <span class="cifra-ave-etiqueta">{c.etiqueta}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="banda-papel aves-banda">
+      <div class="wrap">
+        <p class="aves-aviso reveal" id="aves-aviso">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          Marca las aves observadas. Se guardan en este navegador.
+          <button type="button" class="aves-limpiar" data-limpia-marcas hidden>Borrar mis marcas</button>
+        </p>
+
+        {
+          grupos.map((g) => (
+            <div class="aves-grupo">
+              <Encabezado
+                eyebrow={g.eyebrow}
+                titulo={g.titulo}
+                acento={g.acento}
+                lead={g.lead}
+                doble
+                clase="reveal"
+              />
+              <ul class="aves-rejilla reveal">
+                {aves
+                  .filter((a) => a.grupo === g.id.replace(/s$/, ""))
+                  .map((a) => (
+                    <li class="ave">
+                      <label class="ave-tarjeta">
+                        <input type="checkbox" class="ave-marca" data-ave={a.slug} />
+                        <span class="ave-foto">
+                          <img
+                            src={`/images/aves/${a.slug}.avif`}
+                            alt={`${a.comun} (${a.cientifico})`}
+                            width={a.w}
+                            height={a.h}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </span>
+                        <span class="ave-texto">
+                          <span class="ave-comun">{a.comun}</span>
+                          <span class="ave-cientifico">{a.cientifico}</span>
+                        </span>
+                        <span class="ave-tilde" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))
+        }
+
+        <p class="aves-creditos reveal">
+          Fotografías: <strong>Rafael M. Bahamón</strong> y <strong>eBird</strong>.
+          Lámina elaborada por <strong>Yuleimy Rodríguez A.</strong> para la
+          Reserva Natural La Esmeralda.
+        </p>
+      </div>
+    </section>
+
+    <section class="banda-oscura">
+      <div class="wrap">
+        <Encabezado
+          eyebrow="Para imprimir"
+          titulo="Llévate la"
+          acento="lámina"
+          lead="Dos caras en A4 horizontal, pensadas para imprimir y marcar a lápiz. Toca cada cara para verla en grande."
+          doble
+          claro
+          clase="reveal"
+        />
+
+        <div class="laminas reveal">
+          {
+            laminas.map((l, i) => (
+              <button type="button" class="lamina" data-abre-foto={i} aria-label={`Ampliar: ${l.alt}`}>
+                <img src={l.src} alt={l.alt} width="1600" height="1132" loading="lazy" decoding="async" />
+                <span class="lamina-lupa">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6M11 8v6M8 11h6" /></svg>
+                </span>
+                <span class="lamina-pie">{i === 0 ? "Cara A · residentes" : "Cara B · endémicas y migratorias"}</span>
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="grid12 descarga descarga-clara reveal">
+          <div class="descarga-texto">
+            <h2>Descarga la lámina completa</h2>
+            <p>
+              PDF de dos páginas en tamaño A4, con las 39 especies y sus casillas
+              para marcar. Pesa 9,2 MB.
+            </p>
+          </div>
+          <div class="descarga-cta">
+            <a href={PDF} download class="btn btn-lima">
+              Descargar PDF
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTABanda
+      eyebrow="Pajarea con nosotros"
+      titulo="Ven a completar la"
+      acento="lista"
+      texto="El semillero de avistadores sale a campo con binoculares y libreta. Escríbenos y te contamos cuándo es la próxima salida."
+      primario={{ texto: "Escríbenos", href: "/contactanos/" }}
+      secundario={{ texto: "Semillero de avistadores", href: "/educacion_ambiental/semillero_aves/" }}
+    />
+  </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Lámina ampliada">
+    <button type="button" class="lightbox-cerrar" data-cierra-foto aria-label="Cerrar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav anterior" data-foto-anterior aria-label="Anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button type="button" class="lightbox-nav siguiente" data-foto-siguiente aria-label="Siguiente">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Lightbox de las dos caras de la lamina (mismo patron que galeria).
+  function initLaminas() {
+    const dlg = document.getElementById("lightbox") as HTMLDialogElement | null;
+    const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+    const piezas = Array.from(document.querySelectorAll<HTMLElement>("[data-abre-foto]"));
+    if (!dlg || !img || piezas.length === 0) return;
+    if (dlg.dataset.listo === "1") return;
+    dlg.dataset.listo = "1";
+
+    let actual = 0;
+
+    function mostrar(i: number) {
+      actual = (i + piezas.length) % piezas.length;
+      const foto = piezas[actual].querySelector("img");
+      if (!foto || !img) return;
+      img.src = foto.src;
+      img.alt = foto.alt;
+    }
+
+    piezas.forEach((p, i) => {
+      p.addEventListener("click", () => {
+        mostrar(i);
+        dlg.showModal();
+      });
+    });
+
+    dlg.querySelector("[data-cierra-foto]")?.addEventListener("click", () => dlg.close());
+    dlg.querySelector("[data-foto-anterior]")?.addEventListener("click", () => mostrar(actual - 1));
+    dlg.querySelector("[data-foto-siguiente]")?.addEventListener("click", () => mostrar(actual + 1));
+
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    dlg.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") mostrar(actual - 1);
+      if (e.key === "ArrowRight") mostrar(actual + 1);
+    });
+  }
+
+  // "Marca las aves observadas": lo mismo que las casillas de la lamina, pero
+  // guardado en el navegador de quien visita. Si localStorage no esta
+  // disponible (modo privado, cookies bloqueadas) las casillas siguen
+  // funcionando durante la visita; solo no se recuerdan.
+  const CLAVE = "aves-observadas";
+
+  function leerMarcas(): string[] {
+    try {
+      const crudo = localStorage.getItem(CLAVE);
+      return crudo ? JSON.parse(crudo) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function guardarMarcas(lista: string[]) {
+    try {
+      localStorage.setItem(CLAVE, JSON.stringify(lista));
+    } catch {
+      /* sin almacenamiento: se pierde al salir, no pasa nada */
+    }
+  }
+
+  function initMarcas() {
+    const casillas = Array.from(document.querySelectorAll<HTMLInputElement>(".ave-marca"));
+    if (casillas.length === 0) return;
+    const aviso = document.getElementById("aves-aviso");
+    if (aviso?.dataset.listo === "1") return;
+    if (aviso) aviso.dataset.listo = "1";
+
+    const limpiar = document.querySelector<HTMLButtonElement>("[data-limpia-marcas]");
+
+    const pintarBoton = () => {
+      const hay = casillas.some((c) => c.checked);
+      if (limpiar) limpiar.hidden = !hay;
+    };
+
+    const marcadas = new Set(leerMarcas());
+    casillas.forEach((c) => {
+      if (c.dataset.ave && marcadas.has(c.dataset.ave)) c.checked = true;
+      c.addEventListener("change", () => {
+        const lista = casillas
+          .filter((x) => x.checked)
+          .map((x) => x.dataset.ave || "")
+          .filter(Boolean);
+        guardarMarcas(lista);
+        pintarBoton();
+      });
+    });
+
+    limpiar?.addEventListener("click", () => {
+      casillas.forEach((c) => (c.checked = false));
+      guardarMarcas([]);
+      pintarBoton();
+    });
+
+    pintarBoton();
+  }
+
+  initLaminas();
+  initMarcas();
+  document.addEventListener("astro:page-load", () => {
+    initLaminas();
+    initMarcas();
+  });
+</script>
