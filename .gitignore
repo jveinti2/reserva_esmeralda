@@ -23,11 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 nul
-.agents/*
-.claude/*
 # ...menos las skills del proyecto: son parte del repo
-!.claude/skills/
-CLAUDE.md
 old/*
 .vscode/extensions.json
 .vscode/launch.json
