@@ -25,6 +25,8 @@ pnpm-debug.log*
 nul
 .agents/*
 .claude/*
+# ...menos las skills del proyecto: son parte del repo
+!.claude/skills/
 CLAUDE.md
 old/*
 .vscode/extensions.json
